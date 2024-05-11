@@ -95,7 +95,7 @@ public class Orthophoniste implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        return this.pseudo.equals(((Orthophoniste) obj).getAdresseEmail());
+        return this.adresseEmail.equals(((Orthophoniste) obj).getAdresseEmail());
     }
-    
+
 }
