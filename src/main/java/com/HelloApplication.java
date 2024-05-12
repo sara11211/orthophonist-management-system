@@ -26,7 +26,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         HelloApplication.stage = stage;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("start.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load());
@@ -51,10 +51,10 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    @Override
-    public void stop() {
-        oms.sauvegarder();
-    }
+    // @Override
+    // public void stop() {
+    //     oms.sauvegarder();
+    // }
 
     public static void main(String[] args) {
         launch();
@@ -75,3 +75,4 @@ public class HelloApplication extends Application {
         }
     }
 }
+

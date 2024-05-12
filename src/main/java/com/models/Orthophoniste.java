@@ -1,12 +1,11 @@
 package com.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Orthophoniste implements Serializable {
 
-    // attributs
+    private static final long serialVersionUID = 1L;
+
     private String nom;
     private String prenom;
     private String adresse;
@@ -14,7 +13,6 @@ public class Orthophoniste implements Serializable {
     private String adresseEmail;
     private String motDePasse;
 
-    // constructeurs
     public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse) {
         this.nom = nom;
         this.prenom = prenom;
@@ -33,7 +31,6 @@ public class Orthophoniste implements Serializable {
         this.adresseEmail = adresseEmail;
     }
 
-    // getters & setters
     public String getNom() {
         return nom;
     }
@@ -53,7 +50,7 @@ public class Orthophoniste implements Serializable {
     public String getAdresseEmail() {
         return adresseEmail;
     }
-    
+
     public String getMotDePasse() {
         return motDePasse;
     }
@@ -61,7 +58,7 @@ public class Orthophoniste implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -82,20 +79,15 @@ public class Orthophoniste implements Serializable {
         this.motDePasse = motDePasse;
     }
 
-    // affichage
+    @Override
     public String toString() {
-        return "Email : " + this.adresseEmail + ", Mot de passe : " + this.motDePasse;
+        return "Orthophoniste{" +
+                "nom= '" + nom + '\'' +
+                ", prenom= '" + prenom + '\'' +
+                ", adresse= '" + adresse + '\'' +
+                ", numTel= '" + numTel + '\'' +
+                ", adresseEmail= '" + adresseEmail + '\'' +
+                ", motDePasse= '" + motDePasse + '\'' +
+                '}';
     }
-
-    // redifinitions 
-    @Override
-    public int hashCode() {
-        return getAdresseEmail().hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return this.adresseEmail.equals(((Orthophoniste) obj).getAdresseEmail());
-    }
-
 }

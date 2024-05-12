@@ -46,18 +46,19 @@ public class OMS implements Serializable {
         return null;
     }
 
-    public void sauvegarder() {
-        if (utilisateurCourant != null) {
-            orthophonistes.remove(utilisateurCourant);
-            orthophonistes.put(utilisateurCourant, utilisateurCourant.getMotDePasse());
-            System.out.println("utilisateurCourant est bien sauvegarder");
-        }
-
-        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(FILE_PATH))) {
-            out.writeObject(oms);
-            System.out.println("oms est bien sauvegarder");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    // public void sauvegarder() {
+    //     if (utilisateurCourant != null) {
+    //         orthophonistes.remove(utilisateurCourant);
+    //         orthophonistes.put(utilisateurCourant, utilisateurCourant.getMotDePasse());
+    //         System.out.println("utilisateurCourant est bien sauvegarder");
+    //     }
+    
+    //     try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(FILE_PATH))) {
+    //         // Only write the Orthophoniste keys (not the String values)
+    //         out.writeObject(orthophonistes.keySet());
+    //         System.out.println("oms est bien sauvegarder");
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 }
