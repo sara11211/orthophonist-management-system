@@ -1,6 +1,7 @@
 package com.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Orthophoniste implements Serializable {
 
@@ -90,4 +91,20 @@ public class Orthophoniste implements Serializable {
                 ", motDePasse= '" + motDePasse + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Orthophoniste other = (Orthophoniste) obj;
+        return getAdresseEmail().equals(other.getAdresseEmail());
+    }
+
+    public int hashCode() {
+    return Objects.hash(adresseEmail, motDePasse);
+}
 }

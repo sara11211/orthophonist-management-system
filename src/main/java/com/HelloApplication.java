@@ -27,19 +27,22 @@ public class HelloApplication extends Application {
         HelloApplication.stage = stage;
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Scene scene = null;
+        Scene scene;
         try {
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
+            return;
         }
 
         if (Files.exists(FILE_PATH)) {
             try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(FILE_PATH))) {
                 oms = (OMS) in.readObject();
-            } catch (ClassNotFoundException | IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
+                System.out.println("Error during object deserialization: " + e.getMessage());
+                oms = new OMS(); 
             }
         } else {
             oms = new OMS();
@@ -72,6 +75,7 @@ public class HelloApplication extends Application {
             Files.createFile(FILE_PATH);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Error creating file: " + e.getMessage());
         }
     }
 }

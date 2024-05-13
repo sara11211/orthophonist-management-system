@@ -14,15 +14,26 @@ public class OMS implements Serializable {
 
     public OMS() {
         this.orthophonistes = new HashMap<Orthophoniste, String>();
-        this.orthophonistes.put(new Orthophoniste("admin","admin"),"admin");
+        this.orthophonistes.put(new Orthophoniste("sarah","sarah"),"sarah");
     }
 
     public HashMap<Orthophoniste, String> getOrthophonistes() {
         return orthophonistes;
     }
 
-    public boolean isExist (String email) {
-        Orthophoniste utilisateurRecherche = new Orthophoniste(email);
+    // public boolean isExist (String email) {
+    //     Orthophoniste utilisateurRecherche = new Orthophoniste(email);
+    //     if (orthophonistes.containsKey(utilisateurRecherche)) {
+    //         System.out.println("isExist found user");
+    //         return true;
+    //     } else {
+    //         System.out.println("isExist can't find the user!");
+    //         return false;
+    //     }
+    // }
+
+    public boolean isExist(String email, String password) {
+        Orthophoniste utilisateurRecherche = new Orthophoniste(email, password);
         if (orthophonistes.containsKey(utilisateurRecherche)) {
             System.out.println("isExist found user");
             return true;
@@ -32,17 +43,13 @@ public class OMS implements Serializable {
         }
     }
 
-    public Orthophoniste findUser(String email, String mdp) {
-        Orthophoniste utilisateurRecherche = new Orthophoniste(email);
-        if (orthophonistes.containsKey(utilisateurRecherche)) {
-            for (Orthophoniste user : orthophonistes.keySet()) {
-                if (user.getAdresseEmail().equals(email) && user.getMotDePasse().equals(mdp)) {
-                    return user;
-                }
+    public Orthophoniste findUser(String email, String password) {
+        for (Orthophoniste user : orthophonistes.keySet()) {
+            if (user.getAdresseEmail().equals(email) && orthophonistes.get(user).equals(password)) {
+                return user;
             }
-        } else {
-            System.out.println("Function findUser can't find the user!");
         }
+        System.out.println("Function findUser can't find the user!");
         return null;
     }
 

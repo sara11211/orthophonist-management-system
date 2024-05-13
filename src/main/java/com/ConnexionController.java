@@ -29,7 +29,7 @@ public class ConnexionController {
         @FXML
         private Label erreurText;
         @FXML
-        private TextField email;
+        private TextField adresseEmail;
         @FXML
         private PasswordField motDePasse;
     
@@ -52,9 +52,9 @@ public class ConnexionController {
     
         @FXML
         void seConnecterButton(ActionEvent event) throws UtilisateurNonTrouveException, IOException {
-            String userEmail = email.getText();
+            String userEmail = adresseEmail.getText();
             String userMdp = motDePasse.getText();
-            if (oms.isExist(userEmail))
+            if (oms.isExist(userEmail, userMdp))
             {
                 Orthophoniste user = oms.findUser(userEmail,userMdp);
                 if (user != null)
@@ -79,17 +79,17 @@ public class ConnexionController {
                 else
                 {
                     System.out.println("mdp incorrect");
-                    connexionInvalid();
+                    //connexionInvalid();
                 }
             }
             else {
                 System.out.println("seConnecterButton func n'a pas trouvé l'utilisateur!");
-                connexionInvalid();
+                //connexionInvalid();
             }
         }
     
-        public void connexionInvalid() {
-            erreurText.setText("Pseudo ou mot de passe invalide!");
-        }
+        // public void connexionInvalid() {
+        //     erreurText.setText("Pseudo ou mot de passe invalide!");
+        // }
     }
 
