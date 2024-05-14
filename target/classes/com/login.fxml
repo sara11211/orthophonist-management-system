@@ -29,7 +29,7 @@
             <TextField fx:id="adresseEmail" layoutX="61.0" layoutY="176.0" prefHeight="25.0" prefWidth="215.0" promptText="username" style="-fx-background-color: #e0ecff;" />
             <PasswordField fx:id="motDePasse" layoutX="62.0" layoutY="212.0" prefHeight="25.0" prefWidth="214.0" promptText="password" style="-fx-background-color: #e0ecff;" />
             <Button fx:id="loginButton" layoutX="62.0" layoutY="282.0" mnemonicParsing="false" onAction="#seConnecterButton" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #21385e;" text="Login" textFill="WHITE" />
-            <Label alignment="CENTER" layoutX="61.0" layoutY="259.0" prefHeight="17.0" prefWidth="216.0" text="Invalid login, please try again" textAlignment="CENTER" textFill="#ff0101">
+            <Label fx:id="erreurText" alignment="CENTER" layoutX="61.0" layoutY="259.0" prefHeight="17.0" prefWidth="216.0" text="" textAlignment="CENTER" textFill="#ff0101">
                <font>
                   <Font size="10.0" />
                </font>
@@ -42,7 +42,7 @@
                </image>
             </ImageView>
             <Text fill="#6b9ceb" layoutX="148.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Orthophonist" wrappingWidth="90.71932983398438" />
-            <Button id="signupButton" layoutX="141.0" layoutY="326.0" mnemonicParsing="false"  style="-fx-background-color: #ffffff;" text="sign up" onAction="#signupButton" />
+            <Button id="signupButton" layoutX="141.0" layoutY="326.0" mnemonicParsing="false" onAction="#signupButton" style="-fx-background-color: #ffffff;" text="sign up" />
          </children>
       </AnchorPane>
    </center>

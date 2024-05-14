@@ -65,11 +65,17 @@ public class ConnexionController {
                 else
                 {
                     System.out.println("Mot de passe incorrect");
+                    connexionInvalid();
                 }
             }
             else {
                 System.out.println("La fonction seConnecterButton n'a pas trouvé l'utilisateur!");
+                connexionInvalid();
             }
+        }
+
+        public void connexionInvalid() {
+            erreurText.setText("Invalid e-mail or password ! ");
         }
     }
 
