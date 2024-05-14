@@ -59,6 +59,7 @@ public class InscriptionController {
         if (HelloApplication.oms.isExist(userEmail, userMotDePasse))
         {
             System.out.println("Pseudo existe deja!");
+            inscriptionInvalide();
         }
         else
         {
@@ -66,6 +67,12 @@ public class InscriptionController {
             HelloApplication.oms.getOrthophonistes().put(HelloApplication.utilisateurCourant,userMotDePasse);
             System.out.println("ajouter user : "+userEmail+"  mdp : "+userMotDePasse);
         }
+    }
+
+    @FXML
+    void inscriptionInvalide()
+    {
+        erreurText.setText("E-mail already used by another account !");
     }
 }
 
