@@ -18,16 +18,18 @@ public class HelloApplication extends Application {
     public static OMS oms;
     public static Orthophoniste utilisateurCourant;
     private static Stage stage;
+    
     public static final String DIRECTORY_PATH = "src/main/resources/datafile";
     public static final String FILE_NAME = "oms.dat";
     public static final Path FILE_PATH = Paths.get(DIRECTORY_PATH, FILE_NAME);
 
     @Override
     public void start(Stage stage) throws IOException {
-        HelloApplication.stage = stage;
 
+        HelloApplication.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
         Scene scene;
+
         try {
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
@@ -48,16 +50,12 @@ public class HelloApplication extends Application {
             oms = new OMS();
             createFile();
         }
+
         stage.setTitle("My Orthophonist Manager");
         stage.getIcons().add(new Image(String.valueOf(HelloApplication.class.getResource("images/icon.png"))));
         stage.setScene(scene);
         stage.show();
     }
-
-    // @Override
-    // public void stop() {
-    //     oms.sauvegarder();
-    // }
 
     public static void main(String[] args) {
         launch();

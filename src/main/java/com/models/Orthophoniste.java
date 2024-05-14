@@ -5,8 +5,7 @@ import java.util.Objects;
 
 public class Orthophoniste implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
+    // attributs
     private String nom;
     private String prenom;
     private String adresse;
@@ -14,6 +13,7 @@ public class Orthophoniste implements Serializable {
     private String adresseEmail;
     private String motDePasse;
 
+    // constructeurs
     public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse) {
         this.nom = nom;
         this.prenom = prenom;
@@ -32,6 +32,7 @@ public class Orthophoniste implements Serializable {
         this.adresseEmail = adresseEmail;
     }
 
+    // setters & getters
     public String getNom() {
         return nom;
     }
@@ -80,9 +81,10 @@ public class Orthophoniste implements Serializable {
         this.motDePasse = motDePasse;
     }
 
+    // redifinitions
     @Override
     public String toString() {
-        return "Orthophoniste{" +
+        return "Orthophoniste { " +
                 "nom= '" + nom + '\'' +
                 ", prenom= '" + prenom + '\'' +
                 ", adresse= '" + adresse + '\'' +
@@ -105,6 +107,6 @@ public class Orthophoniste implements Serializable {
     }
 
     public int hashCode() {
-    return Objects.hash(adresseEmail, motDePasse);
-}
+        return Objects.hash(adresseEmail, motDePasse);
+    }
 }
