@@ -15,12 +15,12 @@
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="289.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="185.0" fitWidth="195.0" layoutX="51.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="185.0" fitWidth="195.0" layoutX="52.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../Downloads/Pharmacist-amico.png" />
                </image>
             </ImageView>
-            <Text fill="#21385e" layoutX="32.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="i'm gonna write something here" wrappingWidth="225.94236755371094">
+            <Text fill="#21385e" layoutX="63.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="i'm gonna write something here" wrappingWidth="225.94236755371094">
                <font>
                   <Font size="26.0" />
                </font>
