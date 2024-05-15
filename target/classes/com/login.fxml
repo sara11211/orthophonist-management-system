@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="220.0" fitWidth="230.0" layoutX="38.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/Doctor-amico%20(1).png" />
+                  <Image url="@images/Doctor.png" />
                </image>
             </ImageView>
          </children>
@@ -26,22 +26,35 @@
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="adresseEmail" layoutX="61.0" layoutY="176.0" prefHeight="25.0" prefWidth="215.0" promptText="username" style="-fx-background-color: #e0ecff;" />
-            <PasswordField fx:id="motDePasse" layoutX="62.0" layoutY="212.0" prefHeight="25.0" prefWidth="214.0" promptText="password" style="-fx-background-color: #e0ecff;" />
-            <Button fx:id="loginButton" layoutX="62.0" layoutY="282.0" mnemonicParsing="false" onAction="#seConnecterButton" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #21385e;" text="Login" textFill="WHITE" />
-            <Label fx:id="erreurText" alignment="CENTER" layoutX="61.0" layoutY="259.0" prefHeight="17.0" prefWidth="216.0" text="" textAlignment="CENTER" textFill="#ff0101">
+            <TextField fx:id="adresseEmail" layoutX="61.0" layoutY="169.0" prefHeight="30.0" prefWidth="214.0" promptText="username" style="-fx-background-color: #ffffff; -fx-border-color: #e0ecff; -fx-border-width: 1px; -fx-border-radius: 3;" />
+            <PasswordField fx:id="motDePasse" layoutX="62.0" layoutY="212.0" prefHeight="30.0" prefWidth="214.0" promptText="password" style="-fx-background-color: #ffffff; -fx-border-color: #e0ecff; -fx-border-radius: 3; -fx-border-width: 1px;" />
+            <Button fx:id="loginButton" layoutX="62.0" layoutY="262.0" mnemonicParsing="false" onAction="#seConnecterButton" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: #21385e;" text="Login" textFill="WHITE" />
+            <Label fx:id="erreurText" alignment="CENTER" layoutX="60.0" layoutY="242.0" prefHeight="17.0" prefWidth="216.0" textAlignment="CENTER" textFill="#ff0101">
                <font>
-                  <Font size="10.0" />
+                  <Font size="9.0" />
                </font>
             </Label>
-            <Text layoutX="124.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back !" wrappingWidth="90.71932983398438" />
-            <Text layoutX="92.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please login to your account" wrappingWidth="154.052734375" />
-            <Text fill="#6b9ceb" layoutX="148.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Orthophonist" wrappingWidth="90.71932983398438" />
-            <Button id="signupButton" layoutX="213.0" layoutY="325.0" mnemonicParsing="false" onAction="#signupButton" prefHeight="12.0" prefWidth="68.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" text="sign up" textFill="#21385e" underline="true">
+            <Text fill="#b4cef9" layoutX="93.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back " wrappingWidth="151.38589477539062">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="21.0" />
+               </font></Text>
+            <Text layoutX="103.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please login to your account" wrappingWidth="126.052734375">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <Button id="signupButton" layoutX="198.0" layoutY="299.0" mnemonicParsing="false" onAction="#signupButton" prefHeight="12.0" prefWidth="68.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" text="sign up" textFill="#21385e" underline="true">
+               <font>
+                  <Font name="System Bold" size="11.0" />
                </font></Button>
-            <Text layoutX="65.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You don't have an account ?" wrappingWidth="154.052734375" />
+            <Text layoutX="77.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You don't have an account ?" wrappingWidth="154.052734375">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
+            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="142.0" layoutY="56.0">
+               <image>
+                  <Image url="@images/Icon.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
