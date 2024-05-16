@@ -99,8 +99,5 @@ public class HelloApplication extends Application {
             System.out.println("Error creating file: " + e.getMessage());
         }
     }
-
-
-
 }
 

@@ -24,6 +24,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 import static com.HelloApplication.utilisateurCourant;
 import com.models.*;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+
+
 
 public class CalendarController implements Initializable {
     /************* To DO list *************/
@@ -148,7 +154,86 @@ public class CalendarController implements Initializable {
     }
 
     public void handleDayClick(StackPane clickedDayRectangle) {
+        if (selectedDayRectangle != null) {
+            Rectangle rec = (Rectangle) selectedDayRectangle.getChildren().get(0);
+            rec.setFill(Color.WHITE);
+        }
+        if (selectedDayRectangle == clickedDayRectangle) {
+            selectedDayRectangle = null;
+        } else {
+            Rectangle rec1 = (Rectangle) clickedDayRectangle.getChildren().get(0);
+            rec1.setFill(Color.web("dfdfdf"));
+            selectedDayRectangle = clickedDayRectangle;
+
+            // Update selected_day with the clicked day
+            int currentDate = Integer.parseInt(((Text) clickedDayRectangle.getChildren().get(1)).getText());
+            selected_day = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), currentDate);
+            date.setText(selected_day.toString());
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Choose Option");
+
+            Button consultationButton = new Button("Consultation");
+            Button suiviButton = new Button("Seance de Suivi");
+            Button atelierButton = new Button("Atelier");
+
+            consultationButton.setOnAction(e -> handleConsultationClick());
+            suiviButton.setOnAction(e -> handleSuiviClick());
+            atelierButton.setOnAction(e -> handleAtelierClick());
+
+            VBox popupRoot = new VBox(10);
+            popupRoot.getChildren().addAll(consultationButton, suiviButton, atelierButton);
+            popupRoot.setPadding(new Insets(20));
+
+            Scene popupScene = new Scene(popupRoot, 250, 150);
+            popupStage.setScene(popupScene);
+            popupStage.show();
+
+
+        }
+        rdvs.clear();
+        rdvs.addAll(utilisateurCourant.getPlanning().getRDVSPlannified(selected_day));
+        listRDVs.getItems().clear();
+        listRDVs.getItems().addAll(rdvs);
     }
+
+
+    private void handleConsultationClick() {
+        // Code to navigate to Consultation page
+        System.out.println("Consultation Clicked");
+    }
+
+    private void handleSuiviClick() {
+        // Code to navigate to Seance de Suivi page
+        System.out.println("Seance de Suivi Clicked");
+    }
+
+    private void handleAtelierClick() {
+        // Code to navigate to Atelier page
+        System.out.println("Atelier Clicked");
+    }
+
+    @FXML
+    void ajouterRDVButton(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AjouterRDV.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+        Stage newStage = new Stage();
+        newStage.setTitle("Ajouter RDV");
+        //newStage.getIcons().add(new Image(String.valueOf(HelloApplication.class.getResource("images/icon2.png"))));
+        newStage.setScene(scene);
+        newStage.showAndWait();
+//        updateListView();
+
+    }
+
+
+
     @FXML
     void handleSignOut(ActionEvent event) {
         utilisateurCourant = null;
