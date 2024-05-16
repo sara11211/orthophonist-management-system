@@ -12,15 +12,17 @@ public class Orthophoniste implements Serializable {
     private String numTel;
     private String adresseEmail;
     private String motDePasse;
+    private Planning planning;
 
     // constructeurs
-    public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse) {
+    public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse, Planning planning) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.numTel = numTel;
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
+        this.planning = planning;
     }
 
     public Orthophoniste(String adresseEmail, String motDePasse) {
@@ -79,6 +81,14 @@ public class Orthophoniste implements Serializable {
 
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
+    }
+
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
+    }
+
+    public Planning getPlanning() {
+        return planning;
     }
 
     // redifinitions

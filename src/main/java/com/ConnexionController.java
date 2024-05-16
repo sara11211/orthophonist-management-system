@@ -5,6 +5,7 @@ import com.models.Orthophoniste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -61,6 +62,18 @@ public class ConnexionController {
                 {
                     System.out.println("Connection valide");
                     utilisateurCourant = oms.findUser(userEmail,userMdp);
+                    // Added this for testing "Calendar"
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Calendar.fxml"));
+                    Parent root = loader.load();
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle("Calendar Page");
+                    stage.show();
+
+                    // Close the current login window
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
                 }
                 else
                 {

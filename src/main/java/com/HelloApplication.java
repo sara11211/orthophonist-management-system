@@ -3,8 +3,11 @@ package com;
 import com.models.OMS;
 import com.models.Orthophoniste;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -65,6 +68,26 @@ public class HelloApplication extends Application {
         return stage;
     }
 
+    public static void setOms(OMS oms) {
+        HelloApplication.oms = oms;
+    }
+
+    public static void setStage(Stage stage) {
+        HelloApplication.stage = stage;
+    }
+
+    public static void setUtilisateurCourant(Orthophoniste utilisateurCourant) {
+        HelloApplication.utilisateurCourant = utilisateurCourant;
+    }
+
+    public static OMS getOms() {
+        return oms;
+    }
+
+    public static Orthophoniste getUtilisateurCourant() {
+        return utilisateurCourant;
+    }
+
     private static void createFile() {
         try {
             if (!Files.exists(FILE_PATH.getParent())) {
@@ -76,5 +99,8 @@ public class HelloApplication extends Application {
             System.out.println("Error creating file: " + e.getMessage());
         }
     }
+
+
+
 }
 
