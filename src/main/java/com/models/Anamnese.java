@@ -3,8 +3,10 @@ package com.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.Serializable;
 
-public class Anamnese {
+
+public class Anamnese implements Serializable{
 
     private String nom;
     private String description;

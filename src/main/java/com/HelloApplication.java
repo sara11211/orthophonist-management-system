@@ -24,43 +24,42 @@ public class HelloApplication extends Application {
     public static final Path FILE_PATH = Paths.get(DIRECTORY_PATH, FILE_NAME);
 
     @Override
-    public void start(Stage stage) throws IOException {
+public void start(Stage stage) throws IOException {
+    HelloApplication.stage = stage;
+    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+    Scene scene;
 
-        HelloApplication.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Scene scene;
+    try {
+        scene = new Scene(fxmlLoader.load());
+    } catch (IOException e) {
+        e.printStackTrace();
+        System.out.println("Couldn't load FXML file");
+        return;
+    }
 
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
+    if (Files.exists(FILE_PATH)) {
+        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(FILE_PATH))) {
+            oms = (OMS) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Couldn't load FXML file");
-            return;
+            System.out.println("Error during object deserialization: " + e.getMessage());
+            oms = new OMS(); 
         }
-
-        if (Files.exists(FILE_PATH)) {
-            try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(FILE_PATH))) {
-                oms = (OMS) in.readObject();
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-                System.out.println("Error during object deserialization: " + e.getMessage());
-                oms = new OMS(); 
-            }
-        } else {
-            oms = new OMS();
-            createFile();
-        }
-
-        stage.setTitle("My Orthophonist Manager");
-        stage.getIcons().add(new Image(String.valueOf(HelloApplication.class.getResource("images/icon.png"))));
-        stage.setScene(scene);
-        stage.show();
+    } else {
+        oms = new OMS();
+        createFile();
     }
 
-    @Override
-    public void stop() {
-        oms.sauvegarder();
-    }
+    stage.setTitle("My Orthophonist Manager");
+    stage.getIcons().add(new Image(String.valueOf(HelloApplication.class.getResource("images/icon.png"))));
+    stage.setScene(scene);
+    stage.show();
+}
+
+@Override
+public void stop() {
+    oms.sauvegarder();
+}
 
     public static void main(String[] args) {
         launch();

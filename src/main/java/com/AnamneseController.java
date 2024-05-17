@@ -2,7 +2,6 @@ package com;
 
 import com.models.Anamnese;
 import com.models.Question;
-
 import javafx.scene.layout.HBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +14,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import static com.HelloApplication.oms;
+import static com.HelloApplication.utilisateurCourant;
 
 public class AnamneseController {
     @FXML
@@ -55,22 +61,33 @@ public class AnamneseController {
         String description = anamneseDescriptionField.getText();
 
         if (name.isEmpty() || description.isEmpty()) {
-            errorLabel.setText("anamnese name and description cannot be empty!");
+            errorLabel.setText("Anamnese name and description cannot be empty!");
             return;
         }
 
         anamnese = new Anamnese(name, description);
 
         for (Node questionNode : questionsContainer.getChildren()) {
-            if (questionNode instanceof HBox) { 
-              HBox hbox = (HBox) questionNode;
-              TextField questionField = (TextField) hbox.lookup("#questionTextField");
-              String questionText = questionField.getText();
-              if (!questionText.isEmpty()) {
-                anamnese.addQuestion(new Question(questionText));
-              }
+            if (questionNode instanceof HBox) {
+                HBox hbox = (HBox) questionNode;
+                TextField questionField = (TextField) hbox.lookup("#questionTextField");
+                String questionText = questionField.getText();
+                if (!questionText.isEmpty()) {
+                    anamnese.addQuestion(new Question(questionText));
+                }
             }
-          }
+        }
+
+        if (utilisateurCourant == null) {
+            errorLabel.setText("No current user found!");
+            return;
+        }
+        if (utilisateurCourant.getAnamneses() == null) {
+            utilisateurCourant.setAnamneses(new ArrayList<>()); 
+        }
+
+        oms.addAnamneseToUser(utilisateurCourant, anamnese);
+        oms.sauvegarder(); 
 
         System.out.println("Anamnese saved with " + anamnese.getQuestions().size() + " questions.");
 

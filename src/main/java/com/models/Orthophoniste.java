@@ -6,18 +6,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class Orthophoniste implements Serializable {
-
-    // attributs
+    // attributes
     private String nom;
     private String prenom;
     private String adresse;
     private String numTel;
     private String adresseEmail;
     private String motDePasse;
-
     private List<Anamnese> anamneses;
 
-    // constructeurs
+    // constructors
     public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse) {
         this.nom = nom;
         this.prenom = prenom;
@@ -25,15 +23,18 @@ public class Orthophoniste implements Serializable {
         this.numTel = numTel;
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
+        this.anamneses = new ArrayList<>(); // Initialize the list
     }
 
     public Orthophoniste(String adresseEmail, String motDePasse) {
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
+        this.anamneses = new ArrayList<>(); // Initialize the list
     }
 
     public Orthophoniste(String adresseEmail) {
         this.adresseEmail = adresseEmail;
+        this.anamneses = new ArrayList<>(); // Initialize the list
     }
 
     // setters & getters
@@ -84,7 +85,7 @@ public class Orthophoniste implements Serializable {
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
-    
+
     public List<Anamnese> getAnamneses() {
         return anamneses;
     }
@@ -93,7 +94,11 @@ public class Orthophoniste implements Serializable {
         anamneses.add(anamnese);
     }
 
-    // redifinitions
+    public void setAnamneses(List<Anamnese> anamneses) {
+        this.anamneses = anamneses;
+    }
+
+    // Override methods
     @Override
     public String toString() {
         return "Orthophoniste { " +
@@ -118,6 +123,7 @@ public class Orthophoniste implements Serializable {
         return getAdresseEmail().equals(other.getAdresseEmail());
     }
 
+    @Override
     public int hashCode() {
         return Objects.hash(adresseEmail, motDePasse);
     }

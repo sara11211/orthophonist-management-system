@@ -31,7 +31,7 @@ public class AnamnesesDisplayController {
         if (anamneses != null) {
             this.anamneses.setAll(anamneses);
         } else {
-            this.anamneses.clear(); // clear the table if null is passed
+            this.anamneses.clear(); 
         }
     }
 }

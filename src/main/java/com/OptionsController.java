@@ -37,11 +37,11 @@ private void handleViewAnamneses(ActionEvent event) {
         Parent root = loader.load();
 
         AnamnesesDisplayController controller = loader.getController();
-        List<Anamnese> anamneses = oms.getAnamnesesByUser(utilisateurCourant);
+        List<Anamnese> anamneses = HelloApplication.oms.getAnamnesesByUser(HelloApplication.utilisateurCourant);
 
         if (anamneses == null) {
             System.err.println("No anamneses found for the user");
-            anamneses = new ArrayList<>(); // initialize with an empty list
+            anamneses = new ArrayList<>(); 
         }
 
         controller.setAnamneses(anamneses);
@@ -54,5 +54,6 @@ private void handleViewAnamneses(ActionEvent event) {
         e.printStackTrace();
     }
 }
+
 
 }
