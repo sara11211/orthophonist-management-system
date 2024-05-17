@@ -8,8 +8,8 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="viewAnamnesesButton" layoutX="249.0" layoutY="200.0" mnemonicParsing="false" text="View Anamneses" />
-            <Button fx:id="createAnamneseButton" layoutX="247.0" layoutY="170.0" mnemonicParsing="false" text="Create Anamnese" onAction="#handleCreateAnamnese" />
+            <Button fx:id="viewAnamnesesButton" layoutX="249.0" layoutY="200.0" mnemonicParsing="false" text="View Anamneses" onAction="#handleViewAnamneses"/>
+            <Button fx:id="createAnamneseButton" layoutX="247.0" layoutY="170.0" mnemonicParsing="false" text="Create Anamnese" onAction="#handleCreateAnamnese"/>
          </children>
       </AnchorPane>
    </center>

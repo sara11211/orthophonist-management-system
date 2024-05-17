@@ -1,6 +1,8 @@
 package com.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Orthophoniste implements Serializable {
@@ -12,6 +14,8 @@ public class Orthophoniste implements Serializable {
     private String numTel;
     private String adresseEmail;
     private String motDePasse;
+
+    private List<Anamnese> anamneses;
 
     // constructeurs
     public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse) {
@@ -79,6 +83,14 @@ public class Orthophoniste implements Serializable {
 
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
+    }
+    
+    public List<Anamnese> getAnamneses() {
+        return anamneses;
+    }
+
+    public void addAnamnese(Anamnese anamnese) {
+        anamneses.add(anamnese);
     }
 
     // redifinitions

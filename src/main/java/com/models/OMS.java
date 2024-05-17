@@ -6,6 +6,7 @@ import static com.HelloApplication.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.HashMap;
+import java.util.List;
 
 public class OMS implements Serializable {
 
@@ -58,5 +59,13 @@ public class OMS implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+        public List<Anamnese> getAnamnesesByUser(Orthophoniste user) {
+        return user.getAnamneses();
+    }
+
+    public void addAnamneseToUser(Orthophoniste user, Anamnese anamnese) {
+        user.addAnamnese(anamnese);
     }
 }

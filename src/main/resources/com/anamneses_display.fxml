@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.AnamnesesDisplayController"
+            prefHeight="400.0" prefWidth="600.0">
+    
+    <center>
+        <TableView fx:id="anamnesesTable">
+            <columns>
+                <!-- Name Column -->
+                <TableColumn fx:id="nameColumn" text="Name" />
+                
+                <!-- Description Column -->
+                <TableColumn fx:id="descriptionColumn" text="Description" />
+            </columns>
+        </TableView>
+    </center>
+    
+</BorderPane>
