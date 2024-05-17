@@ -42,7 +42,7 @@
                <font>
                   <Font size="10.0" />
                </font></Text>
-            <Button id="signupButton" layoutX="198.0" layoutY="299.0" mnemonicParsing="false" onAction="#signupButton" prefHeight="12.0" prefWidth="68.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" text="sign up" textFill="#21385e" underline="true">
+            <Button id="signupButton" fx:id="signupButton" layoutX="198.0" layoutY="299.0" mnemonicParsing="false" onAction="#signupButton" prefHeight="12.0" prefWidth="68.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" text="sign up" textFill="#21385e" underline="true">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
