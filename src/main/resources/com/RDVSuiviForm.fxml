@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?language fx="http://javafx.com/fxml/1"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.RDVSuiviController">
+    <center>
+        <GridPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <hgap>10</hgap>
+            <vgap>10</vgap>
+
+
+
+            <VBox>
+                <Label text="Cette séance de suivi est :" />
+                <!-- Remove the fx:id attribute -->
+                <!-- Create the radio buttons and add them to the toggle group -->
+                <RadioButton fx:id="enPresentielle"  text="En présentielle" toggleGroup="$toggleGroup"/>
+                <RadioButton fx:id="enLigne" text="En ligne" toggleGroup="$toggleGroup"/>
+            </VBox>
+
+            <Label text="Numéro du dossier du patient :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="numDossierField" promptText="Numéro du dossier du patient : " GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <!-- Consultation Time -->
+            <Label text="Heure de la consultation:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                <valueFactory>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
+                </valueFactory>
+            </Spinner>
+            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="3" GridPane.columnIndex="2">
+                <valueFactory>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
+                </valueFactory>
+            </Spinner>
+
+            <!-- Consultation Duration -->
+            <Label text="Durée de la consultation:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Spinner fx:id="durationHourSpinner" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                <valueFactory>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
+                </valueFactory>
+            </Spinner>
+            <Spinner fx:id="durationMinuteSpinner" GridPane.rowIndex="4" GridPane.columnIndex="2">
+                <valueFactory>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
+                </valueFactory>
+            </Spinner>
+
+            <!-- Additional Information -->
+            <Label text="Informations supplémentaires:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <!-- Submit Button -->
+            <Button text="Soumettre" GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.halignment="RIGHT" onAction="#handleSubmit"/>
+        </GridPane>
+
+    </center>
+</BorderPane>

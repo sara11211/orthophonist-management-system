@@ -22,8 +22,8 @@ public class RDVController {
 
 
         // when user clicks on add consultation. redirection + function returns what calendar needs
-        public void scheduleConsultation(LocalTime date, LocalTime heureDebut, Duration duree, String infoSup, String nomPatient, String prenomPatient, int agePatient) {
-            Consultation consultation = new Consultation(date, heureDebut, duree, infoSup, nomPatient, prenomPatient, agePatient);
+            public void scheduleConsultation(LocalDate date, LocalTime heureDebut, Duration duree, String infoSup, boolean isInfoSup, String nomPatient, String prenomPatient, int agePatient) {
+            Consultation consultation = new Consultation(date, heureDebut, duree, infoSup, isInfoSup, nomPatient, prenomPatient, agePatient);
             consultation.scheduleRDV();
         }
 

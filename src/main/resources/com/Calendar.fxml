@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.Reflection?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CalendarController">
+<BorderPane fx:id="borderPane" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CalendarController">
     <left>
         <VBox alignment="CENTER" prefHeight="550.0" prefWidth="422.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
             <children>
@@ -24,18 +23,8 @@
                         <Insets left="25.0" right="20.0" />
                     </VBox.margin>
                     <children>
-                        <HBox prefHeight="0.0" prefWidth="298.0" spacing="42.0">
-                            <children>
-                                <Button mnemonicParsing="false"  style="-fx-background-color: #005B8F; -fx-text-fill: #FFFFFF;" text="Ajouter Tàche" />
-                                <Button alignment="CENTER" mnemonicParsing="false"  style="-fx-background-color: #005B8F; -fx-text-fill: #FFFFFF;" text="Ajouter ensemble de taches" />
-                            </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="45.0" prefHeight="35.0" prefWidth="275.0" spacing="24.0">
-                            <children>
-                                <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #005B8F; -fx-text-fill: #FFFFFF;" text="Ajouter Un Projet" />
-                                <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #005B8F; -fx-text-fill: #FFFFFF;" text="Re-Planifier" />
-                            </children>
-                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="298.0" spacing="42.0" />
+                        <HBox layoutX="10.0" layoutY="45.0" prefHeight="35.0" prefWidth="275.0" spacing="24.0" />
                     </children>
                     <padding>
                         <Insets top="35.0" />
@@ -99,10 +88,6 @@
             <children>
                 <HBox prefHeight="88.0" prefWidth="415.0" spacing="27.0">
                     <children>
-
-                        <Button alignment="CENTER" mnemonicParsing="false"  style="-fx-text-fill: #005B8F; -fx-background-color: TRANSPARENT; -fx-border-color: #005B8F;" text="Unschedueled" />
-
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-border-color: #005B8F; -fx-text-fill: #005B8F; -fx-background-color: TRANSPARENT;" text="Bagdes" />
                         <Label fx:id="date" prefHeight="69.0" prefWidth="150.0" text="date" />
                     </children>
                 </HBox>
@@ -125,7 +110,7 @@
                                         </Text>
                                     </children>
                                 </HBox>
-                                <Button mnemonicParsing="false"  text="&gt;" />
+                                <Button mnemonicParsing="false" text="&gt;" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="25.0" prefWidth="348.0" spacing="31.75">

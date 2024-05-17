@@ -1,4 +1,5 @@
 package com.models;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Duration;
 public class Consultation extends RDV {
@@ -6,11 +7,35 @@ public class Consultation extends RDV {
     private String prenomPatient;
     private int agePatient;
 
-    public Consultation(LocalTime date, LocalTime heureDebut, Duration duree, String infoSup, String nomPatient, String prenomPatient, int agePatient) {
-        super(date, heureDebut, duree, infoSup);
+    public Consultation(LocalDate date, LocalTime heureDebut, Duration duree, String infoSup, boolean isInfoSup, String nomPatient, String prenomPatient, int agePatient) {
+        super(date, heureDebut, duree, infoSup, isInfoSup);
         this.nomPatient = nomPatient;
         this.prenomPatient = prenomPatient;
         this.agePatient = agePatient;
+    }
+
+    public void setNomPatient(String nomPatient) {
+        this.nomPatient = nomPatient;
+    }
+
+    public void setPrenomPatient(String prenomPatient) {
+        this.prenomPatient = prenomPatient;
+    }
+
+    public void setAgePatient(int agePatient) {
+        this.agePatient = agePatient;
+    }
+
+    public String getNomPatient() {
+        return nomPatient;
+    }
+
+    public String getPrenomPatient() {
+        return prenomPatient;
+    }
+
+    public int getAgePatient() {
+        return agePatient;
     }
 
     public boolean scheduleRDV() {

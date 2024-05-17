@@ -2,6 +2,8 @@ package com.models;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -13,18 +15,33 @@ public class Planning implements Serializable {
     private ArrayList<SessionLibre> sessionLibres;
     private ArrayList<SessionOccupee> sessionOccupees;
     private ArrayList<RDV> rdvsPlannified;
-    //private ArrayList<Tache> tacheUnscheduleds;
-    // private ArrayList<Projet> projets;
 
-    /********* Le constructeur **********/
-    public Planning() {
-        nom = new String();
-        sessionLibres = new ArrayList<SessionLibre>();
-        sessionOccupees = new ArrayList<SessionOccupee>();
-        rdvsPlannified = new ArrayList<RDV>();
-        //tacheUnscheduleds = new ArrayList<RDV>();
-        //projets = new ArrayList<Projet>();
+
+    public Planning(String nom, LocalDate dateDebut, LocalDate dateFin) {
+        this.nom = nom;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.dureeMinCreneau = Duration.ofHours(1);
+        ;
+        this.sessionLibres = new ArrayList<>();
+        this.sessionOccupees = new ArrayList<>();
+        this.rdvsPlannified = new ArrayList<>();
+        populateFreeSlots();
     }
+
+
+    private void populateFreeSlots() {
+        while (!dateDebut.isAfter(dateFin)) {
+            LocalDateTime startTime = dateDebut.atStartOfDay();
+            LocalDateTime endTime = dateFin.atTime(LocalTime.MAX);
+            while (startTime.plus(dureeMinCreneau).isBefore(endTime) || startTime.plus(dureeMinCreneau).equals(endTime)) {
+                sessionLibres.add(new SessionLibre(startTime, startTime.plus(dureeMinCreneau)));
+                startTime = startTime.plus(dureeMinCreneau);
+            }
+            dateDebut = dateDebut.plusDays(1);
+        }
+    }
+
 
 
 
@@ -78,10 +95,7 @@ public class Planning implements Serializable {
         this.sessionOccupees.addAll(sessionOccupees);
     }
 
-    /*public ArrayList<Tache> getTachePlannifies() {
-        return tachePlannifies;
-    }*/
-    // getTache plannifies pour Le LocalDate
+
     public ArrayList<RDV> getRDVSPlannified(LocalDate j) {
 
         ArrayList<RDV> rdvsJJMM = new ArrayList<RDV>();
@@ -100,24 +114,7 @@ public class Planning implements Serializable {
         this.rdvsPlannified.addAll(rdvsPlannified);
     }
 
-    /*public ArrayList<Tache> getTacheUnscheduleds() {
-        return tacheUnscheduleds;
-    }*/
 
- /*   public void setTacheUnscheduleds(ArrayList<Tache> tacheUnscheduleds) {
-        this.tacheUnscheduleds.clear();
-        this.tacheUnscheduleds.addAll(tacheUnscheduleds);
-    }
-*/
-   /* public ArrayList<Projet> getProjets() {
-        return projets;
-    }
-
-    public void setProjets(ArrayList<Projet> projets) {
-        this.projets.clear();
-        this.projets.addAll(projets);
-    }
-*/
     public boolean planifier(SessionLibre sessionLibre, RDV rdv) {
 
         if (rdv instanceof Consultation) {

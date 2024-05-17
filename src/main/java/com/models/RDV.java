@@ -1,4 +1,5 @@
 package com.models;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -9,22 +10,23 @@ public class RDV {
         Consultation, RDVSuivi, Atelier
     }
     private TypeRDV typeRDV;*/
-    private LocalTime date;
+    private LocalDate date;
     private LocalTime heureDebut;
     private Duration duree;
     private String infoSup;
     private boolean isInfoSup;
 
 
-    public RDV(LocalTime date, LocalTime heureDebut, Duration duree, String infoSup) {
+    public RDV(LocalDate date, LocalTime heureDebut, Duration duree, String infoSup, boolean isInfoSup) {
         this.date = date;
         this.heureDebut = heureDebut;
         this.duree = duree;
         this.infoSup = infoSup;
+        this.isInfoSup = isInfoSup;
     }
 
  
-    public void setDate(LocalTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -40,8 +42,11 @@ public class RDV {
         this.infoSup = infoSup;
     }
 
+    public void setInfoSup(boolean infoSup) {
+        isInfoSup = infoSup;
+    }
 
-    public LocalTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -57,6 +62,7 @@ public class RDV {
         return infoSup;
     }
 
+    public boolean getIsInfoSup() { return isInfoSup; }
 
     public boolean scheduleRDV() {
         System.out.println("Prévu pour le : "+date);
