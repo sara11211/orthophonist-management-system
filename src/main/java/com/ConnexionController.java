@@ -61,6 +61,20 @@ public class ConnexionController {
                 {
                     System.out.println("Connection valide");
                     utilisateurCourant = oms.findUser(userEmail,userMdp);
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("options.fxml"));
+                    scene = null;
+                    try {
+                    scene = new Scene(fxmlLoader.load());
+                    } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Couldn't load FXML file");
+                }
+
+                Button button = (Button) event.getSource();
+                stage = (Stage) button.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
                 }
                 else
                 {

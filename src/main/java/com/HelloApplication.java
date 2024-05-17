@@ -27,7 +27,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         HelloApplication.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("anamnese_creation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
         Scene scene;
 
         try {
@@ -38,18 +38,18 @@ public class HelloApplication extends Application {
             return;
         }
 
-        // if (Files.exists(FILE_PATH)) {
-        //     try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(FILE_PATH))) {
-        //         oms = (OMS) in.readObject();
-        //     } catch (IOException | ClassNotFoundException e) {
-        //         e.printStackTrace();
-        //         System.out.println("Error during object deserialization: " + e.getMessage());
-        //         oms = new OMS(); 
-        //     }
-        // } else {
-        //     oms = new OMS();
-        //     createFile();
-        // }
+        if (Files.exists(FILE_PATH)) {
+            try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(FILE_PATH))) {
+                oms = (OMS) in.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                System.out.println("Error during object deserialization: " + e.getMessage());
+                oms = new OMS(); 
+            }
+        } else {
+            oms = new OMS();
+            createFile();
+        }
 
         stage.setTitle("My Orthophonist Manager");
         stage.getIcons().add(new Image(String.valueOf(HelloApplication.class.getResource("images/icon.png"))));
@@ -57,10 +57,10 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    // @Override
-    // public void stop() {
-    //     oms.sauvegarder();
-    // }
+    @Override
+    public void stop() {
+        oms.sauvegarder();
+    }
 
     public static void main(String[] args) {
         launch();

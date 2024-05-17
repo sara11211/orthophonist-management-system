@@ -35,7 +35,7 @@ public class AnamneseController {
     @FXML
     public void initialize() {
         addQuestionButton.setOnAction(this::handleAddQuestion);
-        saveAnamneseButton.setOnAction(this::handleSaveQuiz);
+        saveAnamneseButton.setOnAction(this::handleSaveAnamnese);
     }
 
     @FXML
@@ -50,7 +50,7 @@ public class AnamneseController {
     }
 
     @FXML
-    private void handleSaveQuiz(ActionEvent event) {
+    private void handleSaveAnamnese(ActionEvent event) {
         String name = anamneseNameField.getText();
         String description = anamneseDescriptionField.getText();
 
@@ -73,5 +73,15 @@ public class AnamneseController {
           }
 
         System.out.println("Anamnese saved with " + anamnese.getQuestions().size() + " questions.");
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
