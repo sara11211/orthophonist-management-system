@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" spacing="10">
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" spacing="10" fx:controller="com.QuestionItemController">
     <TextField fx:id="questionTextField" promptText="Enter question text" />
+    <ComboBox fx:id="categoryComboBox" promptText="Select Category" />
 </HBox>

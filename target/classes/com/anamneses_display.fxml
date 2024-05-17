@@ -17,6 +17,9 @@
                 
                 <!-- Description Column -->
                 <TableColumn fx:id="descriptionColumn" text="Description" />
+
+                <!-- Action Column -->
+                <TableColumn fx:id="actionColumn" text="Actions" />
             </columns>
         </TableView>
     </center>

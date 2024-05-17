@@ -1,8 +1,8 @@
 package com;
 
 import com.models.Anamnese;
-import com.models.Question;
-import javafx.scene.layout.HBox;
+import com.models.QuestionEnfant;
+import com.models.QuestionEnfant.CategorieEnfant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,14 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import static com.HelloApplication.oms;
 import static com.HelloApplication.utilisateurCourant;
@@ -71,9 +69,13 @@ public class AnamneseController {
             if (questionNode instanceof HBox) {
                 HBox hbox = (HBox) questionNode;
                 TextField questionField = (TextField) hbox.lookup("#questionTextField");
+                ComboBox<String> categoryComboBox = (ComboBox<String>) hbox.lookup("#categoryComboBox");
                 String questionText = questionField.getText();
-                if (!questionText.isEmpty()) {
-                    anamnese.addQuestion(new Question(questionText));
+                String selectedCategory = categoryComboBox.getValue();
+
+                if (!questionText.isEmpty() && selectedCategory != null) {
+                    CategorieEnfant categorie = CategorieEnfant.valueOf(selectedCategory);
+                    anamnese.addQuestion(new QuestionEnfant(questionText, categorie));
                 }
             }
         }
@@ -94,7 +96,7 @@ public class AnamneseController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

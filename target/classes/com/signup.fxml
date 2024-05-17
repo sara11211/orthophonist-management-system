@@ -14,7 +14,7 @@
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="295.0" style="-fx-background-color: #F4F5FA;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="247.0" fitWidth="245.0" layoutX="25.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="290.0" fitWidth="262.0" layoutX="17.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/medical.png" />
                </image>
