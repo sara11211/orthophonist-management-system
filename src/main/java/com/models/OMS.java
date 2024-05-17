@@ -16,6 +16,7 @@ public class OMS implements Serializable {
     public OMS() {
         this.orthophonistes = new HashMap<Orthophoniste, String>();
         this.orthophonistes.put(new Orthophoniste("sarah","sarah"),"sarah");
+        this.orthophonistes.put(new Orthophoniste("admin","admin"),"admin");
     }
 
     // getter
@@ -23,7 +24,7 @@ public class OMS implements Serializable {
         return orthophonistes;
     }
 
-    // vérifier si l'orthophoniste existe 
+    //vérifier si l'orthophoniste existe 
     public boolean isExist(String email, String password) {
         Orthophoniste utilisateurRecherche = new Orthophoniste(email, password);
         if (orthophonistes.containsKey(utilisateurRecherche)) {
@@ -34,6 +35,10 @@ public class OMS implements Serializable {
             return false;
         }
     }
+
+    // public boolean isExist(String email) {
+    //     return orthophonistes.containsKey(new Orthophoniste(email)); // Use email for comparison
+    // }
 
     // vérifier si les informations de l'orthophoniste sont correctes
     public Orthophoniste findUser(String email, String password) {
