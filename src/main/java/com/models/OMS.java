@@ -1,6 +1,10 @@
 package com.models;
 
+import com.HelloApplication;
+import static com.HelloApplication.*;
+
 import java.io.*;
+import java.nio.file.Files;
 import java.util.HashMap;
 
 public class OMS implements Serializable {
@@ -41,4 +45,18 @@ public class OMS implements Serializable {
         return null;
     }
 
+    public void sauvegarder() {
+        if (utilisateurCourant != null) {
+            orthophonistes.remove(utilisateurCourant);
+            orthophonistes.put(utilisateurCourant, utilisateurCourant.getMotDePasse());
+            System.out.println("utilisateurCourant est bien sauvegarder");
+        }
+
+        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(FILE_PATH))) {
+            out.writeObject(oms);
+            System.out.println("my orthophonist app est bien sauvegarder");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

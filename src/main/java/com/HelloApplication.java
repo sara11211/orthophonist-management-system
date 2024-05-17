@@ -57,6 +57,11 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+    @Override
+    public void stop() {
+        oms.sauvegarder();
+    }
+
     public static void main(String[] args) {
         launch();
     }
