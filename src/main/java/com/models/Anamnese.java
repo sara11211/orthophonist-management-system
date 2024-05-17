@@ -6,10 +6,30 @@ import java.util.List;
 
 public class Anamnese {
 
-    private List<Question> questions; //ajouter methode filtre
+    private String nom;
+    private String description;
+    private List<Question> questions; 
 
-    public Anamnese() {
+    public Anamnese(String nom, String description) {
+        this.nom = nom;
+        this.description = description;
         this.questions = new ArrayList<>();
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public List<Question> getQuestions() {
