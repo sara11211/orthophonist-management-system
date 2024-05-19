@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.QuestionTestItemController" spacing="10">
     <TextField fx:id="questionTextField" promptText="Question" />
-    <ComboBox fx:id="questionTypeComboBox"/>
+    <ComboBox fx:id="questionTypeComboBox" onAction="#handleQuestionTypeChange"/>
+    <VBox fx:id="propositionsContainer" spacing="5"/>
+    <Button fx:id="addPropositionButton" text="Add Proposition" onAction="#handleAddProposition" visible="false"/>
 </HBox>

@@ -14,14 +14,11 @@ import javafx.scene.Node;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import com.models.Test;
 
 import static com.HelloApplication.oms;
 import static com.HelloApplication.utilisateurCourant;
 
-import com.QuestionTestItemController;
+import com.models.Proposition;
 
 public class TestCreationController {
     @FXML
@@ -81,14 +78,28 @@ public class TestCreationController {
                 HBox hbox = (HBox) questionNode;
                 TextField questionField = (TextField) hbox.lookup("#questionTextField");
                 ComboBox<String> questionTypeComboBox = (ComboBox<String>) hbox.lookup("#questionTypeComboBox");
+                VBox propositionsContainer = (VBox) hbox.lookup("#propositionsContainer");
                 String questionText = questionField.getText();
                 String questionType = questionTypeComboBox.getValue();
 
                 if (!questionText.isEmpty() && questionType != null) {
-                    if (questionType.equals("Multiple Choice (Multiple Answers)")) {
-                        // Handle Multiple Choice (Multiple Answers)
-                    } else if (questionType.equals("Multiple Choice (Single Answer)")) {
-                        // Handle Multiple Choice (Single Answer)
+                    if (questionType.equals("Multiple Choice (Multiple Answers)") || questionType.equals("Multiple Choice (Single Answer)")) {
+                        ArrayList<Proposition> propositions = new ArrayList<>();
+                        for (Node propositionNode : propositionsContainer.getChildren()) {
+                            if (propositionNode instanceof TextField) {
+                                TextField propositionField = (TextField) propositionNode;
+                                String propositionText = propositionField.getText();
+                                if (!propositionText.isEmpty()) {
+                                    propositions.add(new Proposition(propositionText));
+                                }
+                            }
+                        }
+
+                        if (questionType.equals("Multiple Choice (Multiple Answers)")) {
+                            test.getQuestions().add(new QCM(questionText, propositions.toArray(new Proposition[0])));
+                        } else {
+                            test.getQuestions().add(new QCU(questionText, propositions.toArray(new Proposition[0])));
+                        }
                     } else if (questionType.equals("Free Text")) {
                         test.getQuestions().add(new QuestionLibre(questionText, 0)); // Add Free Text question
                     }
@@ -140,4 +151,3 @@ public class TestCreationController {
         }
     }
 }
-
