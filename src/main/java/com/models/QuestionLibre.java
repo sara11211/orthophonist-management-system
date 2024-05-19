@@ -1,6 +1,8 @@
 package com.models;
 
-public class QuestionLibre extends Question {
+import java.io.Serializable;
+
+public class QuestionLibre extends Question implements Serializable{
 
     private int score;
 

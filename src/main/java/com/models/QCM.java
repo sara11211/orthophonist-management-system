@@ -1,6 +1,8 @@
 package com.models;
 
-public class QCM extends Question {
+import java.io.Serializable;
+
+public class QCM extends Question implements Serializable {
 
     private Proposition[] options;
 

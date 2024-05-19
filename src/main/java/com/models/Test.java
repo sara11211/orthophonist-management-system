@@ -1,8 +1,9 @@
 package com.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Test {
+public class Test implements Serializable {
     
     private String nom;
     private String capacite;
