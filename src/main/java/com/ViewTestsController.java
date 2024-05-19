@@ -8,17 +8,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.util.List;
 
 import static com.HelloApplication.utilisateurCourant;
+import static com.HelloApplication.oms;
 
 public class ViewTestsController {
 
@@ -31,9 +29,6 @@ public class ViewTestsController {
     @FXML
     private TableColumn<Test, String> testDescriptionColumn;
 
-    @FXML
-    private TableColumn<Test, Void> actionColumn;
-
     private ObservableList<Test> tests;
 
     @FXML
@@ -41,10 +36,8 @@ public class ViewTestsController {
         testNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         testDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("capacite"));
 
-        // Add button to the table
-        addButtonToTable();
-
         loadTests();
+        addButtonsToTable();
     }
 
     private void loadTests() {
@@ -56,42 +49,90 @@ public class ViewTestsController {
         testsTable.setItems(tests);
     }
 
-    private void addButtonToTable() {
-        Callback<TableColumn<Test, Void>, TableCell<Test, Void>> cellFactory = new Callback<TableColumn<Test, Void>, TableCell<Test, Void>>() {
-            @Override
-            public TableCell<Test, Void> call(final TableColumn<Test, Void> param) {
-                final TableCell<Test, Void> cell = new TableCell<Test, Void>() {
+    private void addButtonsToTable() {
+        // View Button
+        TableColumn<Test, Void> viewCol = new TableColumn<>("View");
 
-                    private final Button btn = new Button("View");
+        viewCol.setCellFactory(param -> new TableCell<>() {
+            private final Button btn = new Button("View");
 
-                    {
-                        btn.setOnAction((ActionEvent event) -> {
-                            Test selectedTest = getTableView().getItems().get(getIndex());
-                            handleViewTest(selectedTest);
-                        });
-                    }
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-                return cell;
+            {
+                btn.setOnAction(event -> {
+                    Test data = getTableView().getItems().get(getIndex());
+                    handleViewTest(data);
+                });
             }
-        };
 
-        actionColumn.setCellFactory(cellFactory);
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btn);
+                }
+            }
+        });
+
+        testsTable.getColumns().add(viewCol);
+
+        // Delete Button
+        TableColumn<Test, Void> deleteCol = new TableColumn<>("Delete");
+
+        deleteCol.setCellFactory(param -> new TableCell<>() {
+            private final Button btn = new Button("Delete");
+
+            {
+                btn.setOnAction(event -> {
+                    Test data = getTableView().getItems().get(getIndex());
+                    handleDeleteTest(data);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btn);
+                }
+            }
+        });
+
+        testsTable.getColumns().add(deleteCol);
+
+        // Modify Button
+        TableColumn<Test, Void> modifyCol = new TableColumn<>("Modify");
+
+        modifyCol.setCellFactory(param -> new TableCell<>() {
+            private final Button btn = new Button("Modify");
+
+            {
+                btn.setOnAction(event -> {
+                    Test data = getTableView().getItems().get(getIndex());
+                    handleModifyTest(data);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btn);
+                }
+            }
+        });
+
+        testsTable.getColumns().add(modifyCol);
     }
 
     private void handleViewTest(Test selectedTest) {
         if (selectedTest != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("test_details.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_details.fxml"));
                 Parent root = loader.load();
 
                 TestDetailController controller = loader.getController();
@@ -101,6 +142,35 @@ public class ViewTestsController {
                 stage.setTitle("Test Details");
                 stage.setScene(new Scene(root));
                 stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void handleDeleteTest(Test selectedTest) {
+        if (selectedTest != null) {
+            utilisateurCourant.getTests().remove(selectedTest);
+            oms.sauvegarder();
+            tests.remove(selectedTest);
+        }
+    }
+
+    private void handleModifyTest(Test selectedTest) {
+        if (selectedTest != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_creation.fxml"));
+                Parent root = loader.load();
+
+                TestCreationController controller = loader.getController();
+                controller.setTest(selectedTest);
+
+                Stage stage = new Stage();
+                stage.setTitle("Modify Test");
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+                
+                testsTable.refresh(); // Refresh the table after modification
             } catch (IOException e) {
                 e.printStackTrace();
             }
