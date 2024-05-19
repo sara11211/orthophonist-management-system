@@ -21,6 +21,9 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.util.List;
 
+import static com.HelloApplication.oms;
+import static com.HelloApplication.utilisateurCourant;
+
 public class AnamnesesDisplayController {
 
     @FXML
@@ -68,7 +71,15 @@ public class AnamnesesDisplayController {
                         deleteButton.setOnAction((event) -> {
                             Anamnese anamnese = getTableView().getItems().get(getIndex());
                             anamneses.remove(anamnese);
-                            // Perform any additional delete operation if necessary
+                            
+                            // Perform the deletion in the storage system
+                            oms.removeAnamneseFromUser(utilisateurCourant, anamnese);
+                            oms.sauvegarder(); // Save the updated state
+                            
+                            // Remove the anamnese from the current user's list if not already done by oms.removeAnamneseFromUser
+                            if (utilisateurCourant != null && utilisateurCourant.getAnamneses() != null) {
+                                utilisateurCourant.getAnamneses().remove(anamnese);
+                            }
                         });
 
                         modifyButton.setOnAction((event) -> {

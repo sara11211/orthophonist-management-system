@@ -73,4 +73,8 @@ public class OMS implements Serializable {
     public void addAnamneseToUser(Orthophoniste user, Anamnese anamnese) {
         user.addAnamnese(anamnese);
     }
+
+    public void removeAnamneseFromUser(Orthophoniste user, Anamnese anamnese) {
+        user.getAnamneses().remove(anamnese);
+    }
 }
