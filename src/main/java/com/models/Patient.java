@@ -1,5 +1,6 @@
 package com.models;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Patient {
     
     private String nom;
@@ -7,6 +8,8 @@ public class Patient {
     private String dateNaissance;
     private String lieuNaissance;
     private String adresse;
+
+    private List<RDV> rdvs;
 
     public Patient(String nom, String prenom, String dateNaissance, String lieuNaissance, String adresse){
         this.nom =  nom;
@@ -36,6 +39,10 @@ public class Patient {
         this.adresse = adresse;
     }
 
+    public void setRdvs(List<RDV> rdvs) {
+        this.rdvs = rdvs;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -54,6 +61,10 @@ public class Patient {
 
     public String getAdresse() {
         return adresse;
+    }
+
+    public List<RDV> getRdvs() {
+        return rdvs;
     }
 
     public String toString() {

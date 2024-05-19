@@ -37,7 +37,7 @@ public class Consultation extends RDV {
     public int getAgePatient() {
         return agePatient;
     }
-
+/*
     public boolean scheduleRDV() {
             System.out.println("Consultation orthophoniste : ");
             System.out.println("Patient concerné: " + nomPatient+ " "+prenomPatient+" Agé(e) de : "+agePatient);
@@ -50,5 +50,5 @@ public class Consultation extends RDV {
             return true;
 
     }
-
+*/
 }

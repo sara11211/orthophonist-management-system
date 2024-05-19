@@ -143,9 +143,9 @@ public class CalendarController implements Initializable {
                 rectangle.setFill(Color.WHITE);
                 rectangle.setStroke(Color.web("FFFFFF"));
                 rectangle.setStrokeWidth(strokeWidth);
-                double rectangleWidth = (calendarWidth / 7) - strokeWidth - spacingH;
+                double rectangleWidth = ((calendarWidth / 7) - strokeWidth - spacingH);
                 rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight / 6) - strokeWidth - spacingV;
+                double rectangleHeight = ((calendarHeight / 6) - strokeWidth - spacingV);
                 rectangle.setHeight(rectangleHeight);
                 stackPane.getChildren().add(rectangle);
 

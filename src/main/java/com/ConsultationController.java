@@ -77,7 +77,7 @@ public class ConsultationController {
                 System.out.println("Date du rendez-vous  : "+rdvPlanned.getDate());
                 System.out.println("Heure du rendez-vous  : "+rdvPlanned.getHeureDebut());
                 System.out.println("Heure de fin du rendez-vous  : "+rdvPlanned.getHeureDebut().plus(rdvPlanned.getDuree()));
-                if (rdvPlanned.getIsInfoSup()) System.out.println("Heure du rendez-vous  : "+rdvPlanned.getInfoSup());
+                if (rdvPlanned.getIsInfoSup()) System.out.println("Informations supplémentaires : "+rdvPlanned.getInfoSup());
                 System.out.println("Type du rendez-vous  : Consulation");
                 System.out.println("Nom et prénom du patient  : "+((Consultation)rdvPlanned).getNomPatient()+" "+((Consultation)rdvPlanned).getPrenomPatient());
                 System.out.println("Age du patient : "+ ((Consultation)rdvPlanned).getAgePatient());

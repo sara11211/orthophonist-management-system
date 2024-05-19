@@ -31,7 +31,7 @@ public class Atelier extends RDV {
         return thematique;
     }
 
-
+/*
     public boolean scheduleRDV() {
         // Implement logic to schedule an atelier meeting
         System.out.println("Rendez-vous Atelier avec thème: " + thematique);
@@ -42,6 +42,6 @@ public class Atelier extends RDV {
         super.scheduleRDV();
         return true;
     }
-
+*/
 
 }

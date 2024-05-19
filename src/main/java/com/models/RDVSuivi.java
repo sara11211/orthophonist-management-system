@@ -30,12 +30,12 @@ public class RDVSuivi extends RDV {
     public boolean getIsPresentiel() {
         return isPresentiel;
     }
-
+/*
     public boolean scheduleRDV() {
         super.scheduleRDV();
         return true;
         // add stuff here
 
 
-    }
+    }*/
 }

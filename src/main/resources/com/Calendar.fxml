@@ -73,9 +73,9 @@
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
+               <children>
                         <Button mnemonicParsing="false" onAction="#handleSignOut" text="Deconnexion" />
-                    </children>
+               </children>
                 </HBox>
             </children>
             <padding>

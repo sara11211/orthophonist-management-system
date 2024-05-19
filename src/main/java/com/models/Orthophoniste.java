@@ -1,6 +1,7 @@
 package com.models;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Orthophoniste implements Serializable {
@@ -13,6 +14,7 @@ public class Orthophoniste implements Serializable {
     private String adresseEmail;
     private String motDePasse;
     private Planning planning;
+    private HashMap<Long, Patient> patientDossierHashMap;
 
     // constructeurs
     public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse, Planning planning) {
@@ -63,6 +65,10 @@ public class Orthophoniste implements Serializable {
         this.nom = nom;
     }
 
+    public void setPatientDossierHashMap(HashMap<Long, Patient> patientDossierHashMap) {
+        this.patientDossierHashMap = patientDossierHashMap;
+    }
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -89,6 +95,10 @@ public class Orthophoniste implements Serializable {
 
     public Planning getPlanning() {
         return planning;
+    }
+
+    public HashMap<Long, Patient> getPatientDossierHashMap() {
+        return patientDossierHashMap;
     }
 
     // redifinitions
