@@ -1,9 +1,8 @@
 package com;
 
 import com.models.Anamnese;
-import com.models.QuestionEnfant;
 import com.models.Question;
-
+import com.models.QuestionEnfant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +14,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -45,7 +45,7 @@ public class AnamnesesDisplayController {
         if (anamneses != null) {
             this.anamneses.setAll(anamneses);
         } else {
-            this.anamneses.clear(); 
+            this.anamneses.clear();
         }
     }
 
@@ -55,12 +55,25 @@ public class AnamnesesDisplayController {
             public TableCell<Anamnese, Void> call(final TableColumn<Anamnese, Void> param) {
                 final TableCell<Anamnese, Void> cell = new TableCell<Anamnese, Void>() {
 
-                    private final Button btn = new Button("View Questions");
+                    private final Button viewButton = new Button("View Questions");
+                    private final Button deleteButton = new Button("Delete");
+                    private final Button modifyButton = new Button("Modify");
 
                     {
-                        btn.setOnAction((event) -> {
+                        viewButton.setOnAction((event) -> {
                             Anamnese anamnese = getTableView().getItems().get(getIndex());
                             openQuestionsWindow(anamnese);
+                        });
+
+                        deleteButton.setOnAction((event) -> {
+                            Anamnese anamnese = getTableView().getItems().get(getIndex());
+                            anamneses.remove(anamnese);
+                            // Perform any additional delete operation if necessary
+                        });
+
+                        modifyButton.setOnAction((event) -> {
+                            Anamnese anamnese = getTableView().getItems().get(getIndex());
+                            openModifyAnamneseWindow(anamnese);
                         });
                     }
 
@@ -70,7 +83,9 @@ public class AnamnesesDisplayController {
                         if (empty) {
                             setGraphic(null);
                         } else {
-                            setGraphic(btn);
+                            HBox buttonsBox = new HBox(viewButton, deleteButton, modifyButton);
+                            buttonsBox.setSpacing(5);
+                            setGraphic(buttonsBox);
                         }
                     }
                 };
@@ -95,6 +110,23 @@ public class AnamnesesDisplayController {
 
             Stage stage = new Stage();
             stage.setTitle("Questions for Anamnese: " + anamnese.getNom());
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openModifyAnamneseWindow(Anamnese anamnese) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anamnese_creation.fxml"));
+            Parent root = loader.load();
+
+            AnamneseController controller = loader.getController();
+            controller.setAnamnese(anamnese);
+
+            Stage stage = new Stage();
+            stage.setTitle("Modify Anamnese: " + anamnese.getNom());
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {

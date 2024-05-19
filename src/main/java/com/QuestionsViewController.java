@@ -13,14 +13,14 @@ public class QuestionsViewController {
     @FXML
     private TableView<QuestionEnfant> questionsTable;
     @FXML
-    private TableColumn<QuestionEnfant, String> questionColumn;
+    private TableColumn<QuestionEnfant, String> questionTextColumn;
     @FXML
-    private TableColumn<QuestionEnfant, QuestionEnfant.CategorieEnfant> categoryColumn;
+    private TableColumn<QuestionEnfant, String> categoryColumn;
 
     private ObservableList<QuestionEnfant> questions = FXCollections.observableArrayList();
 
     public void initialize() {
-        questionColumn.setCellValueFactory(new PropertyValueFactory<>("enonce"));
+        questionTextColumn.setCellValueFactory(new PropertyValueFactory<>("enonce"));
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("categorie"));
         questionsTable.setItems(questions);
     }

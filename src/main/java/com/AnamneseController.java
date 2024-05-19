@@ -1,6 +1,7 @@
 package com;
 
 import com.models.Anamnese;
+import com.models.Question;
 import com.models.QuestionEnfant;
 import com.models.QuestionEnfant.CategorieEnfant;
 import javafx.event.ActionEvent;
@@ -63,7 +64,13 @@ public class AnamneseController {
             return;
         }
 
-        anamnese = new Anamnese(name, description);
+        if (anamnese == null) {
+            anamnese = new Anamnese(name, description);
+        } else {
+            anamnese.setNom(name);
+            anamnese.setDescription(description);
+            anamnese.getQuestions().clear();
+        }
 
         for (Node questionNode : questionsContainer.getChildren()) {
             if (questionNode instanceof HBox) {
@@ -85,11 +92,13 @@ public class AnamneseController {
             return;
         }
         if (utilisateurCourant.getAnamneses() == null) {
-            utilisateurCourant.setAnamneses(new ArrayList<>()); 
+            utilisateurCourant.setAnamneses(new ArrayList<>());
         }
 
-        oms.addAnamneseToUser(utilisateurCourant, anamnese);
-        oms.sauvegarder(); 
+        if (!utilisateurCourant.getAnamneses().contains(anamnese)) {
+            oms.addAnamneseToUser(utilisateurCourant, anamnese);
+        }
+        oms.sauvegarder();
 
         System.out.println("Anamnese saved with " + anamnese.getQuestions().size() + " questions.");
 
@@ -101,6 +110,31 @@ public class AnamneseController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void setAnamnese(Anamnese anamnese) {
+        this.anamnese = anamnese;
+        anamneseNameField.setText(anamnese.getNom());
+        anamneseDescriptionField.setText(anamnese.getDescription());
+        for (Question question : anamnese.getQuestions()) {
+            if (question instanceof QuestionEnfant) {
+                QuestionEnfant questionEnfant = (QuestionEnfant) question;
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("question_item.fxml"));
+                    Parent questionNode = loader.load();
+
+                    TextField questionTextField = (TextField) questionNode.lookup("#questionTextField");
+                    ComboBox<String> categoryComboBox = (ComboBox<String>) questionNode.lookup("#categoryComboBox");
+
+                    questionTextField.setText(questionEnfant.getEnonce());
+                    categoryComboBox.setValue(questionEnfant.getCategorie().toString());
+
+                    questionsContainer.getChildren().add(questionNode);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
