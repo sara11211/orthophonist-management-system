@@ -26,6 +26,11 @@ public class OptionsController {
         loadScene(event, "test_creation.fxml");
     }
 
+    @FXML
+    private void handleViewTests(ActionEvent event) {
+        loadScene(event, "view_tests.fxml");
+    }
+
     private void loadScene(ActionEvent event, String fxmlFile) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));

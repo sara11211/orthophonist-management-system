@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
     public static final Path FILE_PATH = Paths.get(DIRECTORY_PATH, FILE_NAME);
 
     @Override
-public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException {
     HelloApplication.stage = stage;
     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
     Scene scene;
