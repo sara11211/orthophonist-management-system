@@ -36,10 +36,6 @@ public class OMS implements Serializable {
         }
     }
 
-    // public boolean isExist(String email) {
-    //     return orthophonistes.containsKey(new Orthophoniste(email)); // Use email for comparison
-    // }
-
     // vérifier si les informations de l'orthophoniste sont correctes
     public Orthophoniste findUser(String email, String password) {
         for (Orthophoniste user : orthophonistes.keySet()) {
@@ -51,6 +47,7 @@ public class OMS implements Serializable {
         return null;
     }
 
+    // sauvegarde de l'app
     public void sauvegarder() {
         if (utilisateurCourant != null) {
             orthophonistes.remove(utilisateurCourant);
@@ -66,7 +63,8 @@ public class OMS implements Serializable {
         }
     }
 
-        public List<Anamnese> getAnamnesesByUser(Orthophoniste user) {
+    // methodes anamnese 
+    public List<Anamnese> getAnamnesesByUser(Orthophoniste user) {
         return user.getAnamneses();
     }
 
