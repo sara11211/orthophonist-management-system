@@ -93,7 +93,19 @@ public class InscriptionController {
             HelloApplication.utilisateurCourant = new Orthophoniste(userEmail,userMotDePasse);
             HelloApplication.oms.getOrthophonistes().put(HelloApplication.utilisateurCourant,userMotDePasse);
             System.out.println("ajouter user : "+userEmail+"  mdp : "+userMotDePasse);
-        }
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Couldn't load FXML file");
+            }
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            }
     }
 
     @FXML
