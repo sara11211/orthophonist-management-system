@@ -29,6 +29,14 @@ public class InscriptionController {
     private TextField email;
     @FXML
     private PasswordField motDePasse;
+    @FXML
+    private TextField firstName;
+    @FXML
+    private TextField familyName;
+    @FXML
+    private TextField telephone;
+    @FXML
+    private TextField address;
 
     @FXML
     void seConnecterButton(ActionEvent event) {
@@ -55,6 +63,25 @@ public class InscriptionController {
 
         String userEmail = email.getText();
         String userMotDePasse = motDePasse.getText();
+        String userFamilyName = familyName.getText();
+        String userFirstName = firstName.getText();
+        String usertelephone = telephone.getText();
+        String userAdresse = address.getText();
+
+        if (userEmail.isEmpty() || userMotDePasse.isEmpty() || userAdresse.isEmpty() || userFamilyName.isEmpty() || userFirstName.isEmpty() || usertelephone.isEmpty()) {
+            erreurText.setText("Veuillez remplir tous les champs.");
+            return;
+        }
+
+        if (!isValidEmail(userEmail)) {
+            erreurText.setText("Format d'e-mail invalide.");
+            return;
+        }
+
+        if (!isValidPassword(userMotDePasse)) {
+            erreurText.setText("Le mot de passe doit contenir au moins 8 caractères.");
+            return;
+        }
 
         if (HelloApplication.oms.isExist(userEmail, userMotDePasse))
         {
@@ -72,7 +99,16 @@ public class InscriptionController {
     @FXML
     void inscriptionInvalide()
     {
-        erreurText.setText("E-mail already used by another account !");
+        erreurText.setText("E-mail déja utilisé !");
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
+    }
+
+    private boolean isValidPassword(String password) {
+        return password.length() >= 8;
     }
 }
 

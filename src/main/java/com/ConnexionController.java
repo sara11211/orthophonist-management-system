@@ -89,7 +89,7 @@ public class ConnexionController {
         }
 
         public void connexionInvalid() {
-            erreurText.setText("Invalid e-mail or password ! ");
+            erreurText.setText("E-mail ou Mot de passe non valide !");
         }
     }
 
