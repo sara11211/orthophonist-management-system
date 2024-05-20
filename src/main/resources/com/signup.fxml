@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="308.0" fitWidth="311.0" layoutX="27.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/Pharmacist-amico%20(2).png" />
+                  <Image url="@images/cabinet.png" />
                </image>
             </ImageView>
          </children>
