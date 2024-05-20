@@ -10,8 +10,8 @@
          <children>
             <Button fx:id="viewAnamnesesButton" layoutX="247.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleViewAnamneses" text="View Anamneses" />
             <Button fx:id="createAnamneseButton" layoutX="245.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleCreateAnamnese" text="Create Anamnese" />
-            <Button fx:id="createTestButton" layoutX="247.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleCreateTest" text="Create Test" />
-            <Button layoutX="245.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="View tests" onAction="#handleViewTests" />
+            <Button fx:id="createTestButton" layoutX="247.0" layoutY="202.0" mnemonicParsing="false" text="Create Test" />
+            <Button layoutX="245.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="View tests" />
          </children>
       </AnchorPane>
    </center>

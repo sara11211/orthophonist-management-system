@@ -14,7 +14,6 @@ public class Orthophoniste implements Serializable {
     private String adresseEmail;
     private String motDePasse;
     private List<Anamnese> anamneses;
-    private List<Test> tests;
 
     // constructors
     public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse) {
@@ -24,21 +23,18 @@ public class Orthophoniste implements Serializable {
         this.numTel = numTel;
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
-        this.anamneses = new ArrayList<>(); 
-        this.tests = new ArrayList<>();
+        this.anamneses = new ArrayList<>(); // Initialize the list
     }
 
     public Orthophoniste(String adresseEmail, String motDePasse) {
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
-        this.anamneses = new ArrayList<>(); 
-        this.tests = new ArrayList<>();
+        this.anamneses = new ArrayList<>(); // Initialize the list
     }
 
     public Orthophoniste(String adresseEmail) {
         this.adresseEmail = adresseEmail;
-        this.anamneses = new ArrayList<>(); 
-        this.tests = new ArrayList<>();
+        this.anamneses = new ArrayList<>(); // Initialize the list
     }
 
     // setters & getters
@@ -100,14 +96,6 @@ public class Orthophoniste implements Serializable {
 
     public void setAnamneses(List<Anamnese> anamneses) {
         this.anamneses = anamneses;
-    }
-
-    public List<Test> getTests() {
-        return tests;
-    }
-
-    public void setTests(List<Test> tests) {
-        this.tests = tests;
     }
 
     // Override methods
