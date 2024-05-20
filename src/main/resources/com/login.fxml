@@ -11,48 +11,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ConnexionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ConnexionController">
    <left>
-      <AnchorPane prefHeight="400.0" prefWidth="296.0" style="-fx-background-color: #F4F5FA;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="376.0" style="-fx-background-color: #f0f3f5;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="220.0" fitWidth="230.0" layoutX="38.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="306.0" fitWidth="312.0" layoutX="35.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/Doctor.png" />
+                  <Image url="@../../../../../../Downloads/Doctor-amico%20(3).png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="415.0" prefWidth="366.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="adresseEmail" layoutX="61.0" layoutY="169.0" prefHeight="30.0" prefWidth="214.0" promptText="username" style="-fx-background-color: #ffffff; -fx-border-color: #e0ecff; -fx-border-width: 1px; -fx-border-radius: 3;" />
-            <PasswordField fx:id="motDePasse" layoutX="62.0" layoutY="212.0" prefHeight="30.0" prefWidth="214.0" promptText="password" style="-fx-background-color: #ffffff; -fx-border-color: #e0ecff; -fx-border-radius: 3; -fx-border-width: 1px;" />
-            <Button fx:id="loginButton" layoutX="62.0" layoutY="262.0" mnemonicParsing="false" onAction="#seConnecterButton" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: #21385e;" text="Login" textFill="WHITE" />
-            <Label fx:id="erreurText" alignment="CENTER" layoutX="60.0" layoutY="242.0" prefHeight="17.0" prefWidth="216.0" textAlignment="CENTER" textFill="#ff0101">
+            <TextField fx:id="adresseEmail" layoutX="78.0" layoutY="212.0" prefHeight="40.0" prefWidth="241.0" promptText="username" style="-fx-background-color: #ffffff; -fx-border-color: #037171; -fx-border-width: 1.5px; -fx-border-radius: 8;" />
+            <PasswordField fx:id="motDePasse" layoutX="78.0" layoutY="265.0" prefHeight="40.0" prefWidth="241.0" promptText="password" style="-fx-background-color: #ffffff; -fx-border-color: #037171; -fx-border-radius: 8; -fx-border-width: 1.5px;" />
+            <Button fx:id="loginButton" layoutX="78.0" layoutY="325.0" mnemonicParsing="false" onAction="#seConnecterButton" prefHeight="37.0" prefWidth="241.0" style="-fx-background-color: #00B9AE; -fx-background-radius: 8;" text="Login" textFill="WHITE">
                <font>
-                  <Font size="9.0" />
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Label fx:id="erreurText" alignment="CENTER" layoutX="91.0" layoutY="308.0" prefHeight="17.0" prefWidth="216.0" textAlignment="CENTER" textFill="#ff0101">
+               <font>
+                  <Font size="10.0" />
                </font>
             </Label>
-            <Text fill="#b4cef9" layoutX="93.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back " wrappingWidth="151.38589477539062">
+            <Text fill="#00b9ae" layoutX="83.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back " wrappingWidth="230.71920776367188">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Bold" size="32.0" />
                </font></Text>
-            <Text layoutX="103.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please login to your account" wrappingWidth="126.052734375">
+            <Text layoutX="120.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please login to your account" wrappingWidth="152.71942138671875" />
+            <Button id="signupButton" fx:id="signupButton" layoutX="242.0" layoutY="373.0" mnemonicParsing="false" onAction="#signupButton" prefHeight="12.0" prefWidth="68.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" text="sign up" textFill="#037171" underline="true">
                <font>
-                  <Font size="10.0" />
-               </font></Text>
-            <Button id="signupButton" fx:id="signupButton" layoutX="198.0" layoutY="299.0" mnemonicParsing="false" onAction="#signupButton" prefHeight="12.0" prefWidth="68.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" text="sign up" textFill="#21385e" underline="true">
-               <font>
-                  <Font name="System Bold" size="11.0" />
+                  <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Text layoutX="77.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You don't have an account ?" wrappingWidth="154.052734375">
-               <font>
-                  <Font size="10.0" />
-               </font></Text>
-            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="142.0" layoutY="56.0">
+            <Text layoutX="96.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You don't have an account ?" wrappingWidth="154.052734375" />
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="175.0" layoutY="75.0">
                <image>
-                  <Image url="@images/Icon.png" />
+                  <Image url="@../../../../../../Downloads/speech-therapist%20(5).png" />
                </image>
             </ImageView>
          </children>

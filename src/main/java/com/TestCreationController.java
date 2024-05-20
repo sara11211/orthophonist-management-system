@@ -101,7 +101,7 @@ public class TestCreationController {
                             test.getQuestions().add(new QCU(questionText, propositions.toArray(new Proposition[0])));
                         }
                     } else if (questionType.equals("Free Text")) {
-                        test.getQuestions().add(new QuestionLibre(questionText, 0)); // Add Free Text question
+                        test.getQuestions().add(new QuestionLibre(questionText, 0)); 
                     }
                 }
             }
