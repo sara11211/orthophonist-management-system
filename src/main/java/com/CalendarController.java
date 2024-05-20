@@ -200,13 +200,15 @@ public class CalendarController implements Initializable {
             Button consultationButton = new Button("Consultation");
             Button suiviButton = new Button("Seance de Suivi");
             Button atelierButton = new Button("Atelier");
+            Button testingDossier = new Button("testingDossier");
 
             consultationButton.setOnAction(e -> handleConsultationClick());
             suiviButton.setOnAction(e -> handleSuiviClick());
             atelierButton.setOnAction(e -> handleAtelierClick());
+            testingDossier.setOnAction(e -> handleTestingDossier());
 
             VBox popupRoot = new VBox(10);
-            popupRoot.getChildren().addAll(consultationButton, suiviButton, atelierButton);
+            popupRoot.getChildren().addAll(consultationButton, suiviButton, atelierButton, testingDossier);
             popupRoot.setPadding(new Insets(20));
 
             Scene popupScene = new Scene(popupRoot, 250, 150);
@@ -220,6 +222,31 @@ public class CalendarController implements Initializable {
             rdvs.addAll(utilisateurCourant.getPlanning().getRDVSPlannified(selected_day));
             listRDVs.getItems().clear();
             listRDVs.getItems().addAll(rdvs);
+        }
+    }
+    private void handleTestingDossier() {
+        try {
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SearchDossier.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("RECHERCHE PATIENT");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
         }
     }
 

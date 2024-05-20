@@ -63,7 +63,7 @@ public class ConnexionController {
                     System.out.println("Connection valide");
                     utilisateurCourant = oms.findUser(userEmail,userMdp);
                     // Added this for testing "Calendar"
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ConsultDossierPage.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Calendar.fxml"));
                     Parent root = loader.load();
 
                     Scene scene = new Scene(root);

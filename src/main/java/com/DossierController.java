@@ -29,6 +29,8 @@ public class DossierController {
     @FXML
     private TextArea dossierResult;
 
+
+
     @FXML
     private void handleSubmit(ActionEvent event) {
         String numDossier = numDossierField.getText();

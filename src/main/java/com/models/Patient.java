@@ -1,22 +1,34 @@
 package com.models;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.time.LocalDate;
 public class Patient {
     
     private String nom;
     private String prenom;
-    private String dateNaissance;
+    private LocalDate dateNaissance;
     private String lieuNaissance;
     private String adresse;
 
     private List<RDV> rdvs;
 
-    public Patient(String nom, String prenom, String dateNaissance, String lieuNaissance, String adresse){
+    private HashSet<FicheSuivi> ficheSuivis;
+
+
+    public Patient(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    public Patient(String nom, String prenom, LocalDate dateNaissance, String lieuNaissance, String adresse){
         this.nom =  nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.adresse = adresse;
+        this.rdvs = new ArrayList<>();
+        this.ficheSuivis = new HashSet<>();
     }
 
     public void setNom(String nom) {
@@ -27,7 +39,7 @@ public class Patient {
         this.prenom = prenom;
     }
 
-    public void setDateNaissance(String dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
@@ -43,6 +55,11 @@ public class Patient {
         this.rdvs = rdvs;
     }
 
+    public void setFicheSuivis(HashSet<FicheSuivi> ficheSuivis) {
+        this.ficheSuivis = ficheSuivis;
+    }
+
+
     public String getNom() {
         return nom;
     }
@@ -51,7 +68,7 @@ public class Patient {
         return prenom;
     }
 
-    public String getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
@@ -65,6 +82,10 @@ public class Patient {
 
     public List<RDV> getRdvs() {
         return rdvs;
+    }
+
+    public HashSet<FicheSuivi> getFicheSuivis() {
+        return ficheSuivis;
     }
 
     public String toString() {

@@ -42,36 +42,25 @@
                 <RadioButton fx:id="enLigne" text="En ligne" toggleGroup="$toggleGroup"/>
             </VBox>
 
-            <Label text="Numéro du dossier du patient :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="numDossierField" promptText="Numéro du dossier du patient : " GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Numéro du dossier du patient :" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="numDossierField" promptText="Numéro du dossier du patient : " GridPane.rowIndex="1" GridPane.columnIndex="1"/>
             <!-- Consultation Time -->
-            <Label text="Heure de la consultation:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <Label text="Heure de la consultation:" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="2" GridPane.columnIndex="1">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
                 </valueFactory>
             </Spinner>
-            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="3" GridPane.columnIndex="2">
+            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="3" GridPane.columnIndex="1">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
                 </valueFactory>
             </Spinner>
 
-            <!-- Consultation Duration -->
-            <Label text="Durée de la consultation:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <Spinner fx:id="durationHourSpinner" GridPane.rowIndex="4" GridPane.columnIndex="1">
-                <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
-                </valueFactory>
-            </Spinner>
-            <Spinner fx:id="durationMinuteSpinner" GridPane.rowIndex="4" GridPane.columnIndex="2">
-                <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
-                </valueFactory>
-            </Spinner>
+
 
             <!-- Additional Information -->
-            <Label text="Informations supplémentaires:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <Label text="Informations supplémentaires:" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
             <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
 
             <!-- Submit Button -->

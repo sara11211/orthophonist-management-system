@@ -2,19 +2,23 @@ package com;
 import com.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
+
+import java.net.URL;
 import java.util.HashSet;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ResourceBundle;
 
 import static com.HelloApplication.utilisateurCourant;
 
-public class AtelierController {
+public class AtelierController implements Initializable {
     @FXML
     private TextField patientIdField;
 
@@ -33,11 +37,6 @@ public class AtelierController {
     @FXML
     private Spinner<Integer> timeMinuteSpinner;
 
-    @FXML
-    private Spinner<Integer> durationHourSpinner;
-
-    @FXML
-    private Spinner<Integer> durationMinuteSpinner;
 
     @FXML
     private TextArea additionalInfoArea;
@@ -46,6 +45,14 @@ public class AtelierController {
     private LocalDate selected_day;
 
     private CalendarController calendarController;
+
+    @FXML
+    public void initialize(URL location, ResourceBundle resources) {
+        // Initialize spinners with default values and ranges
+        timeHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
+        timeMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
+    }
+
     @FXML
     private void addPatient() {
         String patientId = patientIdField.getText().trim();
@@ -90,7 +97,7 @@ public class AtelierController {
         System.out.println("Soumettre button clicked");
         String thematique = thematiqueField.getText();
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
-        Duration duree = Duration.ofHours(durationHourSpinner.getValue()).plusMinutes(durationMinuteSpinner.getValue());
+        Duration duree = Duration.ofHours(1);
         String infoSup = additionalInfoArea.getText();
         boolean isInfoSup = !infoSup.isEmpty();
         Atelier atelier = new Atelier(selected_day, heureDebut, duree, infoSup, isInfoSup, thematique, convertListViewToHashSet(patientListView));

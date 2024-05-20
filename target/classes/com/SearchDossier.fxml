@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.RechercheDossierController" spacing="10" alignment="CENTER" >
+    <children>
+        <TextField fx:id="searchField" promptText="Enter patient ID" />
+        <Button text="Submit" onAction="#handleSearchButtonAction" />
+    </children>
+</VBox>

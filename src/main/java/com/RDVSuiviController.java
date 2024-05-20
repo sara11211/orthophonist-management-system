@@ -47,11 +47,7 @@ public class RDVSuiviController implements Initializable {
     @FXML
     private Spinner<Integer> timeMinuteSpinner;
 
-    @FXML
-    private Spinner<Integer> durationHourSpinner;
 
-    @FXML
-    private Spinner<Integer> durationMinuteSpinner;
 
     @FXML
     private TextArea additionalInfoArea;
@@ -78,8 +74,6 @@ public class RDVSuiviController implements Initializable {
 
         timeHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
         timeMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
-        durationHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
-        durationMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
     }
 
 
@@ -88,7 +82,7 @@ public class RDVSuiviController implements Initializable {
         System.out.println("Soumettre button clicked");
         Long numeroDossier = Long.parseLong(numDossierField.getText());
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
-        Duration duree = Duration.ofHours(durationHourSpinner.getValue()).plusMinutes(durationMinuteSpinner.getValue());
+        Duration duree = Duration.ofHours(1);
         String infoSup = additionalInfoArea.getText();
         boolean isInfoSup = !infoSup.isEmpty(); boolean isPresentiel;
         isPresentiel = enPresentielle.isSelected();
@@ -96,8 +90,8 @@ public class RDVSuiviController implements Initializable {
         // TO ADD : Exception for when heureDebut + duree > 24h
         SessionLibre sessionLibre = new SessionLibre(selected_day.atTime(heureDebut), selected_day.atTime(heureDebut.plus(duree)));
         if (utilisateurCourant.getPlanning().planifier(sessionLibre,rdvSuivi)) {
-            Color color = Color.GREEN;
-            calendarController.colorStrip(selected_day, heureDebut, heureDebut.plus(duree), color);
+            Patient patient = utilisateurCourant.getPatientDossierHashMap().get(numeroDossier);
+            patient.getRdvs().add(rdvSuivi);
             for (RDV rdvPlanned :  utilisateurCourant.getPlanning().getRDVSPlannified(selected_day)) {
                 System.out.println("----- Rendez-vous plannifié -----");
                 System.out.println("Date du rendez-vous  : "+rdvPlanned.getDate());

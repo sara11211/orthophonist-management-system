@@ -1,5 +1,7 @@
 package com.models;
 
+import java.time.LocalDate;
+
 public class Enfant extends Patient {
 
     public enum ClasseEtude {
@@ -12,7 +14,7 @@ public class Enfant extends Patient {
     private ClasseEtude classeEtude; 
     private String numTelParent;
 
-    public Enfant(String nom, String prenom, String dateNaissance, String lieuNaissance, String adresse, ClasseEtude classeEtude, String numTelParent) {
+    public Enfant(String nom, String prenom, LocalDate dateNaissance, String lieuNaissance, String adresse, ClasseEtude classeEtude, String numTelParent) {
         super(nom, prenom, dateNaissance, lieuNaissance, adresse);
         this.classeEtude = classeEtude;
         this.numTelParent = numTelParent;

@@ -5,26 +5,23 @@ import java.util.HashSet;
 public class Dossier {
     private static final AtomicLong uniqueIdGenerator = new AtomicLong(1);
     private final long numDossier;
-    private HashSet<RDV> rdvs;
-    private HashSet<FicheSuivi> ficheSuivis;
+
+    private Patient patient;
 
 
-    public Dossier() {
+
+    public Dossier(Patient patient) {
+        this.patient = patient;
         this.numDossier = uniqueIdGenerator.getAndIncrement();
     }
 
 
-    public Dossier(HashSet<FicheSuivi> ficheSuivis) {
-        this.ficheSuivis = ficheSuivis;
-        this.numDossier = uniqueIdGenerator.getAndIncrement();
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public void setFicheSuivis(HashSet<FicheSuivi> ficheSuivis) {
-        this.ficheSuivis = ficheSuivis;
-    }
-
-    public HashSet<FicheSuivi> getFicheSuivis() {
-        return ficheSuivis;
+    public Patient getPatient() {
+        return patient;
     }
 
     public long getNumDossier() {

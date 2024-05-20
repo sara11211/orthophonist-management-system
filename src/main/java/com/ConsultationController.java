@@ -2,19 +2,38 @@ package com;
 import com.models.Consultation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 import static com.HelloApplication.utilisateurCourant;
 import com.models.*;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import java.time.LocalTime;
 import java.time.Duration;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-
-
-public class ConsultationController {
+public class ConsultationController implements Initializable {
 
     @FXML
     private BorderPane borderPane;
@@ -34,11 +53,6 @@ public class ConsultationController {
     @FXML
     private Spinner<Integer> timeMinuteSpinner;
 
-    @FXML
-    private Spinner<Integer> durationHourSpinner;
-
-    @FXML
-    private Spinner<Integer> durationMinuteSpinner;
 
     @FXML
     private TextArea additionalInfoArea;
@@ -47,23 +61,23 @@ public class ConsultationController {
     private CalendarController calendarController;
 
     @FXML
-    private void initialize() {
-        // Initialize spinners with default values and ranges
+    public void initialize(URL location, ResourceBundle resources) {
         timeHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
         timeMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
-        durationHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
-        durationMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
     }
 
     @FXML
     private void handleSubmit(ActionEvent event) {
-        // Logic to handle button click
         System.out.println("Soumettre button clicked");
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
+        if(creerDossierPatient(lastName, firstName)) System.out.println("Dossier created.");
+        else System.out.println("Failure creating Dossier.");
         int age = Integer.parseInt(ageField.getText());
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
-        Duration duree = Duration.ofHours(durationHourSpinner.getValue()).plusMinutes(durationMinuteSpinner.getValue());
+        Duration duree;
+        if (age < 18) duree = Duration.ofHours(2).plusMinutes(30);
+        else duree = Duration.ofHours(1).plusMinutes(30);
         String infoSup = additionalInfoArea.getText();
         boolean isInfoSup = !infoSup.isEmpty();
         Consultation consultation = new Consultation(selected_day, heureDebut, duree, infoSup, isInfoSup, firstName, lastName, age);
@@ -87,15 +101,40 @@ public class ConsultationController {
 
         }
 
-        // Add your logic here, such as saving data or navigating to another scene
     }
+    @FXML
+    private void handleFirstRDV(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreerPatientPage.fxml"));
+            Parent root = loader.load();
+            CreerPatientController controller = loader.getController();
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Création d'un patient !");
+            Scene scene = new Scene(root, 600, 400); // Adjust width and height as needed
+            popupStage.setScene(scene);
+            popupStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void setCalendarController(CalendarController calendarController) {
         this.calendarController = calendarController;
     }
 
-    // Method to set the selected_day from another controller
     public void setSelectedDay(LocalDate day) {
         this.selected_day = day;
     }
+
+    private boolean creerDossierPatient(String nom, String prenom) {
+        Patient patient = new Patient(nom, prenom);
+        Dossier dossier = new Dossier(patient);
+        utilisateurCourant.getPatientDossierHashMap().put(dossier.getNumDossier(), patient);
+        return utilisateurCourant.getPatientDossierHashMap().containsKey(dossier.getNumDossier());
+    }
 }
+
+

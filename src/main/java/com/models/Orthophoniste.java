@@ -3,6 +3,7 @@ package com.models;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
+import java.time.LocalDate;
 
 public class Orthophoniste implements Serializable {
 
@@ -25,11 +26,14 @@ public class Orthophoniste implements Serializable {
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
         this.planning = planning;
+        patientDossierHashMap = new HashMap<>();
+        planning = new Planning("Calendrier "+nom, LocalDate.now(), LocalDate.now().plusYears(1));
     }
 
     public Orthophoniste(String adresseEmail, String motDePasse) {
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
+        patientDossierHashMap = new HashMap<>();
     }
 
     public Orthophoniste(String adresseEmail) {

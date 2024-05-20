@@ -19,51 +19,40 @@
             </padding>
             <hgap>10</hgap>
             <vgap>10</vgap>
+            <Button text="Premier rendez-vous ? Créez un dossier !" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.halignment="RIGHT" onAction="#handleFirstRDV"/>
 
             <!-- First Name -->
-            <Label text="Prénom du patient:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="firstNameField" promptText="Entrez le prénom" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Prénom du patient:" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <TextField fx:id="firstNameField" promptText="Entrez le prénom" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
             <!-- Last Name -->
-            <Label text="Nom du patient:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="lastNameField" promptText="Entrez le nom" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Nom du patient:" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <TextField fx:id="lastNameField" promptText="Entrez le nom" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
             <!-- Age -->
-            <Label text="Âge du patient:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="ageField" promptText="Entrez l'âge" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Âge du patient:" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <TextField fx:id="ageField" promptText="Entrez l'âge" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
             <!-- Consultation Time -->
-            <Label text="Heure de la consultation:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <Label text="Heure de la consultation:" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="5" GridPane.columnIndex="1">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
                 </valueFactory>
             </Spinner>
-            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="3" GridPane.columnIndex="2">
+            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="6" GridPane.columnIndex="1">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
                 </valueFactory>
             </Spinner>
 
-            <!-- Consultation Duration -->
-            <Label text="Durée de la consultation:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <Spinner fx:id="durationHourSpinner" GridPane.rowIndex="4" GridPane.columnIndex="1">
-                <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
-                </valueFactory>
-            </Spinner>
-            <Spinner fx:id="durationMinuteSpinner" GridPane.rowIndex="4" GridPane.columnIndex="2">
-                <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
-                </valueFactory>
-            </Spinner>
 
             <!-- Additional Information -->
-            <Label text="Informations supplémentaires:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <Label text="Informations supplémentaires:" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
             <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
 
             <!-- Submit Button -->
-            <Button text="Soumettre" GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.halignment="RIGHT" onAction="#handleSubmit"/>
+            <Button text="Soumettre" GridPane.rowIndex="9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" onAction="#handleSubmit"/>
         </GridPane>
 
     </center>
