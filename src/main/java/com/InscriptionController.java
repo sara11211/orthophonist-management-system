@@ -91,6 +91,9 @@ public class InscriptionController {
         else
         {
             HelloApplication.utilisateurCourant = new Orthophoniste(userEmail,userMotDePasse);
+            HelloApplication.utilisateurCourant = new Orthophoniste(userEmail,userMotDePasse);
+            HelloApplication.utilisateurCourant.setPrenom(userFirstName);
+            HelloApplication.utilisateurCourant.setNom(userFamilyName);
             HelloApplication.oms.getOrthophonistes().put(HelloApplication.utilisateurCourant,userMotDePasse);
             System.out.println("ajouter user : "+userEmail+"  mdp : "+userMotDePasse);
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));

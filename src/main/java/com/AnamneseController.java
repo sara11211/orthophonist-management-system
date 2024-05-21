@@ -32,8 +32,8 @@ public class AnamneseController {
     private Button addQuestionButton;
     @FXML
     private Button saveAnamneseButton;
-    @FXML
-    private Label errorLabel;
+    //@FXML
+    //private Label errorLabel;
 
     private Anamnese anamnese;
 
@@ -60,7 +60,7 @@ public class AnamneseController {
         String description = anamneseDescriptionField.getText();
 
         if (name.isEmpty() || description.isEmpty()) {
-            errorLabel.setText("Anamnese name and description cannot be empty!");
+            //errorLabel.setText("Anamnese name and description cannot be empty!");
             return;
         }
 
@@ -88,7 +88,7 @@ public class AnamneseController {
         }
 
         if (utilisateurCourant == null) {
-            errorLabel.setText("No current user found!");
+            //errorLabel.setText("No current user found!");
             return;
         }
         if (utilisateurCourant.getAnamneses() == null) {

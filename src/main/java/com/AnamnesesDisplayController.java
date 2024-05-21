@@ -5,6 +5,7 @@ import com.models.Question;
 import com.models.QuestionEnfant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -139,6 +140,19 @@ public class AnamnesesDisplayController {
             Stage stage = new Stage();
             stage.setTitle("Modify Anamnese: " + anamnese.getNom());
             stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+        @FXML
+        private void handleRevenir(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

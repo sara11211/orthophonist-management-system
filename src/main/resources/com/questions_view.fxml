@@ -4,17 +4,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.QuestionsViewController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.QuestionsViewController">
     <center>
         <TableView fx:id="questionsTable">
             <columns>
                 <!-- Question Text Column -->
-                <TableColumn fx:id="questionTextColumn" text="Question Text" />
+                <TableColumn fx:id="questionTextColumn" prefWidth="136.66662085056305" text="Question Text" />
                 
                 <!-- Category Column -->
-                <TableColumn fx:id="categoryColumn" text="Category" />
+                <TableColumn fx:id="categoryColumn" prefWidth="107.3333740234375" text="Category" />
             </columns>
         </TableView>
     </center>

@@ -1,18 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.OptionsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.OptionsController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="770.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="viewAnamnesesButton" layoutX="247.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleViewAnamneses" text="View Anamneses" />
-            <Button fx:id="createAnamneseButton" layoutX="245.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleCreateAnamnese" text="Create Anamnese" />
-            <Button fx:id="createTestButton" layoutX="247.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleCreateTest" text="Create Test" />
-            <Button layoutX="245.0" layoutY="236.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="View tests" onAction="#handleViewTests" />
+            <Button fx:id="viewAnamnesesButton" layoutX="79.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleViewAnamneses" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #023436; -fx-background-radius: 10;" text="View Anamneses" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="createAnamneseButton" layoutX="79.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleCreateAnamnese" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #023436; -fx-background-radius: 10;" text="Create Anamnese" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="createTestButton" layoutX="79.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCreateTest" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #023436; -fx-background-radius: 10;" text="Create Test" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="79.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleViewTests" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #023436; -fx-background-radius: 10;" text="View tests" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Text fill="#03b5aa" layoutX="70.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tests et anamnèses">
+               <font>
+                  <Font name="Nirmala UI Bold" size="27.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="212.0" fitWidth="198.0" layoutX="348.0" layoutY="189.0">
+               <image>
+                  <Image url="@images/tests.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="76.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérez vos tests et anamnèses adaptés aux besoins spécifiques de chaque patient." wrappingWidth="470.254638671875">
+               <font>
+                  <Font name="Nirmala UI" size="13.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </center>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #247b7b; -fx-background-radius: 0px 10px 10px 0px;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="444.0" prefWidth="154.0" style="-fx-background-color: #247b7b; -fx-background-radius: 0px 10px 10px 0px;">
+               <children>
+                  <AnchorPane layoutX="15.0" layoutY="21.0" prefHeight="57.0" prefWidth="124.0" style="-fx-background-color: #02C3BD; -fx-background-radius: 5px;">
+                     <children>
+                        <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="14.0" layoutY="14.0">
+                           <image>
+                              <Image url="@images/logo-white.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="77.0" layoutY="9.0">
+                           <image>
+                              <Image url="@images/more.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="26.0" layoutY="445.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="114.0" style="-fx-background-color: #247b7b;" text="Paramètres" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="162.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Tests et anamnèses" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="9.0" layoutY="205.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Dossiers patients" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="-5.0" layoutY="252.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Rendez-vous" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="16.0" layoutY="293.0" mnemonicParsing="false" style="-fx-background-color: #247b7b;" text="Statistiques" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="23.0" layoutY="450.0">
+                     <image>
+                        <Image url="@images/setting.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>
