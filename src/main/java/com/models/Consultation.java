@@ -1,8 +1,11 @@
 package com.models;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Duration;
-public class Consultation extends RDV {
+public class Consultation extends RDV implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String nomPatient;
     private String prenomPatient;
     private int agePatient;
@@ -51,4 +54,16 @@ public class Consultation extends RDV {
 
     }
 */
+@Override
+    public String toString() {
+        return
+                "Consultation : " +super.toString() ;
+    }
+    @Override
+    public String getDetailedInfo() {
+        return super.getDetailedInfo() +
+                "Type du rendez-vous : Consultation\n" +
+                "Nom et prénom du patient : " + nomPatient + " " + prenomPatient + "\n" +
+                "Age du patient : " + agePatient + "\n";
+    }
 }

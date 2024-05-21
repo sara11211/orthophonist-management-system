@@ -1,7 +1,11 @@
 package com.models;
+import java.io.Serializable;
 import java.util.HashSet;
 
-public class FicheSuivi {
+public class FicheSuivi implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     Patient patient;
     HashSet<Objectif> objectifs;
 

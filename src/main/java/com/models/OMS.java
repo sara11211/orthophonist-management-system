@@ -4,13 +4,13 @@ import java.io.*;
 import java.util.HashMap;
 
 public class OMS implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private HashMap<Orthophoniste, String> orthophonistes;
 
     // constructeur
     public OMS() {
         this.orthophonistes = new HashMap<Orthophoniste, String>();
-        this.orthophonistes.put(new Orthophoniste("sarah","sarah"),"sarah");
     }
 
     // getter
@@ -30,6 +30,9 @@ public class OMS implements Serializable {
         }
     }
 
+    public void addOrthophoniste(Orthophoniste orthophoniste, String val) {
+        this.orthophonistes.put(orthophoniste, val);
+    }
     // vérifier si les informations de l'orthophoniste sont correctes
     public Orthophoniste findUser(String email, String password) {
         for (Orthophoniste user : orthophonistes.keySet()) {
@@ -40,5 +43,26 @@ public class OMS implements Serializable {
         System.out.println("Function findUser can't find the user!");
         return null;
     }
+
+
+    // Save orthophonistes to file
+    public void saveOrthophonistesToFile(String filename) throws IOException {
+        File file = new File(filename);
+        System.out.println("Saving to: " + file.getAbsolutePath());
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(this);
+        }
+    }
+
+    public static OMS loadOrthophonistesFromFile(String filename) throws IOException, ClassNotFoundException {
+        File file = new File(filename);
+        System.out.println("Loading from: " + file.getAbsolutePath());
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            return (OMS) ois.readObject();
+        }
+    }
+
+
+
 
 }

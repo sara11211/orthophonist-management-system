@@ -57,6 +57,18 @@
                 </valueFactory>
             </Spinner>
 
+            <Label text="Durée de la consultation:" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Spinner fx:id="dureeHourSpinner" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                <valueFactory>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
+                </valueFactory>
+            </Spinner>
+            <Spinner fx:id="dureeMinuteSpinner" GridPane.rowIndex="6" GridPane.columnIndex="1">
+                <valueFactory>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
+                </valueFactory>
+            </Spinner>
+
 
 
             <!-- Additional Information -->

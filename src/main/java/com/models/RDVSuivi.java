@@ -1,9 +1,11 @@
 package com.models;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.time.LocalTime;
 import java.time.Duration;
-public class RDVSuivi extends RDV {
+public class RDVSuivi extends RDV implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Long numDossier;
     private boolean isPresentiel; // vrai : pour RDV en présentiel
@@ -38,4 +40,19 @@ public class RDVSuivi extends RDV {
 
 
     }*/
+
+    @Override
+    public String toString() {
+        return
+                "Séance de suivi : " + super.toString() ;
+    }
+    @Override
+    public String getDetailedInfo() {
+        return super.getDetailedInfo() +
+                "Type du rendez-vous  : Séance de suivi\n" +
+                (isPresentiel ? "Ce rendez-vous est en présentiel\n" : "Ce rendez-vous est en ligne\n") +
+                "Ce rendez-vous est pour le patient N°" + numDossier + "\n";
+    }
+
+
 }

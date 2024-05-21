@@ -1,11 +1,14 @@
 package com.models;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.Duration;
 
-public class RDV {
+public class RDV implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     /*public enum TypeRDV {
         Consultation, RDVSuivi, Atelier
     }
@@ -109,6 +112,18 @@ public class RDV {
         return message.toString();
     }
 
+    @Override
+    public String toString() {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        return  getHeureDebut().format(timeFormatter) + " - " + getHeureDebut().plus(getDuree()).format(timeFormatter);
+    }
+
+    public String getDetailedInfo() {
+        return "Date du rendez-vous  : " + date + "\n" +
+                "Heure du rendez-vous  : " + heureDebut + "\n" +
+                "Heure de fin du rendez-vous  : " + heureDebut.plus(duree) + "\n" +
+                (isInfoSup ? "Informations supplémentaires : " + infoSup + "\n" : "");
+    }
 
 
 }

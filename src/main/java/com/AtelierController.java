@@ -37,6 +37,12 @@ public class AtelierController implements Initializable {
     @FXML
     private Spinner<Integer> timeMinuteSpinner;
 
+    @FXML
+    private Spinner<Integer> dureeHourSpinner;
+
+    @FXML
+    private Spinner<Integer> dureeMinuteSpinner;
+
 
     @FXML
     private TextArea additionalInfoArea;
@@ -97,7 +103,16 @@ public class AtelierController implements Initializable {
         System.out.println("Soumettre button clicked");
         String thematique = thematiqueField.getText();
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
-        Duration duree = Duration.ofHours(1);
+        Duration duree = Duration.ofHours(dureeHourSpinner.getValue()).plusMinutes(dureeMinuteSpinner.getValue());
+        if (!duree.equals(Duration.ofHours(1))) {
+            // Display an alert or message on the screen
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Durée doit être égale à 1 heure");
+            alert.showAndWait();
+            return;
+        }
         String infoSup = additionalInfoArea.getText();
         boolean isInfoSup = !infoSup.isEmpty();
         Atelier atelier = new Atelier(selected_day, heureDebut, duree, infoSup, isInfoSup, thematique, convertListViewToHashSet(patientListView));

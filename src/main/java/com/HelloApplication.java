@@ -7,11 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class HelloApplication extends Application {
 
@@ -25,6 +25,16 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        oms = new OMS();
+        try {
+            oms = OMS.loadOrthophonistesFromFile("orthophonistes.dat");
+            System.out.println("Orthophonistes loaded successfully.");
+        } catch (IOException | ClassNotFoundException e) {
+            oms = new OMS(); // If loading fails, start with a new OMS instance
+            System.out.println("No saved data found. Starting with an empty OMS.");
+            e.printStackTrace();
+        }
+
 
         HelloApplication.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
@@ -38,27 +48,44 @@ public class HelloApplication extends Application {
             return;
         }
 
-        if (Files.exists(FILE_PATH)) {
-            try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(FILE_PATH))) {
-                oms = (OMS) in.readObject();
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-                System.out.println("Error during object deserialization: " + e.getMessage());
-                oms = new OMS(); 
-            }
-        } else {
-            oms = new OMS();
-            createFile();
-        }
-
         stage.setTitle("My Orthophonist Manager");
         stage.getIcons().add(new Image(String.valueOf(HelloApplication.class.getResource("images/icon.png"))));
         stage.setScene(scene);
         stage.show();
+        // Ensure setOnCloseRequest is set after the stage is shown
+        stage.setOnCloseRequest(event -> {
+            System.out.println("Inside setOnCloseRequest");
+            try {
+                oms.saveOrthophonistesToFile("orthophonistes.dat");
+                System.out.println("Orthophonistes saved successfully.");
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert("Error", "Failed to save orthophonistes data.");
+            }
+        });
+
+        // Add a shutdown hook for additional safety
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Inside shutdown hook");
+            try {
+                oms.saveOrthophonistesToFile("orthophonistes.dat");
+                System.out.println("Orthophonistes saved successfully in shutdown hook.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
+
     }
 
     public static void main(String[] args) {
         launch();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public static Stage getStage() {

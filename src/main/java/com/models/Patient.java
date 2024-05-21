@@ -1,10 +1,12 @@
 package com.models;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.time.LocalDate;
-public class Patient {
-    
+public class Patient implements Serializable  {
+    private static final long serialVersionUID = 1L;
+
     private String nom;
     private String prenom;
     private LocalDate dateNaissance;
@@ -19,6 +21,8 @@ public class Patient {
     public Patient(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
+        this.rdvs = new ArrayList<>();
+        this.ficheSuivis = new HashSet<>();
     }
 
     public Patient(String nom, String prenom, LocalDate dateNaissance, String lieuNaissance, String adresse){

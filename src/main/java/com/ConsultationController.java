@@ -53,6 +53,11 @@ public class ConsultationController implements Initializable {
     @FXML
     private Spinner<Integer> timeMinuteSpinner;
 
+    @FXML
+    private Spinner<Integer> dureeHourSpinner;
+
+    @FXML
+    private Spinner<Integer> dureeMinuteSpinner;
 
     @FXML
     private TextArea additionalInfoArea;
@@ -73,11 +78,31 @@ public class ConsultationController implements Initializable {
         String lastName = lastNameField.getText();
         if(creerDossierPatient(lastName, firstName)) System.out.println("Dossier created.");
         else System.out.println("Failure creating Dossier.");
+        Duration duree = Duration.ofHours(dureeHourSpinner.getValue()).plusMinutes(dureeMinuteSpinner.getValue());
+
         int age = Integer.parseInt(ageField.getText());
+        if (age < 18) {
+            if (!duree.equals(Duration.ofHours(2).plusMinutes(30))) {
+                // Display an alert or message on the screen
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Durée doit être égale à 2h30mn pour un enfant.");
+                alert.showAndWait();
+                return;
+            }
+        } else {
+            if (!duree.equals(Duration.ofHours(1).plusMinutes(30))) {
+                // Display an alert or message on the screen
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Durée doit être égale à 1h30mn pour un adulte.");
+                alert.showAndWait();
+                return;
+            }
+        }
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
-        Duration duree;
-        if (age < 18) duree = Duration.ofHours(2).plusMinutes(30);
-        else duree = Duration.ofHours(1).plusMinutes(30);
         String infoSup = additionalInfoArea.getText();
         boolean isInfoSup = !infoSup.isEmpty();
         Consultation consultation = new Consultation(selected_day, heureDebut, duree, infoSup, isInfoSup, firstName, lastName, age);

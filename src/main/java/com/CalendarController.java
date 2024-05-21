@@ -95,7 +95,16 @@ public class CalendarController implements Initializable {
         else {
             rdvs = new ArrayList<>(utilisateurCourant.getPlanning().getRDVSPlannified(LocalDate.now()));
             listRDVs.getItems().addAll(rdvs);
+
         }
+        listRDVs.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) { // Double-click to show details
+                RDV selectedRDV = listRDVs.getSelectionModel().getSelectedItem();
+                if (selectedRDV != null) {
+                    showRDVDetails(selectedRDV);
+                }
+            }
+        });
 
     }
     @FXML
@@ -193,27 +202,6 @@ public class CalendarController implements Initializable {
             int currentDate = Integer.parseInt(((Text) clickedDayRectangle.getChildren().get(1)).getText());
             selected_day = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), currentDate);
             date.setText(selected_day.toString());
-            Stage popupStage = new Stage();
-            popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setTitle("Choose Option");
-
-            Button consultationButton = new Button("Consultation");
-            Button suiviButton = new Button("Seance de Suivi");
-            Button atelierButton = new Button("Atelier");
-            Button testingDossier = new Button("testingDossier");
-
-            consultationButton.setOnAction(e -> handleConsultationClick());
-            suiviButton.setOnAction(e -> handleSuiviClick());
-            atelierButton.setOnAction(e -> handleAtelierClick());
-            testingDossier.setOnAction(e -> handleTestingDossier());
-
-            VBox popupRoot = new VBox(10);
-            popupRoot.getChildren().addAll(consultationButton, suiviButton, atelierButton, testingDossier);
-            popupRoot.setPadding(new Insets(20));
-
-            Scene popupScene = new Scene(popupRoot, 250, 150);
-            popupStage.setScene(popupScene);
-            popupStage.show();
 
 
         }
@@ -223,6 +211,31 @@ public class CalendarController implements Initializable {
             listRDVs.getItems().clear();
             listRDVs.getItems().addAll(rdvs);
         }
+    }
+    @FXML
+    void handleAddRDV(ActionEvent event) {
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.setTitle("Choose Option");
+
+        Button consultationButton = new Button("Consultation");
+        Button suiviButton = new Button("Seance de Suivi");
+        Button atelierButton = new Button("Atelier");
+        Button testingDossier = new Button("testingDossier");
+
+        consultationButton.setOnAction(e -> handleConsultationClick());
+        suiviButton.setOnAction(e -> handleSuiviClick());
+        atelierButton.setOnAction(e -> handleAtelierClick());
+        testingDossier.setOnAction(e -> handleTestingDossier());
+
+        VBox popupRoot = new VBox(10);
+        popupRoot.getChildren().addAll(consultationButton, suiviButton, atelierButton, testingDossier);
+        popupRoot.setPadding(new Insets(20));
+
+        Scene popupScene = new Scene(popupRoot, 250, 150);
+        popupStage.setScene(popupScene);
+        popupStage.show();
+
     }
     private void handleTestingDossier() {
         try {
@@ -402,6 +415,17 @@ public class CalendarController implements Initializable {
         currentStage.setScene(scene);
         System.out.println("Déconnection effectuée!");
         currentStage.show();
+    }
+
+    private void showRDVDetails(RDV rdv) {
+        Stage detailStage = new Stage();
+        detailStage.initModality(Modality.APPLICATION_MODAL);
+        detailStage.setTitle("Détails du Rendez-vous");
+
+        Label detailsLabel = new Label(rdv.getDetailedInfo());
+        Scene scene = new Scene(detailsLabel, 400, 200);
+        detailStage.setScene(scene);
+        detailStage.showAndWait();
     }
 
 }

@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.time.LocalDate;
 
 public class Orthophoniste implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     // attributs
     private String nom;

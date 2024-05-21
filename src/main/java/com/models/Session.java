@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Session implements Decomposable<Session>, Serializable {
+    private static final long serialVersionUID = 1L;
 
     protected LocalDateTime heureDebut;
     protected LocalDateTime heureFin;
