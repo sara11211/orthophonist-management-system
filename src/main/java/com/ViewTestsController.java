@@ -165,12 +165,9 @@ public class ViewTestsController {
                 TestCreationController controller = loader.getController();
                 controller.setTest(selectedTest);
 
-                Stage stage = new Stage();
-                stage.setTitle("Modify Test");
-                stage.setScene(new Scene(root));
-                stage.showAndWait();
-                
-                testsTable.refresh(); // Refresh the table after modification
+                Scene currentScene = testsTable.getScene();
+                currentScene.setRoot(root);
+                testsTable.refresh(); 
             } catch (IOException e) {
                 e.printStackTrace();
             }
