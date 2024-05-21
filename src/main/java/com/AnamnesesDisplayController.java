@@ -133,14 +133,12 @@ public class AnamnesesDisplayController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("anamnese_creation.fxml"));
             Parent root = loader.load();
-
+    
             AnamneseController controller = loader.getController();
             controller.setAnamnese(anamnese);
-
-            Stage stage = new Stage();
-            stage.setTitle("Modify Anamnese: " + anamnese.getNom());
-            stage.setScene(new Scene(root));
-            stage.show();
+    
+            Scene currentScene = anamnesesTable.getScene();
+            currentScene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -157,5 +155,6 @@ public class AnamnesesDisplayController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+        }
+
 }
