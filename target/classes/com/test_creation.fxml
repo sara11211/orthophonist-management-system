@@ -9,10 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TestCreationController">
-    <TextField fx:id="testNameField" layoutX="14.0" layoutY="14.0" promptText="Test Name" />
-    <TextArea fx:id="testDescriptionField" layoutX="14.0" layoutY="54.0" promptText="Test Description" prefHeight="100.0" prefWidth="200.0" />
-    <VBox fx:id="questionsContainer" layoutX="14.0" layoutY="164.0" prefHeight="200.0" prefWidth="400.0" />
-    <Button fx:id="addQuestionButton" layoutX="14.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleAddQuestion" text="Add Question" />
-    <Button fx:id="saveTestButton" layoutX="100.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleSaveTest" text="Save Test" />
-    <Label fx:id="errorLabel" layoutX="14.0" layoutY="420.0" textFill="RED" />
+    <fx:include source="bar.fxml"/>
+    <AnchorPane layoutX="154.0">
+        <TextField fx:id="testNameField" layoutX="14.0" layoutY="14.0" promptText="Test Name" />
+        <TextArea fx:id="testDescriptionField" layoutX="14.0" layoutY="54.0" promptText="Test Description" prefHeight="100.0" prefWidth="200.0" />
+        <VBox fx:id="questionsContainer" layoutX="14.0" layoutY="164.0" prefHeight="200.0" prefWidth="400.0" />
+        <Button fx:id="addQuestionButton" layoutX="14.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleAddQuestion" text="Add Question" />
+        <Button fx:id="saveTestButton" layoutX="100.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleSaveTest" text="Save Test" />
+        <Label fx:id="errorLabel" layoutX="14.0" layoutY="420.0" textFill="RED" />
+    </AnchorPane>
 </AnchorPane>

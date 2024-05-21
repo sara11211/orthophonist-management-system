@@ -3,13 +3,21 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ViewTestsController">
-    <TableView fx:id="testsTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0">
-        <columns>
-            <TableColumn fx:id="testNameColumn" prefWidth="200.0" text="Test Name"/>
-            <TableColumn fx:id="testDescriptionColumn" prefWidth="200.0" text="Description"/>
-            <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action"/>
-        </columns>
-    </TableView>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ViewTestsController">
+    <left>
+        <fx:include source="bar.fxml" />
+    </left>
+    <center>
+        <AnchorPane>
+            <TableView fx:id="testsTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0">
+                <columns>
+                    <TableColumn fx:id="testNameColumn" prefWidth="200.0" text="Test Name"/>
+                    <TableColumn fx:id="testDescriptionColumn" prefWidth="200.0" text="Description"/>
+                    <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action"/>
+                </columns>
+            </TableView>
+        </AnchorPane>
+    </center>
+</BorderPane>
