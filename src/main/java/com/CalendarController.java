@@ -37,18 +37,8 @@ import java.time.LocalTime;
 
 
 public class CalendarController implements Initializable {
-    /************* To DO list *************/
-    // régler unsch page
-    // modifier la liste des taches après chaque modification dans la date
-    // ajouter projet
-    // badge
-    //
-
-    /************ agenda stuff ***********/
     ZonedDateTime dateFocus;
     ZonedDateTime today;
-    @FXML
-    Label date;
     private StackPane selectedDayRectangle;
     private LocalDate selected_day ;
 
@@ -64,8 +54,7 @@ public class CalendarController implements Initializable {
     private ListView<RDV> listRDVs;
 
     /**************************************/
-    @FXML
-    private Label name;
+
     @FXML
     private BorderPane borderPane;
     private Stage stage;
@@ -84,8 +73,6 @@ public class CalendarController implements Initializable {
         month.setText(String.valueOf(dateFocus.getMonth())); // Initialize the month variable
         drawCalendar();
         selected_day = LocalDate.now();
-        date.setText(selected_day.toString());
-        name.setText(utilisateurCourant.getNom());
 
         // set taches and viewlist
         if (utilisateurCourant.getPlanning() == null) {
@@ -201,7 +188,6 @@ public class CalendarController implements Initializable {
             // Update selected_day with the clicked day
             int currentDate = Integer.parseInt(((Text) clickedDayRectangle.getChildren().get(1)).getText());
             selected_day = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), currentDate);
-            date.setText(selected_day.toString());
 
 
         }
