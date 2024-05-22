@@ -44,9 +44,18 @@ public class SideBarController {
     }
 
     @FXML
-    public void handleAppointments() {
+    public void handleAppointments(ActionEvent event) {
         System.out.println("Navigating to Appointments");
         // Implement navigation logic
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Calendar.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

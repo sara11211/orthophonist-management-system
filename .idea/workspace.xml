@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="715185da-a5e3-422d-86d7-1aecbb38895c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/target/classes/com/AddObservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/AddObservationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/AtelierController$PatientEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/AtelierController$PatientEntry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/AtelierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/AtelierController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/CalendarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/CalendarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ConnexionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ConnexionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ConsultationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ConsultationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/CreerPatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/CreerPatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/DossierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DossierController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/InfoSupsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/InfoSupsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/InscriptionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/InscriptionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ObservationsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ObservationsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/RDVSuiviController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/RDVSuiviController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/RechercheDossierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/RechercheDossierController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Adulte$Diplome.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Adulte$Diplome.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Adulte.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Adulte.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Atelier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Atelier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Consultation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Consultation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Decomposable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Decomposable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Diagnostic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Diagnostic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Dossier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Dossier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Enfant$ClasseEtude.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Enfant$ClasseEtude.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Enfant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Enfant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/FicheSuivi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/FicheSuivi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/OMS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/OMS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Objectif$TypeObjectif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Objectif$TypeObjectif.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Objectif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Objectif.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Observation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Observation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Orthophoniste.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Orthophoniste.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Patient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Planning.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Planning.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/RDV.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/RDV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/RDVSuivi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/RDVSuivi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Session.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/SessionLibre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/SessionLibre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/SessionOccupee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/SessionOccupee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Trouble$Troubles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Trouble$Troubles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Trouble.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Trouble.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="imane" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "git-widget-placeholder": "Finale2.0",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

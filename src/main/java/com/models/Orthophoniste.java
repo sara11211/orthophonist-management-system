@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import java.util.HashMap;
+import java.time.LocalTime;
+import java.time.LocalDate;
 public class Orthophoniste implements Serializable {
     // attributes
     private String nom;
@@ -16,8 +18,12 @@ public class Orthophoniste implements Serializable {
     private List<Anamnese> anamneses;
     private List<Test> tests;
 
+
+    private Planning planning;
+    private HashMap<Long, Patient> patientDossierHashMap;
+
     // constructors
-    public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse) {
+    public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse, Planning planning) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
@@ -26,6 +32,8 @@ public class Orthophoniste implements Serializable {
         this.motDePasse = motDePasse;
         this.anamneses = new ArrayList<>(); 
         this.tests = new ArrayList<>();
+        this.planning = planning;
+        patientDossierHashMap = new HashMap<>();
     }
 
     public Orthophoniste(String adresseEmail, String motDePasse) {
@@ -33,13 +41,16 @@ public class Orthophoniste implements Serializable {
         this.motDePasse = motDePasse;
         this.anamneses = new ArrayList<>(); 
         this.tests = new ArrayList<>();
+        patientDossierHashMap = new HashMap<>();
     }
 
     public Orthophoniste(String adresseEmail) {
         this.adresseEmail = adresseEmail;
         this.anamneses = new ArrayList<>(); 
         this.tests = new ArrayList<>();
+        patientDossierHashMap = new HashMap<>();
     }
+
 
     // setters & getters
     public String getNom() {
@@ -108,6 +119,22 @@ public class Orthophoniste implements Serializable {
 
     public void setTests(List<Test> tests) {
         this.tests = tests;
+    }
+
+    public void setPatientDossierHashMap(HashMap<Long, Patient> patientDossierHashMap) {
+        this.patientDossierHashMap = patientDossierHashMap;
+    }
+
+    public HashMap<Long, Patient> getPatientDossierHashMap() {
+        return patientDossierHashMap;
+    }
+
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
+    }
+
+    public Planning getPlanning() {
+        return planning;
     }
 
     // Override methods
