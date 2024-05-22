@@ -2,6 +2,7 @@ package com;
 
 import com.models.Anamnese;
 import com.models.Question;
+import com.models.QuestionAdulte;
 import com.models.QuestionEnfant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -110,16 +111,11 @@ public class AnamnesesDisplayController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("questions_view.fxml"));
             Parent root = loader.load();
-
+    
             QuestionsViewController controller = loader.getController();
-            ObservableList<QuestionEnfant> questions = FXCollections.observableArrayList();
-            for (Question question : anamnese.getQuestions()) {
-                if (question instanceof QuestionEnfant) {
-                    questions.add((QuestionEnfant) question);
-                }
-            }
+            ObservableList<Question> questions = FXCollections.observableArrayList(anamnese.getQuestions());
             controller.setQuestions(questions);
-
+    
             Stage stage = new Stage();
             stage.setTitle("Questions for Anamnese: " + anamnese.getNom());
             stage.setScene(new Scene(root));
@@ -144,8 +140,8 @@ public class AnamnesesDisplayController {
         }
     }
 
-        @FXML
-        private void handleRevenir(ActionEvent event) {
+    @FXML
+    private void handleRevenir(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
             Scene scene = new Scene(root);
@@ -155,5 +151,5 @@ public class AnamnesesDisplayController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        }
+    }
 }

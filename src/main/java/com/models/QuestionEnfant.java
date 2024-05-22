@@ -1,5 +1,8 @@
 package com.models;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class QuestionEnfant extends Question {
 
     public enum CategorieEnfant {
@@ -25,5 +28,9 @@ public class QuestionEnfant extends Question {
 
     public CategorieEnfant getCategorie() {
         return categorie;
+    }
+
+    public StringProperty categorieProperty() {
+        return new SimpleStringProperty(categorie.name());
     }
 }

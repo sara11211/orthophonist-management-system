@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AnamneseTypeSelectionController">
+    <center>
+        <AnchorPane prefHeight="425.0" prefWidth="639.0" style="-fx-background-color: #f0f3f5;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="createEnfantAnamneseButton" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleCreateEnfantAnamnese" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #03B5AA;" text="Create Enfant Anamnese" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="createAdulteAnamneseButton" layoutX="400.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleCreateAdulteAnamnese" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #023436;" text="Create Adulte Anamnese" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
