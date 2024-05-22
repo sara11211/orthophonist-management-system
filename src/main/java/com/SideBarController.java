@@ -101,4 +101,17 @@ public class SideBarController {
         System.out.println("Déconnection effectuée!");
         currentStage.show();
     }
+
+    @FXML
+    void goToUpdateUserInfoPage(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("update_user_info.fxml"));
+        Parent root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 }

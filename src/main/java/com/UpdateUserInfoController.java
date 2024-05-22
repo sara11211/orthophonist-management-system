@@ -1,6 +1,5 @@
 package com;
 
-import com.models.OMS;
 import com.models.Orthophoniste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +14,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class InscriptionController {
+import static com.HelloApplication.utilisateurCourant;
+
+public class UpdateUserInfoController {
 
     @FXML
     private Label erreurText;
@@ -33,17 +34,20 @@ public class InscriptionController {
     private TextField address;
 
     @FXML
-    void seConnecterButton(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+    private void initialize() {
+        Orthophoniste currentUser = utilisateurCourant;
+        if (currentUser != null) {
+            email.setText(currentUser.getAdresseEmail());
+            motDePasse.setText(currentUser.getMotDePasse());
+            firstName.setText(currentUser.getPrenom());
+            familyName.setText(currentUser.getNom());
+            telephone.setText(currentUser.getNumTel());
+            address.setText(currentUser.getAdresse());
+        }
     }
 
     @FXML
-    void inscriptionButton(ActionEvent event) {
+    void saveChanges(ActionEvent event) throws IOException {
         String userEmail = email.getText();
         String userMotDePasse = motDePasse.getText();
         String userFamilyName = familyName.getText();
@@ -66,34 +70,22 @@ public class InscriptionController {
             return;
         }
 
-        if (HelloApplication.oms.isExist(userEmail, userMotDePasse)) {
-            inscriptionInvalide();
-        } else {
-            Orthophoniste newUser = new Orthophoniste(userEmail, userMotDePasse);
-            newUser.setPrenom(userFirstName);
-            newUser.setNom(userFamilyName);
-            newUser.setNumTel(userTelephone);
-            newUser.setAdresse(userAdresse);
+        utilisateurCourant.setAdresseEmail(userEmail);
+        utilisateurCourant.setMotDePasse(userMotDePasse);
+        utilisateurCourant.setNom(userFamilyName);
+        utilisateurCourant.setPrenom(userFirstName);
+        utilisateurCourant.setNumTel(userTelephone);
+        utilisateurCourant.setAdresse(userAdresse);
 
-            HelloApplication.oms.getOrthophonistes().put(newUser, userMotDePasse);
-            HelloApplication.utilisateurCourant = newUser;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("first_page.fxml"));
+        Parent root = fxmlLoader.load();
+        FirstPageController controller = fxmlLoader.getController();
+        controller.setUserName(utilisateurCourant.getPrenom() + " " + utilisateurCourant.getNom());
 
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-                Parent root = fxmlLoader.load();
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-                erreurText.setText("Erreur de chargement de la page de connexion.");
-            }
-        }
-    }
-
-    private void inscriptionInvalide() {
-        erreurText.setText("E-mail déjà utilisé !");
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     private boolean isValidEmail(String email) {
