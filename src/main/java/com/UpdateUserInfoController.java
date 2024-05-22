@@ -1,5 +1,6 @@
 package com;
 
+import com.models.OMS;
 import com.models.Orthophoniste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static com.HelloApplication.utilisateurCourant;
+import static com.HelloApplication.oms;
 
 public class UpdateUserInfoController {
 
@@ -70,13 +72,29 @@ public class UpdateUserInfoController {
             return;
         }
 
-        utilisateurCourant.setAdresseEmail(userEmail);
-        utilisateurCourant.setMotDePasse(userMotDePasse);
-        utilisateurCourant.setNom(userFamilyName);
-        utilisateurCourant.setPrenom(userFirstName);
-        utilisateurCourant.setNumTel(userTelephone);
-        utilisateurCourant.setAdresse(userAdresse);
+        // Update OMS with new details
+        Orthophoniste updatedUser = utilisateurCourant;
+        String oldEmail = updatedUser.getAdresseEmail();
 
+        updatedUser.setAdresseEmail(userEmail);
+        updatedUser.setMotDePasse(userMotDePasse);
+        updatedUser.setNom(userFamilyName);
+        updatedUser.setPrenom(userFirstName);
+        updatedUser.setNumTel(userTelephone);
+        updatedUser.setAdresse(userAdresse);
+
+        // Remove old entry if email changed
+        if (!oldEmail.equals(userEmail)) {
+            oms.getOrthophonistes().remove(new Orthophoniste(oldEmail, utilisateurCourant.getMotDePasse()));
+        }
+
+        // Add updated user to OMS
+        oms.getOrthophonistes().put(updatedUser, userMotDePasse);
+
+        // Update utilisateurCourant
+        utilisateurCourant = updatedUser;
+
+        // Load the first page
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("first_page.fxml"));
         Parent root = fxmlLoader.load();
         FirstPageController controller = fxmlLoader.getController();
