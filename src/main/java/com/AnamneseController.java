@@ -81,7 +81,7 @@ public class AnamneseController {
         } else {
             anamnese.setNom(name);
             anamnese.setDescription(description);
-            anamnese.getQuestions().clear();
+            anamnese.getQuestions();
         }
 
         for (Node questionNode : questionsContainer.getChildren()) {

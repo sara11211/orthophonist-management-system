@@ -74,11 +74,9 @@ public class AnamnesesDisplayController {
                             Anamnese anamnese = getTableView().getItems().get(getIndex());
                             anamneses.remove(anamnese);
                             
-                            // Perform the deletion in the storage system
                             oms.removeAnamneseFromUser(utilisateurCourant, anamnese);
-                            oms.sauvegarder(); // Save the updated state
+                            oms.sauvegarder(); 
                             
-                            // Remove the anamnese from the current user's list if not already done by oms.removeAnamneseFromUser
                             if (utilisateurCourant != null && utilisateurCourant.getAnamneses() != null) {
                                 utilisateurCourant.getAnamneses().remove(anamnese);
                             }
