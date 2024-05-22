@@ -156,5 +156,4 @@ public class AnamnesesDisplayController {
             e.printStackTrace();
         }
         }
-
 }
