@@ -1,6 +1,6 @@
 package com;
 
-import com.models.Test;
+import com.models.TestQuestionnaire;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashSet;
 
 import static com.HelloApplication.utilisateurCourant;
 import static com.HelloApplication.oms;
@@ -21,20 +21,20 @@ import static com.HelloApplication.oms;
 public class ViewTestsController {
 
     @FXML
-    private TableView<Test> testsTable;
+    private TableView<TestQuestionnaire> testsTable;
 
     @FXML
-    private TableColumn<Test, String> testNameColumn;
+    private TableColumn<TestQuestionnaire, String> testNameColumn;
 
     @FXML
-    private TableColumn<Test, String> testDescriptionColumn;
+    private TableColumn<TestQuestionnaire, String> testDescriptionColumn;
 
-    private ObservableList<Test> tests;
+    private ObservableList<TestQuestionnaire> tests;
 
     @FXML
     public void initialize() {
         testNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        testDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("capacite"));
+        testDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         loadTests();
         addButtonsToTable();
@@ -51,14 +51,14 @@ public class ViewTestsController {
 
     private void addButtonsToTable() {
         // View Button
-        TableColumn<Test, Void> viewCol = new TableColumn<>("View");
+        TableColumn<TestQuestionnaire, Void> viewCol = new TableColumn<>("View");
 
         viewCol.setCellFactory(param -> new TableCell<>() {
             private final Button btn = new Button("View");
 
             {
                 btn.setOnAction(event -> {
-                    Test data = getTableView().getItems().get(getIndex());
+                    TestQuestionnaire data = getTableView().getItems().get(getIndex());
                     handleViewTest(data);
                 });
             }
@@ -77,14 +77,14 @@ public class ViewTestsController {
         testsTable.getColumns().add(viewCol);
 
         // Delete Button
-        TableColumn<Test, Void> deleteCol = new TableColumn<>("Delete");
+        TableColumn<TestQuestionnaire, Void> deleteCol = new TableColumn<>("Delete");
 
         deleteCol.setCellFactory(param -> new TableCell<>() {
             private final Button btn = new Button("Delete");
 
             {
                 btn.setOnAction(event -> {
-                    Test data = getTableView().getItems().get(getIndex());
+                    TestQuestionnaire data = getTableView().getItems().get(getIndex());
                     handleDeleteTest(data);
                 });
             }
@@ -103,14 +103,14 @@ public class ViewTestsController {
         testsTable.getColumns().add(deleteCol);
 
         // Modify Button
-        TableColumn<Test, Void> modifyCol = new TableColumn<>("Modify");
+        TableColumn<TestQuestionnaire, Void> modifyCol = new TableColumn<>("Modify");
 
         modifyCol.setCellFactory(param -> new TableCell<>() {
             private final Button btn = new Button("Modify");
 
             {
                 btn.setOnAction(event -> {
-                    Test data = getTableView().getItems().get(getIndex());
+                    TestQuestionnaire data = getTableView().getItems().get(getIndex());
                     handleModifyTest(data);
                 });
             }
@@ -129,7 +129,7 @@ public class ViewTestsController {
         testsTable.getColumns().add(modifyCol);
     }
 
-    private void handleViewTest(Test selectedTest) {
+    private void handleViewTest(TestQuestionnaire selectedTest) {
         if (selectedTest != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_details.fxml"));
@@ -148,7 +148,7 @@ public class ViewTestsController {
         }
     }
 
-    private void handleDeleteTest(Test selectedTest) {
+    private void handleDeleteTest(TestQuestionnaire selectedTest) {
         if (selectedTest != null) {
             utilisateurCourant.getTests().remove(selectedTest);
             oms.sauvegarder();
@@ -156,7 +156,7 @@ public class ViewTestsController {
         }
     }
 
-    private void handleModifyTest(Test selectedTest) {
+    private void handleModifyTest(TestQuestionnaire selectedTest) {
         if (selectedTest != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_creation.fxml"));

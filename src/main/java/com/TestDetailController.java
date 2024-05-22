@@ -1,7 +1,7 @@
 package com;
 
 import com.models.Question;
-import com.models.Test;
+import com.models.TestQuestionnaire;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -17,10 +17,10 @@ public class TestDetailController {
     @FXML
     private ListView<String> questionsListView;
 
-    public void setTest(Test test) {
-        testNameLabel.setText(test.getNom());
-        testDescriptionLabel.setText(test.getCapacite());
-        for (Question question : test.getQuestions()) {
+    public void setTest(TestQuestionnaire testQuestionnaire) {
+        testNameLabel.setText(testQuestionnaire.getNom());
+        testDescriptionLabel.setText(testQuestionnaire.getDescription());
+        for (Question question : testQuestionnaire.getQuestions()) {
             questionsListView.getItems().add(question.getEnonce());
         }
     }

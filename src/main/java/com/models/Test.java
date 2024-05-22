@@ -1,41 +1,30 @@
 package com.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Test implements Serializable {
     
     private String nom;
-    private String capacite;
-    private ArrayList<Question> questions;
+    private String description;
 
-    public Test(String nom, String capacite, ArrayList<Question> questions) {
+    public Test(String nom, String description) {
         this.nom = nom;
-        this.capacite = capacite;
-        this.questions = questions;
+        this.description = description;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
     }
 
-    public void setCapacite(String capacite) {
-        this.capacite = capacite;
-    }
-
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getNom() {
         return nom;
     }
 
-    public String getCapacite() {
-        return capacite;
-    }
-
-    public ArrayList<Question> getQuestions() {
-        return questions;
+    public String getDescription() {
+        return description;
     }
 }
