@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.Duration;
 
+
 public class RDV implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -17,6 +18,8 @@ public class RDV implements Serializable {
     private LocalTime heureDebut;
     private Duration duree;
     private String infoSup;
+
+    private HashSet<String> observations;
     private boolean isInfoSup;
 
 
@@ -26,6 +29,7 @@ public class RDV implements Serializable {
         this.duree = duree;
         this.infoSup = infoSup;
         this.isInfoSup = isInfoSup;
+        this.observations = new HashSet<>();
     }
 
  
@@ -49,6 +53,10 @@ public class RDV implements Serializable {
         isInfoSup = infoSup;
     }
 
+    public void setObservations(HashSet<String> observations) {
+        this.observations = observations;
+    }
+
     public LocalDate getDate() {
         return date;
     }
@@ -63,6 +71,15 @@ public class RDV implements Serializable {
 
     public String getInfoSup() {
         return infoSup;
+    }
+
+    public HashSet<String> getObservations() {
+        return observations;
+    }
+
+    public void addObservation(String observation) {
+        if (this.observations == null) this.observations = new HashSet<>();
+        this.observations.add(observation);
     }
 
     public boolean getIsInfoSup() { return isInfoSup; }

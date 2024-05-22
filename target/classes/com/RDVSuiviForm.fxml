@@ -46,24 +46,24 @@
             <TextField fx:id="numDossierField" promptText="Numéro du dossier du patient : " GridPane.rowIndex="1" GridPane.columnIndex="1"/>
             <!-- Consultation Time -->
             <Label text="Heure de la consultation:" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="2" GridPane.columnIndex="1">
+            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="2" GridPane.columnIndex="4">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
                 </valueFactory>
             </Spinner>
-            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="2" GridPane.columnIndex="6">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
                 </valueFactory>
             </Spinner>
 
-            <Label text="Durée de la consultation:" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-            <Spinner fx:id="dureeHourSpinner" GridPane.rowIndex="5" GridPane.columnIndex="1">
+            <Label text="Durée de la consultation:" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Spinner fx:id="dureeHourSpinner" GridPane.rowIndex="3" GridPane.columnIndex="4">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
                 </valueFactory>
             </Spinner>
-            <Spinner fx:id="dureeMinuteSpinner" GridPane.rowIndex="6" GridPane.columnIndex="1">
+            <Spinner fx:id="dureeMinuteSpinner" GridPane.rowIndex="3" GridPane.columnIndex="6">
                 <valueFactory>
                     <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
                 </valueFactory>

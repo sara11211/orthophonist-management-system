@@ -94,7 +94,7 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="419.0" spacing="54.0">
                             <children>
-                                <Button mnemonicParsing="false" text="&lt;" />
+                                <Button mnemonicParsing="false"  onAction="#backOneMonth" text="&lt;" />
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                     <children>
                                         <Text fx:id="month" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
@@ -109,7 +109,7 @@
                                         </Text>
                                     </children>
                                 </HBox>
-                                <Button mnemonicParsing="false" text="&gt;" />
+                                <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="25.0" prefWidth="348.0" spacing="31.75">
