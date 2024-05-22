@@ -62,6 +62,9 @@ public class ConsultationController implements Initializable {
     @FXML
     private TextArea additionalInfoArea;
 
+    @FXML
+    private Label erreurText;
+
     private LocalDate selected_day;  // Assume selected_day is passed from another controller
     private CalendarController calendarController;
 
@@ -83,22 +86,12 @@ public class ConsultationController implements Initializable {
         int age = Integer.parseInt(ageField.getText());
         if (age < 18) {
             if (!duree.equals(Duration.ofHours(2).plusMinutes(30))) {
-                // Display an alert or message on the screen
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Durée doit être égale à 2h30mn pour un enfant.");
-                alert.showAndWait();
+                dureeInvalide();
                 return;
             }
         } else {
             if (!duree.equals(Duration.ofHours(1).plusMinutes(30))) {
-                // Display an alert or message on the screen
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Durée doit être égale à 1h30mn pour un adulte.");
-                alert.showAndWait();
+                dureeInvalide();
                 return;
             }
         }
@@ -159,5 +152,9 @@ public class ConsultationController implements Initializable {
         Dossier dossier = new Dossier(patient);
         utilisateurCourant.getPatientDossierHashMap().put(dossier.getNumDossier(), patient);
         return utilisateurCourant.getPatientDossierHashMap().containsKey(dossier.getNumDossier());
+    }
+
+    public void dureeInvalide() {
+        erreurText.setText("Durée de consultation invalide !");
     }
 }

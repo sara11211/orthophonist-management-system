@@ -15,6 +15,8 @@ public class Patient implements Serializable  {
 
     private List<RDV> rdvs;
 
+    private List<BO> bos;
+
     private HashSet<FicheSuivi> ficheSuivis;
 
 
@@ -22,6 +24,7 @@ public class Patient implements Serializable  {
         this.nom = nom;
         this.prenom = prenom;
         this.rdvs = new ArrayList<>();
+        this.bos = new ArrayList<>();
         this.ficheSuivis = new HashSet<>();
     }
 
@@ -31,6 +34,7 @@ public class Patient implements Serializable  {
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.adresse = adresse;
+        this.bos = new ArrayList<>();
         this.rdvs = new ArrayList<>();
         this.ficheSuivis = new HashSet<>();
     }
@@ -57,6 +61,10 @@ public class Patient implements Serializable  {
 
     public void setRdvs(List<RDV> rdvs) {
         this.rdvs = rdvs;
+    }
+
+    public void setBos(List<BO> bos) {
+        this.bos = bos;
     }
 
     public void setFicheSuivis(HashSet<FicheSuivi> ficheSuivis) {
@@ -86,6 +94,10 @@ public class Patient implements Serializable  {
 
     public List<RDV> getRdvs() {
         return rdvs;
+    }
+
+    public List<BO> getBos() {
+        return bos;
     }
 
     public HashSet<FicheSuivi> getFicheSuivis() {

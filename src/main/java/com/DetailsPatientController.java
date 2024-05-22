@@ -1,8 +1,5 @@
 package com;
-import com.models.Patient;
-import com.models.Consultation;
-import com.models.RDV;
-import com.models.RDVSuivi;
+import com.models.*;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -48,6 +45,14 @@ public class DetailsPatientController {
     private TableColumn<RDV, Void> additionalInfoColumn;
     @FXML
     private TableColumn<RDV, Void> observationColumn;
+    @FXML
+    private TableView<BO> bosTable;
+    @FXML
+    private TableColumn<BO, LocalDate> dateBOColumn;
+    @FXML
+    private TableColumn<BO, Void> viewBOColumn;
+
+
 
     private Patient patient;
 
@@ -61,7 +66,10 @@ public class DetailsPatientController {
             addressLabel.setText(patient.getAdresse());
 
             ObservableList<RDV> rdvList = FXCollections.observableArrayList(patient.getRdvs());
+            ObservableList<BO> BOList = FXCollections.observableArrayList(patient.getBos());
             rdvTable.setItems(rdvList);
+            bosTable.setItems(BOList);
+
 
             // Ensure the RDV class has a getDate() method returning a LocalDate
             dateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDV, LocalDate>, ObservableValue<LocalDate>>() {
@@ -76,6 +84,44 @@ public class DetailsPatientController {
                 }
             });
 
+            dateBOColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<BO, LocalDate>, ObservableValue<LocalDate>>() {
+                @Override
+                public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<BO, LocalDate> param) {
+                    BO bo = param.getValue();
+                    if (bo != null) {
+                        return new SimpleObjectProperty<>(bo.getDateBO());
+                    } else {
+                        return new SimpleObjectProperty<>(null);
+                    }
+                }
+            });
+
+
+            viewBOColumn.setCellFactory(new Callback<>() {
+                @Override
+                public TableCell<BO, Void> call(TableColumn<BO, Void> param) {
+                    return new TableCell<>() {
+                        private final Button voirBOSButton = new Button("Voir BOs");
+
+                        {
+                            voirBOSButton.setOnAction(event -> {
+                                BO bo = getTableView().getItems().get(getIndex());
+                                // showAdditionalInfoPopup(bo);
+                            });
+                        }
+
+                        @Override
+                        protected void updateItem(Void item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (empty) {
+                                setGraphic(null);
+                            } else {
+                                setGraphic(voirBOSButton);
+                            }
+                        }
+                    };
+                }
+            });
 
             hourColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDV, LocalTime>, ObservableValue<LocalTime>>() {
                 @Override

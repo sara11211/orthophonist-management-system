@@ -4,22 +4,18 @@ package com;
 import com.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import javafx.scene.control.CheckBox;
+
 import com.models.Consultation;
 import javafx.fxml.Initializable;
 import java.net.URL;
-import javafx.scene.control.Alert;
+
 import javafx.scene.control.Alert.AlertType;
 import java.util.ResourceBundle;
 import static com.HelloApplication.utilisateurCourant;
@@ -65,6 +61,8 @@ public class RDVSuiviController implements Initializable {
     @FXML
     private RadioButton enPresentielle;
 
+    @FXML
+    private Label erreurText;
 
     @FXML
     private RadioButton enLigne;
@@ -91,12 +89,7 @@ public class RDVSuiviController implements Initializable {
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
         Duration duree = Duration.ofHours(dureeHourSpinner.getValue()).plusMinutes(dureeMinuteSpinner.getValue());
         if (!duree.equals(Duration.ofHours(1))) {
-            // Display an alert or message on the screen
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Durée doit être égale à 1 heure");
-            alert.showAndWait();
+            dureeInvalide();
             return;
         }
         String infoSup = additionalInfoArea.getText();
@@ -146,4 +139,9 @@ public class RDVSuiviController implements Initializable {
     public void setCalendarController(CalendarController calendarController) {
         this.calendarController = calendarController;
     }
+
+    public void dureeInvalide() {
+        erreurText.setText("Durée de consultation invalide !");
+    }
+
 }

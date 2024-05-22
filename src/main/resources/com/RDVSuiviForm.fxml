@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <?language fx="http://javafx.com/fxml/1"?>
 
@@ -75,9 +74,10 @@
             <!-- Additional Information -->
             <Label text="Informations supplémentaires:" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
             <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Label fx:id="erreurText" alignment="CENTER"  textAlignment="CENTER" textFill="#ff0101" GridPane.rowIndex="6"/>
 
             <!-- Submit Button -->
-            <Button text="Soumettre" GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.halignment="RIGHT" onAction="#handleSubmit"/>
+            <Button text="Soumettre" GridPane.rowIndex="8" GridPane.columnIndex="1" GridPane.halignment="RIGHT" onAction="#handleSubmit"/>
         </GridPane>
 
     </center>

@@ -8,7 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import static com.HelloApplication.utilisateurCourant;
 
 public class SideBarController {
 
@@ -62,5 +65,40 @@ public class SideBarController {
     public void handleStatistics() {
         System.out.println("Navigating to Statistics");
         // Implement navigation logic
+    }
+
+    @FXML
+    public void handleTestingDossier(ActionEvent event) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("SearchDossier.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @FXML
+    void handleSignOut(ActionEvent event) {
+        utilisateurCourant = null;
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.setScene(scene);
+        System.out.println("Déconnection effectuée!");
+        currentStage.show();
     }
 }

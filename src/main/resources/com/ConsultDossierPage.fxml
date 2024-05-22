@@ -40,6 +40,15 @@
                     <Insets />
                 </GridPane.margin>
             </TableView>
+            <TableView fx:id="bosTable" prefHeight="303.0" prefWidth="504.0" GridPane.rowIndex="7">
+                <columns>
+                    <TableColumn fx:id="dateBOColumn" text="Date" />
+                    <TableColumn fx:id="viewBOColumn" prefWidth="90.0" text="-" />
+                </columns>
+                <GridPane.margin>
+                    <Insets />
+                </GridPane.margin>
+            </TableView>
             <columnConstraints>
                 <ColumnConstraints maxWidth="600.0" minWidth="168.0" prefWidth="497.0" />
                 <ColumnConstraints maxWidth="432.0" minWidth="0.0" prefWidth="103.0" />

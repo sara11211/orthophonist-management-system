@@ -70,9 +70,10 @@
             <!-- Additional Information -->
             <Label text="Informations supplémentaires:" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="erreurText" alignment="CENTER"  textAlignment="CENTER" textFill="#ff0101" GridPane.rowIndex="8"/>
 
             <!-- Submit Button -->
-            <Button onAction="#handleSubmit" text="Soumettre" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+            <Button onAction="#handleSubmit" text="Soumettre" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
             <columnConstraints>
                 <ColumnConstraints prefWidth="200.0" />
                 <ColumnConstraints />

@@ -49,6 +49,8 @@ public class AtelierController implements Initializable {
     private TextArea additionalInfoArea;
 
     @FXML
+    private Label erreurText;
+    @FXML
     private LocalDate selected_day;
 
     private CalendarController calendarController;
@@ -106,12 +108,7 @@ public class AtelierController implements Initializable {
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
         Duration duree = Duration.ofHours(dureeHourSpinner.getValue()).plusMinutes(dureeMinuteSpinner.getValue());
         if (!duree.equals(Duration.ofHours(1))) {
-            // Display an alert or message on the screen
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Durée doit être égale à 1 heure");
-            alert.showAndWait();
+            dureeInvalide();
             return;
         }
         String infoSup = additionalInfoArea.getText();
@@ -178,4 +175,9 @@ public class AtelierController implements Initializable {
 
         return hashSet;
     }
+
+    public void dureeInvalide() {
+        erreurText.setText("Durée de consultation invalide !");
+    }
+
 }
