@@ -1,31 +1,28 @@
 package com;
 
-import com.models.QuestionEnfant.CategorieEnfant;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+public class QuestionItemController {
 
-public class QuestionItemController implements Initializable {
-
-    @FXML
-    private ComboBox<String> categoryComboBox;
     @FXML
     private TextField questionTextField;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        categoryComboBox.getItems().addAll(
-            CategorieEnfant.STRUCTURE_FAMILIALE.name(),
-            CategorieEnfant.DYNAMIQUE_FAMILIALE.name(),
-            CategorieEnfant.ANTECEDENTS_FAMILIAUX.name(),
-            CategorieEnfant.CONDITIONS_NATALES.name(),
-            CategorieEnfant.DEVELOPPEMENT_PSYCHOMOTEUR.name(),
-            CategorieEnfant.DEVELOPPEMENT_LANGAGIER.name(),
-            CategorieEnfant.CARACTERE_ET_COMPORTEMENT.name()
-        );
+    @FXML
+    private ComboBox<String> categoryComboBox;
+
+    public void setCategories(Enum<?>[] categories) {
+        for (Enum<?> category : categories) {
+            categoryComboBox.getItems().add(category.name());
+        }
+    }
+
+    public void setQuestionText(String text) {
+        questionTextField.setText(text);
+    }
+
+    public void setSelectedCategory(String category) {
+        categoryComboBox.setValue(category);
     }
 }
