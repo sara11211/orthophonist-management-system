@@ -77,7 +77,7 @@ public class AnamneseController {
         }
 
         if (anamnese == null) {
-            anamnese = new Anamnese(name, description);
+            anamnese = new Anamnese(name, description, anamneseType); // Pass type to the constructor
         } else {
             anamnese.setNom(name);
             anamnese.setDescription(description);
