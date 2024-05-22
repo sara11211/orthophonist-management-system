@@ -20,7 +20,7 @@ public class OptionsController {
     @FXML
     private void handleCreateAnamnese(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("anamnese_creation.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("anamnese_type_selection.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
