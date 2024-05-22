@@ -16,7 +16,7 @@
                   <Image url="@images/logo-white.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="77.0" layoutY="9.0">
+            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="77.0" layoutY="9.0" onMouseClicked="#handleMoreClick">
                <image>
                   <Image url="@images/more.png" />
                </image>

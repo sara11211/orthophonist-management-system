@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -113,5 +114,24 @@ public class SideBarController {
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+    
+    @FXML
+    void handleMoreClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("custom_popup.fxml"));
+            Parent root = loader.load();
+
+            CustomPopupController controller = loader.getController();
+            controller.setContactInfo("If you want help, contact here: [your contact info or support link]");
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Help Information");
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

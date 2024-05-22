@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CustomPopupController">
+    <children>
+        <Label fx:id="contactInfoLabel" layoutX="14.0" layoutY="14.0" text="If you want help, contact here: [your contact info or support link]" wrapText="true" />
+        <Button layoutX="80.0" layoutY="80.0" mnemonicParsing="false" text="OK" onAction="#handleOk" />
+    </children>
+</AnchorPane>
