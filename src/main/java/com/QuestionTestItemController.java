@@ -3,7 +3,10 @@ package com;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 
@@ -14,7 +17,7 @@ import com.models.Question;
 
 public class QuestionTestItemController implements Initializable {
 
-    @FXML
+        @FXML
     private TextField questionTextField;
     @FXML
     private ComboBox<String> questionTypeComboBox;
@@ -22,6 +25,8 @@ public class QuestionTestItemController implements Initializable {
     private VBox propositionsContainer;
     @FXML
     private Button addPropositionButton;
+
+    private Spinner<Integer> scoreSpinner;
 
     private TestCreationController parentController;
 
@@ -32,6 +37,17 @@ public class QuestionTestItemController implements Initializable {
             "Multiple Choice (Single Answer)",
             "Free Text"
         );
+
+        // Initialize Spinner programmatically
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
+        scoreSpinner = new Spinner<>();
+        scoreSpinner.setEditable(true);
+        scoreSpinner.setValueFactory(valueFactory);
+
+        // Add Spinner to the layout
+        HBox hbox = new HBox();
+        hbox.getChildren().addAll(scoreSpinner);
+        ((HBox) questionTextField.getParent()).getChildren().add(hbox);
     }
 
     public void setParentController(TestCreationController parentController) {
@@ -40,7 +56,7 @@ public class QuestionTestItemController implements Initializable {
 
     public void setQuestion(Question question) {
         questionTextField.setText(question.getEnonce());
-        // Logic to set question type based on the instance of the question
+        scoreSpinner.getValueFactory().setValue(question.getScore());
     }
 
     @FXML
