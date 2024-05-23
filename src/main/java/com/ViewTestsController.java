@@ -142,7 +142,7 @@ public class ViewTestsController {
                     TestDetailController controller = loader.getController();
                     controller.setTest((TestQuestionnaire) selectedTest);
                 } else if (selectedTest instanceof TestExercice) {
-                    // Handle TestExercice view
+                    TestExerciceController controller = loader.getController();
                 }
 
                 Stage stage = new Stage();
@@ -170,7 +170,7 @@ public class ViewTestsController {
                 if (selectedTest instanceof TestQuestionnaire) {
                     loader = new FXMLLoader(getClass().getResource("/com/test_creation.fxml"));
                 } else if (selectedTest instanceof TestExercice) {
-                    // Handle TestExercice modify
+                    loader = new FXMLLoader(getClass().getResource("/com/test_exercice_creation.fxml"));
                     return;
                 } else {
                     return;
@@ -181,6 +181,11 @@ public class ViewTestsController {
                 if (selectedTest instanceof TestQuestionnaire) {
                     TestCreationController controller = loader.getController();
                     controller.setTest((TestQuestionnaire) selectedTest);
+                }
+
+                if (selectedTest instanceof TestExercice) {
+                    TestExerciceController controller = loader.getController();
+                    controller.setTestExercice((TestExercice) selectedTest);
                 }
 
                 Scene currentScene = testsTable.getScene();

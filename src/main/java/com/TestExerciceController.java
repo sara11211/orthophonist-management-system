@@ -67,9 +67,9 @@ public class TestExerciceController {
         if (testExercice == null) {
             testExercice = new TestExercice(name, description);
         } else {
-            testExercice.setName(name);
+            testExercice.setNom(name);
             testExercice.setDescription(description);
-            testExercice.getExercices().clear();
+            testExercice.getExercices();
         }
 
         for (Node exerciceNode : exercicesContainer.getChildren()) {
@@ -107,7 +107,7 @@ public class TestExerciceController {
 
     public void setTestExercice(TestExercice testExercice) {
         this.testExercice = testExercice;
-        testNameField.setText(testExercice.getName());
+        testNameField.setText(testExercice.getNom());
         testDescriptionField.setText(testExercice.getDescription());
 
         exercicesContainer.getChildren().clear();
