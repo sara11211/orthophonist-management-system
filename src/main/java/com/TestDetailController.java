@@ -19,6 +19,9 @@ public class TestDetailController {
     @FXML
     private ListView<String> questionsListView;
 
+    @FXML
+    private ListView<String> exercicesListView;
+
     public void setTest(TestQuestionnaire testQuestionnaire) {
         testNameLabel.setText(testQuestionnaire.getNom());
         testDescriptionLabel.setText(testQuestionnaire.getDescription());
@@ -27,11 +30,13 @@ public class TestDetailController {
         }
     }
 
-    public void setTest(TestExercice testQuestionnaire) {
-        testNameLabel.setText(testQuestionnaire.getNom());
-        testDescriptionLabel.setText(testQuestionnaire.getDescription());
-        for (Exercice question : testQuestionnaire.getExercices()) {
-            questionsListView.getItems().add(question.getConsigne());
+    public void setTestExercice(TestExercice testExercice) {
+        testNameLabel.setText(testExercice.getNom());
+        testDescriptionLabel.setText(testExercice.getDescription());
+        for (Exercice exercice : testExercice.getExercices()) {
+            String item = String.format("Consigne: %s, Materiel: %s, Score: %d",
+                                        exercice.getConsigne(), exercice.getMateriel(), exercice.getScore());
+            exercicesListView.getItems().add(item);
         }
     }
 }

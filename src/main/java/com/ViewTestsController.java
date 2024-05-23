@@ -135,14 +135,17 @@ public class ViewTestsController {
     private void handleViewTest(Test selectedTest) {
         if (selectedTest != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_details.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("test_details.fxml"));
                 Parent root = loader.load();
 
                 if (selectedTest instanceof TestQuestionnaire) {
                     TestDetailController controller = loader.getController();
                     controller.setTest((TestQuestionnaire) selectedTest);
                 } else if (selectedTest instanceof TestExercice) {
-                    TestExerciceController controller = loader.getController();
+                    loader = new FXMLLoader(getClass().getResource("test_exercice_detail.fxml"));
+                    root = loader.load();
+                    TestDetailController controller = loader.getController();
+                    controller.setTestExercice((TestExercice) selectedTest);
                 }
 
                 Stage stage = new Stage();
@@ -168,10 +171,9 @@ public class ViewTestsController {
             try {
                 FXMLLoader loader;
                 if (selectedTest instanceof TestQuestionnaire) {
-                    loader = new FXMLLoader(getClass().getResource("/com/test_creation.fxml"));
+                    loader = new FXMLLoader(getClass().getResource("test_creation.fxml"));
                 } else if (selectedTest instanceof TestExercice) {
-                    loader = new FXMLLoader(getClass().getResource("/com/test_exercice_creation.fxml"));
-                    return;
+                    loader = new FXMLLoader(getClass().getResource("test_exercice_creation.fxml"));
                 } else {
                     return;
                 }
@@ -181,9 +183,7 @@ public class ViewTestsController {
                 if (selectedTest instanceof TestQuestionnaire) {
                     TestCreationController controller = loader.getController();
                     controller.setTest((TestQuestionnaire) selectedTest);
-                }
-
-                if (selectedTest instanceof TestExercice) {
+                } else if (selectedTest instanceof TestExercice) {
                     TestExerciceController controller = loader.getController();
                     controller.setTestExercice((TestExercice) selectedTest);
                 }
@@ -196,5 +196,4 @@ public class ViewTestsController {
             }
         }
     }
-
 }
