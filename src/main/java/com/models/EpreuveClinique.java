@@ -1,28 +1,30 @@
 package com.models;
-
-public class EpreuveClinique {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+public class EpreuveClinique implements Serializable {
     
     private String observationClinique;
-    private Test test;
+    private List<Test> tests;
 
-    public EpreuveClinique (Test test, String observationClinique) {
+    public EpreuveClinique (String observationClinique) {
         this.observationClinique = observationClinique;
-        this.test= test;
+        tests = new ArrayList<>();
     }
 
     public void setObservationClinique(String observationClinique) {
         this.observationClinique = observationClinique;
     }
 
-    public void setTest(Test test) {
-        this.test = test;
+    public void setTests(List<Test> tests) {
+        this.tests = tests;
     }
 
     public String getObservationClinique() {
         return observationClinique;
     }
 
-    public Test getTest() {
-        return test;
+    public List<Test> getTests() {
+        return tests;
     }
 }

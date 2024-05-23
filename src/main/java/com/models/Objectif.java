@@ -1,6 +1,10 @@
 package com.models;
 
-public class Objectif {
+import java.io.Serializable;
+
+public class Objectif implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     public enum TypeObjectif {
         CourtTerme, MoyenTerme, LongTerme
     }

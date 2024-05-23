@@ -17,7 +17,7 @@ public class HelloApplication extends Application {
 
     public static OMS oms;
     public static Orthophoniste utilisateurCourant;
-    private Stage stage;
+    private static Stage stage;
     
     public static final String DIRECTORY_PATH = "src/main/resources/datafile";
     public static final String FILE_NAME = "oms.dat";

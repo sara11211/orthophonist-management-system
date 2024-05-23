@@ -1,8 +1,10 @@
 package com.models;
 
+import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.HashSet;
-public class Dossier {
+public class Dossier implements Serializable {
+    private static final long serialVersionUID = 1L;
     private static final AtomicLong uniqueIdGenerator = new AtomicLong(1);
     private final long numDossier;
 

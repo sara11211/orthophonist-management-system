@@ -5,22 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="715185da-a5e3-422d-86d7-1aecbb38895c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/AjoutRDV.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/AjoutBOController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/DisplayBOsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/AjoutBO.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/AtelierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/AtelierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ConsultationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ConsultationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/DetailsPatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DetailsPatientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/RechercheDossierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/RechercheDossierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ConsultDossierPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ConsultDossierPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ConsultationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ConsultationForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/Anamnese.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/Anamnese.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/BO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/BO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/BOPremier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/BOPremier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/Diagnostic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/Diagnostic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/Dossier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/Dossier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/Enfant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/Enfant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/EpreuveClinique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/EpreuveClinique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/Objectif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/Objectif.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/models/Trouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/models/Trouble.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/datafile/oms.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/datafile/oms.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/AtelierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/AtelierController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/CalendarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/CalendarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ConsultDossierPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ConsultDossierPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ConsultationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ConsultationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ConsultationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ConsultationForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$3$1.class" afterDir="false" />
@@ -32,6 +33,17 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$7$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/DetailsPatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/DetailsPatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Anamnese.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Anamnese.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/BO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/BO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/BOPremier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/BOPremier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Enfant$ClasseEtude.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Enfant$ClasseEtude.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Enfant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Enfant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/EpreuveClinique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/EpreuveClinique.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Objectif$TypeObjectif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Objectif$TypeObjectif.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Objectif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Objectif.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Trouble$Troubles.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/models/Trouble.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/models/Trouble.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/datafile/oms.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/datafile/oms.dat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +54,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -90,7 +102,8 @@
       <option name="presentableId" value="Default" />
       <updated>1716380335767</updated>
       <workItem from="1716380338864" duration="11374000" />
-      <workItem from="1716401899134" duration="13877000" />
+      <workItem from="1716401899134" duration="13989000" />
+      <workItem from="1716462911277" duration="10316000" />
     </task>
     <servers />
   </component>

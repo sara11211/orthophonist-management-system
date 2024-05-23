@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Anamnese implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private String nom;
     private String description;
     private List<Question> questions;

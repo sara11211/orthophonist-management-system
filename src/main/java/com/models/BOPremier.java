@@ -1,7 +1,12 @@
 package com.models;
+import java.io.Serializable;
 import java.time.LocalDate;
-public class BOPremier extends BO {
+public class BOPremier extends BO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Anamnese anamnese;
+
+    public BOPremier() {
+    }
     public BOPremier(LocalDate dateBO, Anamnese anamnese, EpreuveClinique epreuveCliniques, Diagnostic diagnostic, String projetTherap) {
         super(dateBO,epreuveCliniques, diagnostic, projetTherap);
         this.anamnese = anamnese;

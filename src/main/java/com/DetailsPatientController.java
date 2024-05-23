@@ -68,20 +68,18 @@ public class DetailsPatientController {
     @FXML
     private Button atelierButton;
 
+
+    @FXML
+
     private static Patient patient;
 
     private static boolean RDVAdded = false; // Flag to indicate if RDV was added
-    private static RDV newlyAddedRDV; // Reference to the newly added RDV
 
     // Method to check if RDV was added
     public static boolean isRDVAdded() {
         return RDVAdded;
     }
 
-    // Method to get the newly added RDV
-    public static RDV getNewlyAddedRDV() {
-        return newlyAddedRDV;
-    }
     @FXML
     private void handlePlusClick() {
         if (dateRDVField.getValue() != null) {
@@ -142,7 +140,7 @@ public class DetailsPatientController {
                         {
                             voirBOSButton.setOnAction(event -> {
                                 BO bo = getTableView().getItems().get(getIndex());
-                                // showAdditionalInfoPopup(bo);
+                                showBO(bo);
                             });
                         }
 
@@ -249,8 +247,34 @@ public class DetailsPatientController {
 
     @FXML
     void handleAddBO(ActionEvent event) {
-        // ADD BO
-    }
+        try {
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutBO.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Ajouter un BO");
+            AjoutBOController.setPatient(patient);
+
+
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
+        }    }
 
 
     @FXML
@@ -421,7 +445,34 @@ public class DetailsPatientController {
     }
 
 
+    private void showBO(BO bo) {
+        try {
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DisplayBOs.fxml"));
+            Parent root = fxmlLoader.load();
 
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Bilan orthophoniques");
+            InfoSupsController controller = fxmlLoader.getController();
+            //controller.setInfoSupField(bo);
+
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
+        }
+    }
     private void showAdditionalInfoPopup(RDV rdv) {
         try {
             // Load the FXML file for the popup

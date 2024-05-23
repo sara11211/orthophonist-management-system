@@ -1,14 +1,19 @@
 package com.models;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.time.LocalDate;
-public class BO {
-
+public class BO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private LocalDate dateBO;
     private EpreuveClinique epreuvesCliniques;
     private Diagnostic diagnostic;
     private String projetTherap;
 
+    public BO() {
+
+
+    }
     public BO(LocalDate dateBO, EpreuveClinique epreuvesCliniques, Diagnostic diagnostic, String projetTherap) {
         this.dateBO = dateBO;
         this.diagnostic = diagnostic;

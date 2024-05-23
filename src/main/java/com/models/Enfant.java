@@ -1,7 +1,9 @@
 package com.models;
+import java.io.Serializable;
 import java.time.LocalDate;
-public class Enfant extends Patient {
+public class Enfant extends Patient implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     public enum ClasseEtude {
         PREPARATOIRE,
         AP1, AP2, AP3, AP4, AP5,
