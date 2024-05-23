@@ -16,8 +16,7 @@ public class Orthophoniste implements Serializable {
     private String adresseEmail;
     private String motDePasse;
     private List<Anamnese> anamneses;
-    private HashSet<TestQuestionnaire> tests;
-    private HashSet<TestExercice> testsExos;
+    private HashSet<Test> tests;
     private Planning planning;
     private HashMap<Long, Patient> patientDossierHashMap;
 
@@ -31,7 +30,6 @@ public class Orthophoniste implements Serializable {
         this.motDePasse = motDePasse;
         this.anamneses = new ArrayList<>();
         this.tests = new HashSet<>();
-        this.testsExos = new HashSet<>();
         this.planning = planning;
         patientDossierHashMap = new HashMap<>();
     }
@@ -41,7 +39,6 @@ public class Orthophoniste implements Serializable {
         this.motDePasse = motDePasse;
         this.anamneses = new ArrayList<>();
         this.tests = new HashSet<>();
-        this.testsExos = new HashSet<>();
         patientDossierHashMap = new HashMap<>();
     }
 
@@ -49,7 +46,6 @@ public class Orthophoniste implements Serializable {
         this.adresseEmail = adresseEmail;
         this.anamneses = new ArrayList<>();
         this.tests = new HashSet<>();
-        this.testsExos = new HashSet<>();
         patientDossierHashMap = new HashMap<>();
     }
 
@@ -114,28 +110,16 @@ public class Orthophoniste implements Serializable {
         this.anamneses = anamneses;
     }
 
-    public void setTests(HashSet<TestQuestionnaire> tests) {
+    public void setTests(HashSet<Test> tests) {
         this.tests = tests;
     }
 
-    public void addTest(TestQuestionnaire test) {
+    public void addTest(Test test) {
         tests.add(test);
     }
 
-    public void addTest(TestExercice test) {
-        testsExos.add(test);
-    }
-
-    public HashSet<TestQuestionnaire> getTests() {
+    public HashSet<Test> getTests() {
         return tests;
-    }
-
-    public HashSet<TestExercice> getTestsExos() {
-        return testsExos;
-    }
-
-    public void setTestsExos(HashSet<TestExercice> testsExos) {
-        this.testsExos = testsExos;
     }
 
     public void setPatientDossierHashMap(HashMap<Long, Patient> patientDossierHashMap) {

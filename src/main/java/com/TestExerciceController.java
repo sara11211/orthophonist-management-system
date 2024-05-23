@@ -85,11 +85,11 @@ public class TestExerciceController {
         if (utilisateurCourant == null) {
             return;
         }
-        if (utilisateurCourant.getTestsExos() == null) {
-            utilisateurCourant.setTestsExos(new HashSet<>());
+        if (utilisateurCourant.getTests() == null) {
+            utilisateurCourant.setTests(new HashSet<>());
         }
 
-        if (!utilisateurCourant.getTestsExos().contains(testExercice)) {
+        if (!utilisateurCourant.getTests().contains(testExercice)) {
             utilisateurCourant.addTest(testExercice);
         }
         oms.sauvegarder();
