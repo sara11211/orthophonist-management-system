@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.HashSet;
 
 import static com.HelloApplication.oms;
@@ -69,7 +69,7 @@ public class TestExerciceController {
         } else {
             testExercice.setNom(name);
             testExercice.setDescription(description);
-            testExercice.getExercices();
+            testExercice.getExercices().clear();
         }
 
         for (Node exerciceNode : exercicesContainer.getChildren()) {
@@ -123,6 +123,7 @@ public class TestExerciceController {
                 controller.setConsigne(exercice.getConsigne());
                 controller.setMateriel(exercice.getMateriel());
                 controller.setScore(exercice.getScore());
+                exerciceNode.setUserData(controller); // Set user data to controller
                 exercicesContainer.getChildren().add(exerciceNode);
             } catch (IOException e) {
                 e.printStackTrace();
