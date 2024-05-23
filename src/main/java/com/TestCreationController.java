@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import static com.HelloApplication.oms;
 import static com.HelloApplication.utilisateurCourant;
@@ -32,6 +34,8 @@ public class TestCreationController {
     private Label errorLabel;
 
     private TestQuestionnaire testQuestionnaire;
+
+     private Map<QuestionTestItemController, Question> controllerQuestionMap = new HashMap<>();
 
     @FXML
     public void initialize() {
@@ -67,7 +71,7 @@ public class TestCreationController {
         } else {
             testQuestionnaire.setNom(name);
             testQuestionnaire.setDescription(description);
-            testQuestionnaire.getQuestions();
+            testQuestionnaire.getQuestions().clear();
         }
 
         for (Node questionNode : questionsContainer.getChildren()) {
@@ -109,11 +113,11 @@ public class TestCreationController {
             return;
         }
 
-        if (utilisateurCourant.getTests() == null) {
-            utilisateurCourant.setTests(new HashSet<>());
-        }
-
         if (!utilisateurCourant.getTests().contains(testQuestionnaire)) {
+            utilisateurCourant.getTests().add(testQuestionnaire);
+        } else {
+            // Replace the existing test
+            utilisateurCourant.getTests().remove(testQuestionnaire);
             utilisateurCourant.getTests().add(testQuestionnaire);
         }
         oms.sauvegarder();
@@ -140,6 +144,7 @@ public class TestCreationController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("question_item_test.fxml"));
                 Parent questionNode = loader.load();
                 QuestionTestItemController controller = loader.getController();
+                controllerQuestionMap.put(controller, question);
                 controller.setQuestion(question);
                 questionsContainer.getChildren().add(questionNode);
             } catch (IOException e) {
