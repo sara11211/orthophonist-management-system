@@ -22,15 +22,15 @@
             <Button onAction="#handleFirstRDV" text="Premier rendez-vous ? Créez un dossier !" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
 
             <!-- First Name -->
-            <Label text="Prénom du patient:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="firstNameLabel" text="Prénom du patient:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="firstNameField" promptText="Entrez le prénom" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <!-- Last Name -->
-            <Label text="Nom du patient:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="lastNameLabel" text="Nom du patient:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="lastNameField" promptText="Entrez le nom" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
             <!-- Age -->
-            <Label text="Âge du patient:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="ageLabel" text="Âge du patient:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="ageField" promptText="Entrez l'âge" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
             <!-- Consultation Time -->

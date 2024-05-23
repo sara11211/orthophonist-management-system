@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DetailsPatientController">
+    <center>
+        <GridPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <hgap>10</hgap>
+            <vgap>10</vgap>
+
+            <VBox spacing="10" alignment="CENTER">
+                <children>
+                    <Label text="Veuillez entrer la date du rendez-vous :" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <DatePicker fx:id="dateRDVField" promptText="Veuillez entrer la date du rendez-vous :" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <Button text="+" onAction="#handlePlusClick"/>
+                    <Button fx:id="consultationButton" text="Consultation" onAction="#handleConsultationClick" visible="false"/>
+                    <Button fx:id="suiviButton" text="Séance de suivi" onAction="#handleSuiviClick" visible="false"/>
+                    <Button fx:id="atelierButton" text="Atelier" onAction="#handleAtelierClick" visible="false"/>
+                </children>
+            </VBox>
+        </GridPane>
+    </center>
+</BorderPane>

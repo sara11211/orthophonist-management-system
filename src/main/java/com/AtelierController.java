@@ -118,7 +118,6 @@ public class AtelierController implements Initializable {
         SessionLibre sessionLibre = new SessionLibre(selected_day.atTime(heureDebut), selected_day.atTime(heureDebut.plus(duree)));
         if (utilisateurCourant.getPlanning().planifier(sessionLibre,atelier)) {
             Color color = Color.BLUE;
-            calendarController.colorStrip(selected_day, heureDebut, heureDebut.plus(duree), color);
             for (RDV rdvPlanned :  utilisateurCourant.getPlanning().getRDVSPlannified(selected_day)) {
                 System.out.println("----- Rendez-vous plannifié -----");
                 System.out.println("Date du rendez-vous  : "+rdvPlanned.getDate());

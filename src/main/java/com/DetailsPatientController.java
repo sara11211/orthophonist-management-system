@@ -6,12 +6,15 @@ import javafx.beans.value.ObservableValue;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -19,6 +22,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 public class DetailsPatientController {
 
@@ -52,12 +56,44 @@ public class DetailsPatientController {
     @FXML
     private TableColumn<BO, Void> viewBOColumn;
 
+    @FXML
+    private DatePicker dateRDVField;
 
+    @FXML
+    private Button consultationButton;
 
-    private Patient patient;
+    @FXML
+    private Button suiviButton;
 
+    @FXML
+    private Button atelierButton;
 
-    public void displayPatient(Patient patient) {
+    private static Patient patient;
+
+    private static boolean RDVAdded = false; // Flag to indicate if RDV was added
+    private static RDV newlyAddedRDV; // Reference to the newly added RDV
+
+    // Method to check if RDV was added
+    public static boolean isRDVAdded() {
+        return RDVAdded;
+    }
+
+    // Method to get the newly added RDV
+    public static RDV getNewlyAddedRDV() {
+        return newlyAddedRDV;
+    }
+    @FXML
+    private void handlePlusClick() {
+        if (dateRDVField.getValue() != null) {
+            consultationButton.setVisible(true);
+            suiviButton.setVisible(true);
+            atelierButton.setVisible(true);
+        }
+    }
+    public void setPatient(Patient patient) { this.patient = patient;
+    System.out.println("INSIDE SETPATIENT : "+patient.getPrenom());}
+
+    public void displayPatient() {
         if (patient != null) {
             firstNameLabel.setText(patient.getPrenom());
             lastNameLabel.setText(patient.getNom());
@@ -211,6 +247,148 @@ public class DetailsPatientController {
         }
     }
 
+    @FXML
+    void handleAddBO(ActionEvent event) {
+        // ADD BO
+    }
+
+
+    @FXML
+    void handleAddRDV(ActionEvent event) {
+        try {
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutRDV.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Détails de la consultation");
+
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
+        }
+
+    }
+
+
+    @FXML
+    public void handleConsultationClick() {
+        try {
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ConsultationForm.fxml"));
+            Parent root = fxmlLoader.load();
+
+            ConsultationController consultationController = fxmlLoader.getController();
+            System.out.println("TEST PATIENT : "+patient.getNom());
+            consultationController.setPatient(patient);
+
+            consultationController.setSelectedDay(dateRDVField.getValue());  // Pass selected_day to the ConsultationController
+
+            //consultationController.setCalendarController(this);
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Détails de la consultation");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+            if (consultationController.getSubmitSuccess()) {
+                System.out.println("INSIIIIIDEDDDDDDDDDDDDDD");
+                RDV newRDV = consultationController.getNewConsultation();
+                patient.getRdvs().add(newRDV);
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void handleSuiviClick() {
+        try {
+            System.out.println("Seance de suivi Clicked");
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RDVSuiviForm.fxml"));
+            Parent root = fxmlLoader.load();
+
+            RDVSuiviController rdvSuiviController = fxmlLoader.getController();
+            rdvSuiviController.setSelectedDay(dateRDVField.getValue());
+            //rdvSuiviController.setCalendarController(this);
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Détails de la séance de suivi");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
+        }
+    }
+    @FXML
+    public void handleAtelierClick() {
+        // Code to navigate to Atelier page
+        try {
+            System.out.println("Atelier Clicked");
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AtelierForm.fxml"));
+            Parent root = fxmlLoader.load();
+
+            AtelierController atelierController = fxmlLoader.getController();
+            atelierController.setSelectedDay(dateRDVField.getValue());
+            //atelierController.setCalendarController(this);
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Détails de l'atelier");
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
+        }
+    }
+
     private void showObservations(RDV rdv) {
         System.out.println("SHOW OBSERVATION !");
         try {
@@ -311,4 +489,5 @@ public class DetailsPatientController {
         }
         // Implement method to add a new observation
     }
+
 }

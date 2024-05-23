@@ -231,7 +231,6 @@ public class CalendarController implements Initializable {
 
             ConsultationController consultationController = fxmlLoader.getController();
             consultationController.setSelectedDay(selected_day);  // Pass selected_day to the ConsultationController
-            consultationController.setCalendarController(this);
             // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de la consultation");
