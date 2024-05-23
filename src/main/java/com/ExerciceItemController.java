@@ -1,6 +1,8 @@
 package com;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 
 public class ExerciceItemController {
@@ -10,7 +12,14 @@ public class ExerciceItemController {
     @FXML
     private TextField materielTextField;
     @FXML
-    private TextField scoreTextField;
+    private Spinner<Integer> scoreSpinner;
+
+    @FXML
+    public void initialize() {
+        // Initialize the spinner with values from 1 to 10
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+        scoreSpinner.setValueFactory(valueFactory);
+    }
 
     public void setConsigne(String consigne) {
         consigneTextField.setText(consigne);
@@ -21,7 +30,7 @@ public class ExerciceItemController {
     }
 
     public void setScore(int score) {
-        scoreTextField.setText(String.valueOf(score));
+        scoreSpinner.getValueFactory().setValue(score);
     }
 
     public String getConsigne() {
@@ -33,10 +42,6 @@ public class ExerciceItemController {
     }
 
     public int getScore() {
-        try {
-            return Integer.parseInt(scoreTextField.getText());
-        } catch (NumberFormatException e) {
-            return 0;
-        }
+        return scoreSpinner.getValue();
     }
 }

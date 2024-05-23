@@ -67,7 +67,7 @@ public class TestCreationController {
         } else {
             testQuestionnaire.setNom(name);
             testQuestionnaire.setDescription(description);
-            testQuestionnaire.getQuestions().clear();
+            testQuestionnaire.getQuestions();
         }
 
         for (Node questionNode : questionsContainer.getChildren()) {

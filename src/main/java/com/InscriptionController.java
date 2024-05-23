@@ -77,6 +77,7 @@ public class InscriptionController {
 
             HelloApplication.oms.getOrthophonistes().put(newUser, userMotDePasse);
             HelloApplication.utilisateurCourant = newUser;
+            HelloApplication.oms.sauvegarder();
 
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));

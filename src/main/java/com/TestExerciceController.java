@@ -74,6 +74,10 @@ public class TestExerciceController {
 
         for (Node exerciceNode : exercicesContainer.getChildren()) {
             ExerciceItemController controller = (ExerciceItemController) exerciceNode.getUserData();
+            if (controller == null) {
+                System.out.println("Controller is null for one of the exercise nodes");
+                continue;
+            }
             String consigne = controller.getConsigne();
             String materiel = controller.getMateriel();
             int score = controller.getScore();
