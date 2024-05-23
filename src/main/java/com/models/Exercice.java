@@ -1,6 +1,8 @@
 package com.models;
 
-public class Exercice {
+import java.io.Serializable;
+
+public class Exercice implements Serializable {
     private String consigne;
     private String materiel;
     private int score;

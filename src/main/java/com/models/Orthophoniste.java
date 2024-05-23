@@ -2,12 +2,11 @@ package com.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.time.LocalTime;
-import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
+
 public class Orthophoniste implements Serializable {
     // attributes
     private String nom;
@@ -18,8 +17,7 @@ public class Orthophoniste implements Serializable {
     private String motDePasse;
     private List<Anamnese> anamneses;
     private HashSet<TestQuestionnaire> tests;
-
-
+    private HashSet<TestExercice> testsExos;
     private Planning planning;
     private HashMap<Long, Patient> patientDossierHashMap;
 
@@ -31,8 +29,9 @@ public class Orthophoniste implements Serializable {
         this.numTel = numTel;
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
-        this.anamneses = new ArrayList<>(); 
+        this.anamneses = new ArrayList<>();
         this.tests = new HashSet<>();
+        this.testsExos = new HashSet<>();
         this.planning = planning;
         patientDossierHashMap = new HashMap<>();
     }
@@ -40,18 +39,19 @@ public class Orthophoniste implements Serializable {
     public Orthophoniste(String adresseEmail, String motDePasse) {
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
-        this.anamneses = new ArrayList<>(); 
+        this.anamneses = new ArrayList<>();
         this.tests = new HashSet<>();
+        this.testsExos = new HashSet<>();
         patientDossierHashMap = new HashMap<>();
     }
 
     public Orthophoniste(String adresseEmail) {
         this.adresseEmail = adresseEmail;
-        this.anamneses = new ArrayList<>(); 
+        this.anamneses = new ArrayList<>();
         this.tests = new HashSet<>();
+        this.testsExos = new HashSet<>();
         patientDossierHashMap = new HashMap<>();
     }
-
 
     // setters & getters
     public String getNom() {
@@ -118,10 +118,26 @@ public class Orthophoniste implements Serializable {
         this.tests = tests;
     }
 
+    public void addTest(TestQuestionnaire test) {
+        tests.add(test);
+    }
+
+    public void addTest(TestExercice test) {
+        testsExos.add(test);
+    }
+
     public HashSet<TestQuestionnaire> getTests() {
         return tests;
     }
-    
+
+    public HashSet<TestExercice> getTestsExos() {
+        return testsExos;
+    }
+
+    public void setTestsExos(HashSet<TestExercice> testsExos) {
+        this.testsExos = testsExos;
+    }
+
     public void setPatientDossierHashMap(HashMap<Long, Patient> patientDossierHashMap) {
         this.patientDossierHashMap = patientDossierHashMap;
     }

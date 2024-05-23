@@ -27,14 +27,6 @@
                <Font name="Nirmala UI Bold" size="27.0" />
             </font>
          </Text>
-         <Button layoutX="408.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleRevenir" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #023436; -fx-background-radius: 5;" text="Revenir" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
         </AnchorPane>
     </center>
 </BorderPane>
