@@ -3,12 +3,14 @@ package com;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -70,7 +72,6 @@ public class SideBarController {
 
     @FXML
     public void handleTestingDossier(ActionEvent event) {
-
         try {
             Parent root = FXMLLoader.load(getClass().getResource("SearchDossier.fxml"));
             Scene scene = new Scene(root);
@@ -80,9 +81,7 @@ public class SideBarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
 
     @FXML
     void handleSignOut(ActionEvent event) {
@@ -115,7 +114,7 @@ public class SideBarController {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     @FXML
     void handleMoreClick() {
         try {
@@ -134,4 +133,23 @@ public class SideBarController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+void handleLogoClick(MouseEvent event) {
+    try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("first_page.fxml"));
+        Parent root = fxmlLoader.load();
+
+        // Get the controller instance and set the userName
+        FirstPageController controller = fxmlLoader.getController();
+        controller.setUserName(utilisateurCourant.getPrenom() + " " + utilisateurCourant.getNom());
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }
