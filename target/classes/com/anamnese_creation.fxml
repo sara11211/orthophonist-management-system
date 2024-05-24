@@ -28,11 +28,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ScrollPane layoutX="423.0" layoutY="137.0" prefHeight="347.0" prefWidth="311.0" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;">
-               <content>
-                  <VBox fx:id="questionsContainer" prefWidth="311.0" />
-               </content>
-            </ScrollPane>
+<ScrollPane layoutX="423.0" layoutY="137.0" prefHeight="347.0" prefWidth="311.0" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;">
+   <content>
+      <VBox fx:id="questionsContainer" prefWidth="311.0" />
+   </content>
+</ScrollPane>
             <Button fx:id="saveAnamneseButton" layoutX="112.0" layoutY="523.0" onAction="#handleSaveAnamnese" prefHeight="31.0" prefWidth="256.0" style="-fx-background-color: #023436;" text="Save Anamnese" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
