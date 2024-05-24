@@ -9,39 +9,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AnamneseTypeSelectionController">
+<BorderPane prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AnamneseTypeSelectionController">
     <center>
         <AnchorPane prefHeight="425.0" prefWidth="639.0" style="-fx-background-color: #f0f3f5;" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="createEnfantAnamneseButton" layoutX="351.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleCreateEnfantAnamnese" prefHeight="33.0" prefWidth="168.0" style="-fx-background-color: #023436;" text="Anamnèse Enfant" textFill="WHITE">
+                <Button fx:id="createEnfantAnamneseButton" layoutX="484.0" layoutY="464.0" mnemonicParsing="false" onAction="#handleCreateEnfantAnamnese" prefHeight="39.0" prefWidth="225.0" style="-fx-background-color: #023436;" text="Anamnèse Enfant" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="createAdulteAnamneseButton" layoutX="98.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleCreateAdulteAnamnese" prefHeight="32.0" prefWidth="167.0" style="-fx-background-color: #023436;" text="Anamnèse Adulte" textFill="WHITE">
+                <Button fx:id="createAdulteAnamneseButton" layoutX="136.0" layoutY="464.0" mnemonicParsing="false" onAction="#handleCreateAdulteAnamnese" prefHeight="39.0" prefWidth="225.0" style="-fx-background-color: #023436;" text="Anamnèse Adulte" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-            <ImageView fitHeight="251.0" fitWidth="231.0" layoutX="277.0" layoutY="117.0">
+            <ImageView fitHeight="316.0" fitWidth="289.0" layoutX="397.0" layoutY="151.0">
                <image>
                   <Image url="@images/kid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="251.0" fitWidth="239.0" layoutX="106.0" layoutY="131.0">
+            <ImageView fitHeight="323.0" fitWidth="287.0" layoutX="167.0" layoutY="161.0">
                <image>
                   <Image url="@images/man.png" />
                </image>
             </ImageView>
-            <Text fill="#03b5aa" layoutX="68.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer une nouvelle anamnèse">
+            <Text fill="#03b5aa" layoutX="119.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer une nouvelle anamnèse">
                <font>
-                  <Font name="Nirmala UI Bold" size="27.0" />
+                  <Font name="Nirmala UI Bold" size="30.0" />
                </font>
             </Text>
             </children>

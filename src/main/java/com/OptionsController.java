@@ -57,7 +57,15 @@ private void handleViewAnamneses(ActionEvent event) {
 
 @FXML
     private void handleCreateTest(ActionEvent event) {
-        loadScene(event, "test_creation.fxml");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("create_test_options.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

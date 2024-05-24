@@ -2,11 +2,11 @@ package com.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.HashMap;
-import java.time.LocalTime;
-import java.time.LocalDate;
+
 public class Orthophoniste implements Serializable {
     // attributes
     private String nom;
@@ -16,9 +16,7 @@ public class Orthophoniste implements Serializable {
     private String adresseEmail;
     private String motDePasse;
     private List<Anamnese> anamneses;
-    private List<Test> tests;
-
-
+    private HashSet<Test> tests;
     private Planning planning;
     private HashMap<Long, Patient> patientDossierHashMap;
 
@@ -30,8 +28,8 @@ public class Orthophoniste implements Serializable {
         this.numTel = numTel;
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
-        this.anamneses = new ArrayList<>(); 
-        this.tests = new ArrayList<>();
+        this.anamneses = new ArrayList<>();
+        this.tests = new HashSet<>();
         this.planning = planning;
         patientDossierHashMap = new HashMap<>();
     }
@@ -39,18 +37,17 @@ public class Orthophoniste implements Serializable {
     public Orthophoniste(String adresseEmail, String motDePasse) {
         this.adresseEmail = adresseEmail;
         this.motDePasse = motDePasse;
-        this.anamneses = new ArrayList<>(); 
-        this.tests = new ArrayList<>();
+        this.anamneses = new ArrayList<>();
+        this.tests = new HashSet<>();
         patientDossierHashMap = new HashMap<>();
     }
 
     public Orthophoniste(String adresseEmail) {
         this.adresseEmail = adresseEmail;
-        this.anamneses = new ArrayList<>(); 
-        this.tests = new ArrayList<>();
+        this.anamneses = new ArrayList<>();
+        this.tests = new HashSet<>();
         patientDossierHashMap = new HashMap<>();
     }
-
 
     // setters & getters
     public String getNom() {
@@ -113,12 +110,16 @@ public class Orthophoniste implements Serializable {
         this.anamneses = anamneses;
     }
 
-    public List<Test> getTests() {
-        return tests;
+    public void setTests(HashSet<Test> tests) {
+        this.tests = tests;
     }
 
-    public void setTests(List<Test> tests) {
-        this.tests = tests;
+    public void addTest(Test test) {
+        tests.add(test);
+    }
+
+    public HashSet<Test> getTests() {
+        return tests;
     }
 
     public void setPatientDossierHashMap(HashMap<Long, Patient> patientDossierHashMap) {

@@ -7,18 +7,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 import static com.HelloApplication.oms;
 import static com.HelloApplication.utilisateurCourant;
-
-import com.models.Proposition;
 
 public class TestCreationController {
     @FXML
@@ -34,7 +33,9 @@ public class TestCreationController {
     @FXML
     private Label errorLabel;
 
-    private Test test;
+    private TestQuestionnaire testQuestionnaire;
+
+     private Map<QuestionTestItemController, Question> controllerQuestionMap = new HashMap<>();
 
     @FXML
     public void initialize() {
@@ -65,12 +66,12 @@ public class TestCreationController {
             return;
         }
 
-        if (test == null) {
-            test = new Test(name, description, new ArrayList<>());
+        if (testQuestionnaire == null) {
+            testQuestionnaire = new TestQuestionnaire(name, description, new HashSet<>());
         } else {
-            test.setNom(name);
-            test.setCapacite(description);
-            test.getQuestions().clear();
+            testQuestionnaire.setNom(name);
+            testQuestionnaire.setDescription(description);
+            testQuestionnaire.getQuestions().clear();
         }
 
         for (Node questionNode : questionsContainer.getChildren()) {
@@ -83,8 +84,8 @@ public class TestCreationController {
                 String questionType = questionTypeComboBox.getValue();
 
                 if (!questionText.isEmpty() && questionType != null) {
+                    HashSet<Proposition> propositions = new HashSet<>();
                     if (questionType.equals("Multiple Choice (Multiple Answers)") || questionType.equals("Multiple Choice (Single Answer)")) {
-                        ArrayList<Proposition> propositions = new ArrayList<>();
                         for (Node propositionNode : propositionsContainer.getChildren()) {
                             if (propositionNode instanceof TextField) {
                                 TextField propositionField = (TextField) propositionNode;
@@ -96,12 +97,12 @@ public class TestCreationController {
                         }
 
                         if (questionType.equals("Multiple Choice (Multiple Answers)")) {
-                            test.getQuestions().add(new QCM(questionText, propositions.toArray(new Proposition[0])));
+                            testQuestionnaire.getQuestions().add(new QCM(questionText, propositions.toArray(new Proposition[0])));
                         } else {
-                            test.getQuestions().add(new QCU(questionText, propositions.toArray(new Proposition[0])));
+                            testQuestionnaire.getQuestions().add(new QCU(questionText, propositions.toArray(new Proposition[0])));
                         }
                     } else if (questionType.equals("Free Text")) {
-                        test.getQuestions().add(new QuestionLibre(questionText, 0)); // Add Free Text question
+                        testQuestionnaire.getQuestions().add(new QuestionLibre(questionText, 0)); // Add Free Text question
                     }
                 }
             }
@@ -112,16 +113,16 @@ public class TestCreationController {
             return;
         }
 
-        if (utilisateurCourant.getTests() == null) {
-            utilisateurCourant.setTests(new ArrayList<>());
-        }
-
-        if (!utilisateurCourant.getTests().contains(test)) {
-            utilisateurCourant.getTests().add(test);
+        if (!utilisateurCourant.getTests().contains(testQuestionnaire)) {
+            utilisateurCourant.getTests().add(testQuestionnaire);
+        } else {
+            // Replace the existing test
+            utilisateurCourant.getTests().remove(testQuestionnaire);
+            utilisateurCourant.getTests().add(testQuestionnaire);
         }
         oms.sauvegarder();
 
-        System.out.println("Test saved with " + test.getQuestions().size() + " questions.");
+        System.out.println("Test saved with " + testQuestionnaire.getQuestions().size() + " questions.");
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
@@ -134,15 +135,16 @@ public class TestCreationController {
         }
     }
 
-    public void setTest(Test test) {
-        this.test = test;
-        testNameField.setText(test.getNom());
-        testDescriptionField.setText(test.getCapacite());
-        for (Question question : test.getQuestions()) {
+    public void setTest(TestQuestionnaire testQuestionnaire) {
+        this.testQuestionnaire = testQuestionnaire;
+        testNameField.setText(testQuestionnaire.getNom());
+        testDescriptionField.setText(testQuestionnaire.getDescription());
+        for (Question question : testQuestionnaire.getQuestions()) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("question_item_test.fxml"));
                 Parent questionNode = loader.load();
                 QuestionTestItemController controller = loader.getController();
+                controllerQuestionMap.put(controller, question);
                 controller.setQuestion(question);
                 questionsContainer.getChildren().add(questionNode);
             } catch (IOException e) {

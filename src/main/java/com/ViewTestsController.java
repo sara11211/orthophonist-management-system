@@ -1,6 +1,8 @@
 package com;
 
 import com.models.Test;
+import com.models.TestExercice;
+import com.models.TestQuestionnaire;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,11 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashSet;
 
 import static com.HelloApplication.utilisateurCourant;
 import static com.HelloApplication.oms;
@@ -34,7 +37,7 @@ public class ViewTestsController {
     @FXML
     public void initialize() {
         testNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        testDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("capacite"));
+        testDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         loadTests();
         addButtonsToTable();
@@ -132,11 +135,18 @@ public class ViewTestsController {
     private void handleViewTest(Test selectedTest) {
         if (selectedTest != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_details.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("test_details.fxml"));
                 Parent root = loader.load();
 
-                TestDetailController controller = loader.getController();
-                controller.setTest(selectedTest);
+                if (selectedTest instanceof TestQuestionnaire) {
+                    TestDetailController controller = loader.getController();
+                    controller.setTest((TestQuestionnaire) selectedTest);
+                } else if (selectedTest instanceof TestExercice) {
+                    loader = new FXMLLoader(getClass().getResource("test_exercice_detail.fxml"));
+                    root = loader.load();
+                    TestDetailController controller = loader.getController();
+                    controller.setTestExercice((TestExercice) selectedTest);
+                }
 
                 Stage stage = new Stage();
                 stage.setTitle("Test Details");
@@ -159,31 +169,31 @@ public class ViewTestsController {
     private void handleModifyTest(Test selectedTest) {
         if (selectedTest != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_creation.fxml"));
+                FXMLLoader loader;
+                if (selectedTest instanceof TestQuestionnaire) {
+                    loader = new FXMLLoader(getClass().getResource("test_creation.fxml"));
+                } else if (selectedTest instanceof TestExercice) {
+                    loader = new FXMLLoader(getClass().getResource("test_exercice_creation.fxml"));
+                } else {
+                    return;
+                }
+
                 Parent root = loader.load();
 
-                TestCreationController controller = loader.getController();
-                controller.setTest(selectedTest);
+                if (selectedTest instanceof TestQuestionnaire) {
+                    TestCreationController controller = loader.getController();
+                    controller.setTest((TestQuestionnaire) selectedTest);
+                } else if (selectedTest instanceof TestExercice) {
+                    TestExerciceController controller = loader.getController();
+                    controller.setTestExercice((TestExercice) selectedTest);
+                }
 
                 Scene currentScene = testsTable.getScene();
                 currentScene.setRoot(root);
-                testsTable.refresh(); 
+                testsTable.refresh();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    @FXML
-    private void handleRevenir(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

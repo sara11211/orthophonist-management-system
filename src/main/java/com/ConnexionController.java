@@ -48,16 +48,14 @@ public class ConnexionController {
         String userMdp = motDePasse.getText();
 
         if (oms.isExist(userEmail, userMdp)) {
-            Orthophoniste user = oms.findUser(userEmail, userMdp);
-            if (user != null) {
-                utilisateurCourant = oms.findUser(userEmail, userMdp);
-
+            utilisateurCourant = oms.findUser(userEmail, userMdp);
+            if (utilisateurCourant != null) {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("first_page.fxml"));
                 Parent root = fxmlLoader.load();
 
                 // Get the controller instance and set the userName
-                ConnexionController controller = fxmlLoader.getController();
-                controller.userName.setText(utilisateurCourant.getPrenom() + " " + utilisateurCourant.getNom());
+                FirstPageController controller = fxmlLoader.getController();
+                controller.setUserName(utilisateurCourant.getPrenom() + " " + utilisateurCourant.getNom());
 
                 scene = new Scene(root);
 

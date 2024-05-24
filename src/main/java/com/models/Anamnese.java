@@ -10,11 +10,19 @@ public class Anamnese implements Serializable {
     private String nom;
     private String description;
     private List<Question> questions;
+    private String type;
 
     public Anamnese(String nom, String description) {
         this.nom = nom;
         this.description = description;
         this.questions = new ArrayList<>();
+    }
+
+    public Anamnese(String nom, String description, String type) {
+        this.nom = nom;
+        this.description = description;
+        this.questions = new ArrayList<>();
+        this.type = type;
     }
 
     public String getNom() {
@@ -39,5 +47,13 @@ public class Anamnese implements Serializable {
 
     public void addQuestion(Question question) {
         this.questions.add(question);
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }

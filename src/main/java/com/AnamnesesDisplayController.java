@@ -35,13 +35,17 @@ public class AnamnesesDisplayController {
     @FXML
     private TableColumn<Anamnese, String> descriptionColumn;
     @FXML
-    private TableColumn<Anamnese, Void> actionColumn;
+    private TableColumn<Anamnese, Void> actionColumn;    
+    @FXML
+    private TableColumn<Anamnese, String> typeColumn;
+
 
     private ObservableList<Anamnese> anamneses = FXCollections.observableArrayList();
 
     public void initialize() {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type")); // Bind the type column
         anamnesesTable.setItems(anamneses);
         addButtonToTable();
     }

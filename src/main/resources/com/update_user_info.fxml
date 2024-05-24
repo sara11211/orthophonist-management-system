@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.UpdateUserInfoController">
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="403.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="firstName" layoutX="234.0" layoutY="215.0" prefHeight="40.0" prefWidth="173.0" promptText="First Name" style="-fx-border-color: #049A8F; -fx-border-width: 1px; -fx-border-radius: 5; -fx-background-color: #f0f3f5;" />
+            <TextField fx:id="familyName" layoutX="464.0" layoutY="215.0" prefHeight="40.0" prefWidth="173.0" promptText="Family Name" style="-fx-border-color: #049A8F; -fx-border-width: 1px; -fx-border-radius: 5; -fx-background-color: #f0f3f5;" />
+            <TextField fx:id="telephone" layoutX="236.0" layoutY="332.0" prefHeight="40.0" prefWidth="404.0" promptText="Phone Number" style="-fx-border-color: #049A8F; -fx-border-width: 1px; -fx-border-radius: 5; -fx-background-color: #f0f3f5;" />
+            <TextField fx:id="email" layoutX="236.0" layoutY="390.0" prefHeight="40.0" prefWidth="404.0" promptText="Email" style="-fx-border-color: #049A8F; -fx-border-width: 1px; -fx-border-radius: 5; -fx-background-color: #f0f3f5;" />
+            <PasswordField fx:id="motDePasse" layoutX="236.0" layoutY="446.0" prefHeight="40.0" prefWidth="404.0" promptText="Password" style="-fx-border-color: #049A8F; -fx-border-width: 1px; -fx-border-radius: 5; -fx-background-color: #f0f3f5;" />
+            <Text fill="#03b5aa" layoutX="253.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier les informations" wrappingWidth="368.7336730957031">
+               <font>
+                  <Font name="Nirmala UI Bold" size="30.0" />
+               </font>
+            </Text>
+            <TextField fx:id="address" layoutX="235.0" layoutY="275.0" prefHeight="40.0" prefWidth="404.0" promptText="Address" style="-fx-border-color: #049A8F; -fx-border-width: 1px; -fx-border-radius: 5; -fx-background-color: #f0f3f5;" />
+            <Button fx:id="saveButton" layoutX="351.0" layoutY="526.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="37.0" prefWidth="173.0" style="-fx-background-color: #023436; -fx-background-radius: 8;" text="Enregistrer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <!-- <Button fx:id="cancelButton" layoutX="211.0" layoutY="401.0" mnemonicParsing="false" onAction="#cancelChanges" prefHeight="37.0" prefWidth="129.0" style="-fx-background-color: #023436; -fx-background-radius: 8;" text="Annuler" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button> -->
+            <Label fx:id="erreurText" alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="503.0" prefHeight="15.0" prefWidth="269.0" textAlignment="CENTER" textFill="#ff0101">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="81.0" fitWidth="83.0" layoutX="389.0" layoutY="113.0">
+               <image>
+                  <Image url="@images/user.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+      <left>
+      <fx:include source="bar.fxml" />
+   </left>
+</BorderPane>
