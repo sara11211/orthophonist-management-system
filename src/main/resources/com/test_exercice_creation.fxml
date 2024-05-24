@@ -5,21 +5,19 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TestExerciceController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TestExerciceController">
    <center>
       <AnchorPane prefHeight="425.0" prefWidth="639.0" style="-fx-background-color: #f0f3f5;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="testNameField" layoutX="62.0" layoutY="123.0" prefHeight="35.0" prefWidth="225.0" promptText="test Name" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
-            <TextArea fx:id="testDescriptionField" layoutX="62.0" layoutY="171.0" prefHeight="207.0" prefWidth="225.0" promptText="test Description" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
-            <Button fx:id="addExerciceButton" layoutX="315.0" layoutY="403.0" onAction="#handleAddExercice" prefHeight="31.0" prefWidth="262.0" style="-fx-background-color: #ffffffff;" text="Add exercice" textFill="#023436">
+            <TextField fx:id="testNameField" layoutX="116.0" layoutY="138.0" prefHeight="35.0" prefWidth="283.0" promptText="Nom du test" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
+            <TextArea fx:id="testDescriptionField" layoutX="115.0" layoutY="186.0" prefHeight="312.0" prefWidth="284.0" promptText="Description du test" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
+            <Button fx:id="addExerciceButton" layoutX="464.0" layoutY="528.0" onAction="#handleAddExercice" prefHeight="31.0" prefWidth="225.0" style="-fx-background-color: #ffffffff;" text="Ajouter un exercice" textFill="#023436">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -27,12 +25,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ScrollPane layoutX="316.0" layoutY="123.0" prefHeight="255.0" prefWidth="262.0" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;">
+            <ScrollPane layoutX="428.0" layoutY="138.0" prefHeight="360.0" prefWidth="298.0" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;">
                <content>
                   <VBox fx:id="exercicesContainer" prefWidth="200.0" />
                </content>
             </ScrollPane>
-            <Button fx:id="saveTestButton" layoutX="63.0" layoutY="403.0" onAction="#handleSaveTest" prefHeight="31.0" prefWidth="224.0" style="-fx-background-color: #023436;" text="Save test" textFill="WHITE">
+            <Button fx:id="saveTestButton" layoutX="145.0" layoutY="528.0" onAction="#handleSaveTest" prefHeight="31.0" prefWidth="224.0" style="-fx-background-color: #023436;" text="Enregistrer le test" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -40,7 +38,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fill="#03b5aa" layoutX="62.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle test" wrappingWidth="254.8912353515625">
+            <Text fill="#03b5aa" layoutX="116.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau test" wrappingWidth="254.8912353515625">
                <font>
                   <Font name="Nirmala UI Bold" size="26.0" />
                </font>

@@ -9,24 +9,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TestCreationController">
+<AnchorPane prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TestCreationController">
     <fx:include source="bar.fxml" />
-    <AnchorPane layoutX="154.0" prefHeight="500.0" prefWidth="619.0">
-        <TextField fx:id="testNameField" layoutX="288.0" layoutY="51.0" prefHeight="27.0" prefWidth="247.0" promptText="Test Name" style="-fx-border-color: #03B5AA; -fx-border-width: 0.5px; -fx-border-radius: 2;" />
-        <TextArea fx:id="testDescriptionField" layoutX="288.0" layoutY="87.0" prefHeight="100.0" prefWidth="247.0" promptText="Test Description" style="-fx-border-color: #03B5AA; -fx-border-width: 0.5px; -fx-border-radius: 2;" />
-        <VBox fx:id="questionsContainer" layoutX="84.0" layoutY="200.0" prefHeight="200.0" prefWidth="451.0" style="-fx-border-color: #03B5AA; -fx-border-width: 0.5px; -fx-border-radius: 2;" />
-        <Button fx:id="addQuestionButton" layoutX="101.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleAddQuestion" prefHeight="27.0" prefWidth="188.0" style="-fx-background-color: #023436;" text="Add Question" textFill="WHITE">
+    <AnchorPane layoutX="154.0" prefHeight="630.0" prefWidth="847.0">
+        <TextField fx:id="testNameField" layoutX="458.0" layoutY="80.0" prefHeight="35.0" prefWidth="305.0" promptText="Nom du test" style="-fx-border-color: #03B5AA; -fx-border-width: 0.5px; -fx-border-radius: 2;" />
+        <TextArea fx:id="testDescriptionField" layoutX="458.0" layoutY="140.0" prefHeight="158.0" prefWidth="305.0" promptText="Description du test" style="-fx-border-color: #03B5AA; -fx-border-width: 0.5px; -fx-border-radius: 2;" />
+        <VBox fx:id="questionsContainer" layoutX="136.0" layoutY="320.0" prefHeight="200.0" prefWidth="628.0" style="-fx-border-color: #03B5AA; -fx-border-width: 0.5px; -fx-border-radius: 2;" />
+        <Button fx:id="addQuestionButton" layoutX="184.0" layoutY="539.0" mnemonicParsing="false" onAction="#handleAddQuestion" prefHeight="35.0" prefWidth="223.0" style="-fx-background-color: #023436;" text="Ajouter une question" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-        <Button fx:id="saveTestButton" layoutX="331.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleSaveTest" prefHeight="27.0" prefWidth="188.0" style="-fx-background-color: #023436;" text="Save Test" textFill="WHITE">
+        <Button fx:id="saveTestButton" layoutX="493.0" layoutY="539.0" mnemonicParsing="false" onAction="#handleSaveTest" prefHeight="35.0" prefWidth="223.0" style="-fx-background-color: #023436;" text="Enregistrer le test" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
         <Label fx:id="errorLabel" layoutX="14.0" layoutY="420.0" textFill="RED" />
-      <Text fill="#03b5aa" layoutX="84.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau test">
+      <Text fill="#03b5aa" layoutX="136.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau test">
          <font>
-            <Font name="Nirmala UI Bold" size="26.0" />
+            <Font name="Nirmala UI Bold" size="30.0" />
          </font>
       </Text>
     </AnchorPane>
