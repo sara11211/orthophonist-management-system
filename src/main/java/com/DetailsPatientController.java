@@ -3,6 +3,7 @@ import com.models.*;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import java.time.LocalTime;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -448,14 +449,15 @@ public class DetailsPatientController {
     private void showBO(BO bo) {
         try {
             // Load the FXML file for the popup
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DisplayBOs.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DisplayBO.fxml"));
             Parent root = fxmlLoader.load();
 
             // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Bilan orthophoniques");
-            InfoSupsController controller = fxmlLoader.getController();
-            //controller.setInfoSupField(bo);
+            DetailsBO controller = fxmlLoader.getController();
+            if (bo != null) controller.setBo(bo);
+            else System.out.println("BOOO NULLLL IN SHOWBO");
 
 
             // Set the scene with the loaded FXML

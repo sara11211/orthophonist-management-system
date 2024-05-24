@@ -185,9 +185,15 @@ public class AjoutBOController {
     }
 
     private void handleAddTest(Test test) {
-        EpreuveClinique epreuves = new EpreuveClinique("");
-        bo.setEpreuvesCliniques(epreuves);
-        bo.getEpreuvesCliniques().getTests().add(test);
+        if (bo.getEpreuvesCliniques() != null) {
+            bo.getEpreuvesCliniques().getTests().add(test);
+        }
+        else {
+            EpreuveClinique epreuves = new EpreuveClinique("");
+            bo.setEpreuvesCliniques(epreuves);
+            bo.getEpreuvesCliniques().getTests().add(test);
+        }
+
     }
 
     private void addButtonToTable() {
@@ -232,8 +238,10 @@ public class AjoutBOController {
     }
 
     private void handleAddAnamnese(Anamnese anamnese) {
-        if (!patient.getBos().isEmpty()) {
+        if (patient.getBoPremier() !=null) {
+            bo.setAnamnese(null);
             System.out.println("Il ne s'agit pas du premier BO du patient !");
+            return;
         }
         bo.setAnamnese(anamnese);
 
@@ -275,14 +283,23 @@ public class AjoutBOController {
     @FXML
     public void handleSubmit(ActionEvent event) {
         // handle adding bo to the list of bos
+
         Diagnostic diagnostic = new Diagnostic(troubles);
+        bo.setDateBO(LocalDate.now());
         bo.setProjetTherap(projetTherap.getText());
         bo.setDiagnostic(diagnostic);
-        patient.getBos().add(bo);
+        if (bo.getAnamnese() != null) {
+            patient.setBoPremier(bo);
+        }
+        else {
+            BO boNew = new BO(LocalDate.now(), bo.getEpreuvesCliniques(), diagnostic, projetTherap.getText());
+            patient.getBos().add(boNew);
+        }
+
         System.out.println("Added BO successfully!!");
         System.out.println("------- BO ---------");
         System.out.println("Projet therap : "+bo.getProjetTherap());
-        System.out.println("Anamnese nom : "+bo.getAnamnese().getNom());
+        //System.out.println("Anamnese nom : "+bo.getAnamnese().getNom());
         for (Test test : bo.getEpreuvesCliniques().getTests()) {
             System.out.println("TEST nom : " + test.getNom());
         }

@@ -17,6 +17,8 @@ public class Patient implements Serializable  {
 
     private List<BO> bos;
 
+    private BOPremier boPremier;
+
     private HashSet<FicheSuivi> ficheSuivis;
 
 
@@ -37,6 +39,7 @@ public class Patient implements Serializable  {
         this.bos = new ArrayList<>();
         this.rdvs = new ArrayList<>();
         this.ficheSuivis = new HashSet<>();
+        this.boPremier = new BOPremier();
     }
 
     public void setNom(String nom) {
@@ -65,6 +68,10 @@ public class Patient implements Serializable  {
 
     public void setBos(List<BO> bos) {
         this.bos = bos;
+    }
+
+    public void setBoPremier(BOPremier boPremier) {
+        this.boPremier = boPremier;
     }
 
     public void setFicheSuivis(HashSet<FicheSuivi> ficheSuivis) {
@@ -98,6 +105,10 @@ public class Patient implements Serializable  {
 
     public List<BO> getBos() {
         return bos;
+    }
+
+    public BOPremier getBoPremier() {
+        return boPremier;
     }
 
     public HashSet<FicheSuivi> getFicheSuivis() {
