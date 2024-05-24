@@ -122,11 +122,11 @@ public class SideBarController {
             Parent root = loader.load();
 
             CustomPopupController controller = loader.getController();
-            controller.setContactInfo("If you want help, contact here: [your contact info or support link]");
+            controller.setContactInfo("Pour obtenir de l'aide ou laisser un commentaire, veuillez contacter :");
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Help Information");
+            stage.setTitle("Aide");
             stage.setScene(new Scene(root));
             stage.showAndWait();
         } catch (IOException e) {

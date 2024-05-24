@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="sidebar" prefHeight="500.0" prefWidth="154.0" style="-fx-background-color: #247b7b; -fx-background-radius: 0px 10px 10px 0px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SideBarController">
+<AnchorPane fx:id="sidebar" prefHeight="630.0" prefWidth="154.0" style="-fx-background-color: #247b7b; -fx-background-radius: 0px 10px 10px 0px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SideBarController">
    <children>
-      <AnchorPane layoutX="15.0" layoutY="21.0" prefHeight="57.0" prefWidth="124.0" style="-fx-background-color: #02C3BD; -fx-background-radius: 5px;">
+      <AnchorPane layoutX="9.0" layoutY="22.0" prefHeight="57.0" prefWidth="136.0" style="-fx-background-color: #02C3BD; -fx-background-radius: 5px;">
          <children>
-            <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleLogoClick">
+            <ImageView fitHeight="37.0" fitWidth="36.0" layoutX="14.0" layoutY="10.0" onMouseClicked="#handleLogoClick">
                <image>
                   <Image url="@images/logo-white.png" />
                </image>
@@ -19,9 +19,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="77.0" layoutY="9.0" onMouseClicked="#handleMoreClick">
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="97.0" layoutY="17.0" onMouseClicked="#handleMoreClick">
                <image>
-                  <Image url="@images/more.png" />
+                  <Image url="@images/interrogation.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -29,7 +29,39 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button fx:id="testAnamneseButton" layoutX="14.0" layoutY="162.0" mnemonicParsing="false" onAction="#handleTestAnamnese" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Tests et anamnèses" textFill="WHITE">
+      <Button fx:id="testAnamneseButton" layoutX="23.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleTestAnamnese" prefHeight="37.0" prefWidth="127.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Tests et anamnèses" textFill="WHITE">
+         <font>
+            <Font name="Nirmala UI Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="patientFilesButton" layoutX="19.0" layoutY="258.0" mnemonicParsing="false" onAction="#handleTestingDossier" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Dossiers patients" textFill="WHITE">
+         <font>
+            <Font name="Nirmala UI Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="appointmentsButton" layoutX="5.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleAppointments" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Rendez-vous" textFill="WHITE">
+         <font>
+            <Font name="Nirmala UI Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="10.0" layoutY="375.0" mnemonicParsing="false" onAction="#goToUpdateUserInfoPage" prefHeight="29.0" prefWidth="114.0" style="-fx-background-color: #247b7b;" text="Paramètres" textFill="WHITE">
+         <font>
+            <Font name="Nirmala UI Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="39.0" layoutY="563.0" mnemonicParsing="false" onAction="#handleSignOut" style="-fx-background-color: #247b7b;" text="Déconnexion" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -37,50 +69,30 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="patientFilesButton" layoutX="9.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleTestingDossier" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Dossiers patients" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="appointmentsButton" layoutX="-5.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleAppointments" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #247b7b; -fx-border-width: 0px; -fx-border-color: white;" text="Rendez-vous" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="statisticsButton" layoutX="16.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleStatistics" style="-fx-background-color: #247b7b;" text="Statistiques" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="22.0" layoutY="372.0" mnemonicParsing="false" onAction="#goToUpdateUserInfoPage" prefHeight="29.0" prefWidth="114.0" style="-fx-background-color: #247b7b;" text="Paramètres" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="19.0" layoutY="377.0">
+      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="9.0" layoutY="213.0">
          <image>
-            <Image url="@images/setting.png" />
+            <Image url="@images/test.png" />
          </image>
       </ImageView>
-      <Button layoutX="25.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleSignOut" style="-fx-background-color: #247b7b;" text="Déconnexion" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="10.0" layoutY="269.0">
+         <image>
+            <Image url="@images/folder.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="9.0" layoutY="324.0">
+         <image>
+            <Image url="@images/meeting.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="9.0" layoutY="382.0">
+         <image>
+            <Image url="@images/settings.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="24.0" layoutY="568.0">
+         <image>
+            <Image url="@images/exit.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

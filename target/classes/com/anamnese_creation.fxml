@@ -5,21 +5,22 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AnamneseController">
-   <center>
-      <AnchorPane prefHeight="425.0" prefWidth="639.0" style="-fx-background-color: #f0f3f5;" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AnamneseController">
+   <left>
+      <fx:include source="bar.fxml" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="630.0" prefWidth="848.0" style="-fx-background-color: #f0f3f5;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="anamneseNameField" layoutX="62.0" layoutY="123.0" prefHeight="35.0" prefWidth="225.0" promptText="Anamnese Name" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
-            <TextArea fx:id="anamneseDescriptionField" layoutX="62.0" layoutY="171.0" prefHeight="207.0" prefWidth="225.0" promptText="Anamnese Description" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
-            <Button fx:id="addQuestionButton" layoutX="315.0" layoutY="403.0" onAction="#handleAddQuestion" prefHeight="31.0" prefWidth="262.0" style="-fx-background-color: #ffffffff;" text="Add Question" textFill="#023436">
+            <TextField fx:id="anamneseNameField" layoutX="112.0" layoutY="137.0" prefHeight="35.0" prefWidth="256.0" promptText="Anamnese Name" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
+            <TextArea fx:id="anamneseDescriptionField" layoutX="112.0" layoutY="190.0" prefHeight="293.0" prefWidth="256.0" promptText="Anamnese Description" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;" />
+            <Button fx:id="addQuestionButton" layoutX="424.0" layoutY="523.0" onAction="#handleAddQuestion" prefHeight="31.0" prefWidth="311.0" style="-fx-background-color: #ffffffff;" text="Add Question" textFill="#023436">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -27,12 +28,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ScrollPane layoutX="316.0" layoutY="123.0" prefHeight="255.0" prefWidth="262.0" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;">
+            <ScrollPane layoutX="423.0" layoutY="137.0" prefHeight="347.0" prefWidth="311.0" style="-fx-border-width: 1px; -fx-border-color: #03B5AA; -fx-border-radius: 2;">
                <content>
-                  <VBox fx:id="questionsContainer" prefWidth="200.0" />
+                  <VBox fx:id="questionsContainer" prefWidth="311.0" />
                </content>
             </ScrollPane>
-            <Button fx:id="saveAnamneseButton" layoutX="63.0" layoutY="403.0" onAction="#handleSaveAnamnese" prefHeight="31.0" prefWidth="224.0" style="-fx-background-color: #023436;" text="Save Anamnese" textFill="WHITE">
+            <Button fx:id="saveAnamneseButton" layoutX="112.0" layoutY="523.0" onAction="#handleSaveAnamnese" prefHeight="31.0" prefWidth="256.0" style="-fx-background-color: #023436;" text="Save Anamnese" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -40,15 +41,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fill="#03b5aa" layoutX="62.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle Anamnèse" wrappingWidth="254.8912353515625">
+            <Text fill="#03b5aa" layoutX="113.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle Anamnèse" wrappingWidth="254.8912353515625">
                <font>
                   <Font name="Nirmala UI Bold" size="26.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-   </center>
-   <left>
-      <fx:include source="bar.fxml" />
-   </left>
+   </right>
 </BorderPane>
