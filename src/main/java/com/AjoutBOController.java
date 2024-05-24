@@ -172,7 +172,7 @@ public class AjoutBOController {
                 Parent root = loader.load();
 
                 TestDetailController controller = loader.getController();
-                controller.setTest(selectedTest);
+                controller.setTest((TestQuestionnaire) selectedTest);
 
                 Stage stage = new Stage();
                 stage.setTitle("Test Details");

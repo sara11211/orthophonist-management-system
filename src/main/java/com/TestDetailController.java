@@ -1,5 +1,5 @@
 package com;
-
+import com.models.Test;
 import com.models.Exercice;
 import com.models.Question;
 import com.models.TestExercice;
@@ -22,7 +22,11 @@ public class TestDetailController {
     @FXML
     private ListView<String> exercicesListView;
 
-    public void setTest(TestQuestionnaire testQuestionnaire) {
+    public void setTest(Test test) {
+        testNameLabel.setText(test.getNom());
+        testDescriptionLabel.setText(test.getDescription());
+    }
+    public void setTestQuestionnaire(TestQuestionnaire testQuestionnaire) {
         testNameLabel.setText(testQuestionnaire.getNom());
         testDescriptionLabel.setText(testQuestionnaire.getDescription());
         for (Question question : testQuestionnaire.getQuestions()) {

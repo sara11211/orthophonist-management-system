@@ -185,7 +185,8 @@ public class DetailsBO implements  Initializable {
                 Parent root = loader.load();
 
                 TestDetailController controller = loader.getController();
-                controller.setTest(selectedTest);
+                if (selectedTest instanceof TestQuestionnaire) controller.setTestQuestionnaire((TestQuestionnaire) selectedTest);
+                else controller.setTestExercice((TestExercice) selectedTest);
 
                 Stage stage = new Stage();
                 stage.setTitle("Test Details");
