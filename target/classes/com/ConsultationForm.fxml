@@ -72,7 +72,7 @@
             <!-- Additional Information -->
             <Label text="Informations supplémentaires:" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" style="-fx-border-color: #009f93; -fx-border-radius: 3;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label fx:id="erreurText" alignment="CENTER" textAlignment="CENTER" textFill="#ff0101" GridPane.rowIndex="9" />
+            <Label fx:id="erreurText" alignment="CENTER" prefHeight="17.0" prefWidth="407.0" textAlignment="CENTER" textFill="#ff0101" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
             <!-- Submit Button -->
             <Button contentDisplay="RIGHT" onAction="#handleSubmit" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: #03312e;" text="Soumettre" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="11">

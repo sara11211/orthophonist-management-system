@@ -20,7 +20,7 @@
 
 <BorderPane fx:id="borderPane" prefHeight="462.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AtelierController">
     <center>
-        <GridPane maxWidth="850.0" prefHeight="462.0" prefWidth="900.0">
+        <GridPane maxWidth="850.0" prefHeight="439.0" prefWidth="850.0">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
@@ -108,6 +108,7 @@
                 <RowConstraints />
                 <RowConstraints />
                 <RowConstraints />
+            <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             </rowConstraints>

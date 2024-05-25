@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,17 +9,17 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DetailsBO">
    <top>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="62.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="183.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="521.0" minWidth="10.0" prefWidth="184.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="521.0" minWidth="10.0" prefWidth="186.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="183.33333333333334" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="0.0" prefWidth="0.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="521.0" minWidth="10.0" prefWidth="219.9999796549479" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="521.0" minWidth="10.0" prefWidth="197.3333536783855" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -26,14 +27,29 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Bilan Orthophonique" textAlignment="CENTER" GridPane.columnIndex="2" />
-            <Label text="Anamnèse :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Tests :" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="221.0" text="Bilan Orthophonique" textAlignment="CENTER" textFill="#00b9ae" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Label>
+            <Label prefHeight="20.0" prefWidth="87.0" text="Anamnèses :" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin></Label>
+            <Label text="Tests :" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="-60.0" />
+               </GridPane.margin></Label>
          </children>
       </GridPane>
    </top>
    <left>
-      <GridPane prefHeight="394.0" prefWidth="239.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="397.0" prefWidth="277.0" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="11.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="228.0" />
@@ -47,14 +63,17 @@
             <RowConstraints maxHeight="209.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="anamneseTable" prefHeight="67.0" prefWidth="298.0" GridPane.columnIndex="1">
+            <TableView fx:id="anamneseTable" prefHeight="65.0" prefWidth="247.0" GridPane.columnIndex="1">
               <columns>
                   <TableColumn fx:id="countdownAnamneseColumn" prefWidth="131.0" text="-" />
-                  <TableColumn fx:id="viewAnamneseColumn" prefWidth="131.0" text="-"/>
+                  <TableColumn fx:id="viewAnamneseColumn" prefWidth="131.0" text="-" />
 
               </columns>
             </TableView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Troubles :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Troubles :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TableView fx:id="troublesTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
               <columns>
@@ -62,13 +81,16 @@
                 <TableColumn fx:id="categorieTroubleColumn" prefWidth="121.0" text="Catégorie" />
               </columns>
             </TableView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Projet thérapeutique :" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextArea fx:id="projetTherap" prefHeight="169.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Projet thérapeutique :" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Text>
+            <TextArea fx:id="projetTherap" prefHeight="169.0" prefWidth="191.0" style="-fx-border-color: #00b9ae; -fx-border-radius: 3;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </left>
    <right>
-      <GridPane prefHeight="398.0" prefWidth="225.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="394.0" prefWidth="255.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="10.0" prefWidth="213.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="12.0" />
@@ -78,7 +100,7 @@
           <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="testsTable" prefHeight="352.0" prefWidth="248.0">
+            <TableView fx:id="testsTable" prefHeight="351.0" prefWidth="167.0">
               <columns>
                 <TableColumn fx:id="countdownTestColumn" prefWidth="101.0" text="Date" />
               </columns>

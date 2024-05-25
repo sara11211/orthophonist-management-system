@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -15,10 +16,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="469.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AjoutBOController">
+<BorderPane fx:id="borderPane" prefHeight="469.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AjoutBOController">
     <center>
-        <GridPane prefHeight="484.0" prefWidth="1227.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+        <GridPane prefHeight="469.0" prefWidth="1083.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
@@ -41,15 +43,27 @@
                 </columns>
             </TableView>
            
-         <Label text="Tests :" GridPane.columnIndex="1" />
-         <Label text="Anamnèses:" GridPane.columnIndex="2" />
-         <Button mnemonicParsing="false" onAction="#handleSubmit" text="AjouterBO" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <GridPane prefHeight="353.0" prefWidth="249.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <Label prefHeight="26.0" prefWidth="69.0" text="Tests :" textFill="#00b9ae" GridPane.columnIndex="1">
+            <font>
+               <Font name="System Bold" size="17.0" />
+            </font></Label>
+         <Label text="Anamnèses:" textFill="#00b9ae" GridPane.columnIndex="2">
+            <font>
+               <Font name="System Bold" size="17.0" />
+            </font></Label>
+         <Button mnemonicParsing="false" onAction="#handleSubmit" prefHeight="25.0" prefWidth="345.0" style="-fx-background-color: #00b9ae;" text="Ajouter bilan orthophonique" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+         <GridPane prefHeight="353.0" prefWidth="390.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
            <columnConstraints>
              <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="69.0" />
              <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="0.0" prefWidth="199.0" />
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="0.0" prefWidth="238.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="10.0" prefWidth="34.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="30.0" prefWidth="10.0" />
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="0.0" prefWidth="0.0" />
            </columnConstraints>
            <rowConstraints>
@@ -60,8 +74,11 @@
 
              <VBox prefHeight="31.0" prefWidth="6.0" />
 
-               <TextArea fx:id="projetTherap" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-              <ComboBox fx:id="categorieTrouble" prefHeight="25.0" prefWidth="176.0" promptText="Catégorie du trouble" GridPane.columnIndex="2">
+               <TextArea fx:id="projetTherap" prefHeight="295.0" prefWidth="163.0" style="-fx-border-color: #00b9ae; -fx-border-radius: 3;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin></TextArea>
+              <ComboBox fx:id="categorieTrouble" prefHeight="25.0" prefWidth="179.0" promptText="Catégorie du trouble" GridPane.columnIndex="2">
                   <items>
                       <FXCollections fx:factory="observableArrayList">
                           <String fx:value="Troubles de déglutition" />
@@ -69,10 +86,16 @@
                           <String fx:value="Troubles cognitifs" />
                       </FXCollections>
                   </items>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
               </ComboBox>
-              <TextField fx:id="troubleNom" prefHeight="25.0" prefWidth="126.0" promptText="Enter le nom du trouble : " GridPane.columnIndex="1" />
-              <Button onAction="#handleAddTrouble" text="+" GridPane.columnIndex="3" />
-            <Label text="Porjet Thérapeuthique" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <TextField fx:id="troubleNom" prefHeight="25.0" prefWidth="135.0" promptText="nom du trouble" style="-fx-border-color: #00b9ae; -fx-border-radius: 3;" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin></TextField>
+              <Button onAction="#handleAddTrouble" prefHeight="25.0" prefWidth="45.0" style="-fx-background-color: #03312e;" text="+" textFill="WHITE" GridPane.columnIndex="3" />
+            <Label contentDisplay="TOP" prefHeight="17.0" prefWidth="145.0" text="Porjet Thérapeuthique :" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </GridPane>
          <columnConstraints>
             <ColumnConstraints maxWidth="260.0" minWidth="0.0" prefWidth="0.0" />
@@ -81,8 +104,8 @@
             <ColumnConstraints maxWidth="718.0" minWidth="294.0" prefWidth="370.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="38.0" minHeight="6.0" prefHeight="21.0" />
-            <RowConstraints maxHeight="368.0" minHeight="336.0" prefHeight="353.0" />
+            <RowConstraints maxHeight="38.0" minHeight="6.0" prefHeight="21.333333333333332" />
+            <RowConstraints maxHeight="368.0" minHeight="336.0" prefHeight="353.3333333333333" />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />

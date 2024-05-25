@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?language fx="http://javafx.com/fxml/1"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
-
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SpinnerValueFactory?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-
-<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.RDVSuiviController">
+<BorderPane fx:id="borderPane" prefHeight="421.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.RDVSuiviController">
     <center>
-        <GridPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+        <GridPane prefHeight="421.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
             <hgap>10</hgap>
             <vgap>10</vgap>
@@ -35,49 +30,79 @@
 
 
             <VBox>
-                <Label text="Cette séance de suivi est :" />
-                <!-- Remove the fx:id attribute -->
-                <!-- Create the radio buttons and add them to the toggle group -->
-                <RadioButton fx:id="enPresentielle"  text="En présentielle" toggleGroup="$toggleGroup"/>
-                <RadioButton fx:id="enLigne" text="En ligne" toggleGroup="$toggleGroup"/>
+                <Label text="Cette séance est :" />
             </VBox>
 
-            <Label text="Numéro du dossier du patient :" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            <TextField fx:id="numDossierField" promptText="Numéro du dossier du patient : " GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Numéro du dossier du patient :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="numDossierField" promptText="Numéro du dossier du patient : " style="-fx-border-color: #00b9ae; -fx-border-radius: 3;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <!-- Consultation Time -->
-            <Label text="Heure de la consultation:" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <Spinner fx:id="timeHourSpinner" GridPane.rowIndex="2" GridPane.columnIndex="4">
+            <Label text="Heure de la consultation:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Spinner fx:id="timeHourSpinner" GridPane.columnIndex="4" GridPane.rowIndex="2">
                 <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="23" min="0" wrapAround="true" />
                 </valueFactory>
             </Spinner>
-            <Spinner fx:id="timeMinuteSpinner" GridPane.rowIndex="2" GridPane.columnIndex="6">
+            <Spinner fx:id="timeMinuteSpinner" GridPane.columnIndex="6" GridPane.rowIndex="2">
                 <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="59" min="0" wrapAround="true" />
                 </valueFactory>
             </Spinner>
 
-            <Label text="Durée de la consultation:" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-            <Spinner fx:id="dureeHourSpinner" GridPane.rowIndex="3" GridPane.columnIndex="4">
+            <Label text="Durée de la consultation:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Spinner fx:id="dureeHourSpinner" GridPane.columnIndex="4" GridPane.rowIndex="3">
                 <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="23" initialValue="0" wrapAround="true"/>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="23" min="0" wrapAround="true" />
                 </valueFactory>
             </Spinner>
-            <Spinner fx:id="dureeMinuteSpinner" GridPane.rowIndex="3" GridPane.columnIndex="6">
+            <Spinner fx:id="dureeMinuteSpinner" GridPane.columnIndex="6" GridPane.rowIndex="3">
                 <valueFactory>
-                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="59" initialValue="0" wrapAround="true"/>
+                    <javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="59" min="0" wrapAround="true" />
                 </valueFactory>
             </Spinner>
 
 
 
             <!-- Additional Information -->
-            <Label text="Informations supplémentaires:" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-            <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-            <Label fx:id="erreurText" alignment="CENTER"  textAlignment="CENTER" textFill="#ff0101" GridPane.rowIndex="6"/>
+            <Label text="Informations supplémentaires:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea fx:id="additionalInfoArea" promptText="Entrez des informations supplémentaires" style="-fx-border-color: #00b9ae; -fx-border-radius: 3;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="erreurText" alignment="CENTER" textAlignment="CENTER" textFill="#ff0101" GridPane.rowIndex="6" />
 
             <!-- Submit Button -->
-            <Button text="Soumettre" GridPane.rowIndex="8" GridPane.columnIndex="1" GridPane.halignment="RIGHT" onAction="#handleSubmit"/>
+            <Button onAction="#handleSubmit" prefHeight="25.0" prefWidth="178.0" style="-fx-background-color: #03312e;" text="Soumettre" textFill="WHITE" GridPane.columnIndex="6" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+             <!-- Remove the fx:id attribute -->
+             <!-- Create the radio buttons and add them to the toggle group -->
+             <RadioButton fx:id="enPresentielle" text="En présentielle" GridPane.rowIndex="2">
+            <toggleGroup>
+               <ToggleGroup fx:id="toggleGroup" />
+            </toggleGroup>
+         </RadioButton>
+             <RadioButton fx:id="enLigne" text="En ligne" toggleGroup="$toggleGroup" GridPane.rowIndex="1" />
+         <columnConstraints>
+            <ColumnConstraints maxWidth="154.66665903727215" minWidth="97.3333231608073" prefWidth="154.66665903727215" />
+            <ColumnConstraints maxWidth="468.6666768391927" minWidth="411.33334096272785" prefWidth="411.33334096272785" />
+            <ColumnConstraints />
+            <ColumnConstraints maxWidth="4.6666259765625" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints maxWidth="145.33333333333337" minWidth="140.66670735677087" prefWidth="143.0" />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
 
     </center>

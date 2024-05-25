@@ -1,28 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DetailsPatientController">
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DetailsPatientController">
     <center>
-        <GridPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+        <GridPane prefHeight="225.0" prefWidth="301.0">
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
             <hgap>10</hgap>
             <vgap>10</vgap>
 
-            <VBox spacing="10" alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="231.0" prefWidth="281.0" spacing="10">
                 <children>
-                    <Label text="Veuillez entrer la date du rendez-vous :" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                    <DatePicker fx:id="dateRDVField" promptText="Veuillez entrer la date du rendez-vous :" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                    <Button text="+" onAction="#handlePlusClick"/>
-                    <Button fx:id="consultationButton" text="Consultation" onAction="#handleConsultationClick" visible="false"/>
-                    <Button fx:id="suiviButton" text="Séance de suivi" onAction="#handleSuiviClick" visible="false"/>
-                    <Button fx:id="atelierButton" text="Atelier" onAction="#handleAtelierClick" visible="false"/>
+                    <Label prefHeight="26.0" prefWidth="228.0" text="Veuillez entrer la date du rendez-vous :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <font>
+                     <Font size="13.0" />
+                  </font></Label>
+                    <DatePicker fx:id="dateRDVField" promptText="Veuillez entrer la date du rendez-vous :" style="-fx-border-color: #00b9ae;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <Button onAction="#handlePlusClick" prefHeight="31.0" prefWidth="35.0" style="-fx-background-color: #03312e;" text="+" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+                    <Button fx:id="consultationButton" onAction="#handleConsultationClick" text="Consultation" visible="false" />
+                    <Button fx:id="suiviButton" onAction="#handleSuiviClick" text="Séance de suivi" visible="false" />
+                    <Button fx:id="atelierButton" onAction="#handleAtelierClick" text="Atelier" visible="false" />
                 </children>
+            <GridPane.margin>
+               <Insets top="30.0" />
+            </GridPane.margin>
             </VBox>
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
     </center>
 </BorderPane>

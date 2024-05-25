@@ -90,7 +90,7 @@
                         <Insets left="25.0" right="20.0" />
                     </VBox.margin>
                     <children>
-                  <Text fill="#03b5aa" strokeType="OUTSIDE" strokeWidth="0.0" text="Programmez un rendez-vous !" wrappingWidth="397.9427213668823">
+                  <Text fill="#03b5aa" strokeType="OUTSIDE" strokeWidth="0.0" text="Rendez-vous" wrappingWidth="397.9427213668823">
                      <font>
                         <Font name="System Bold" size="28.0" />
                      </font>
