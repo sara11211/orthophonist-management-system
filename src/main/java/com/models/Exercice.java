@@ -3,6 +3,7 @@ package com.models;
 import java.io.Serializable;
 
 public class Exercice implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String consigne;
     private String materiel;
     private int score;

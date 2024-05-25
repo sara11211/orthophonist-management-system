@@ -19,6 +19,7 @@ public class Orthophoniste implements Serializable {
     private HashSet<Test> tests;
     private Planning planning;
     private HashMap<Long, Patient> patientDossierHashMap;
+    private static final long serialVersionUID = 1L;
 
     // constructors
     public Orthophoniste(String nom, String prenom, String adresse, String numTel, String adresseEmail, String motDePasse, Planning planning) {

@@ -6,6 +6,7 @@ public class Question implements Serializable{
 
     private String enonce;
     private int score;
+    private static final long serialVersionUID = 1L;
 
     public Question(String enonce){
         this.enonce = enonce;

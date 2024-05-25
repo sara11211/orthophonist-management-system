@@ -11,6 +11,7 @@ import java.util.List;
 public class OMS implements Serializable {
 
     private HashMap<Orthophoniste, String> orthophonistes;
+    private static final long serialVersionUID = 1L;
 
     // constructeur
     public OMS() {

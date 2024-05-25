@@ -15,6 +15,7 @@ public class Planning implements Serializable {
     private ArrayList<SessionLibre> sessionLibres;
     private ArrayList<SessionOccupee> sessionOccupees;
     private ArrayList<RDV> rdvsPlannified;
+    private static final long serialVersionUID = 1L;
 
 
     public Planning(String nom, LocalDate dateDebut, LocalDate dateFin) {
