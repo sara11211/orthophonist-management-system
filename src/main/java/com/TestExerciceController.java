@@ -70,7 +70,7 @@ public class TestExerciceController {
         } else {
             testExercice.setNom(name);
             testExercice.setDescription(description);
-            testExercice.setDateTest(LocalDate.now());
+
             testExercice.getExercices().clear();
         }
 
@@ -87,7 +87,7 @@ public class TestExerciceController {
                 testExercice.addExercice(new Exercice(consigne, materiel, score));
             }
         }
-
+        testExercice.setDateTest(LocalDate.now());
         if (utilisateurCourant == null) {
             return;
         }
