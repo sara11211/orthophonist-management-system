@@ -4,10 +4,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ExerciceItemController">
+<HBox prefHeight="25.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ExerciceItemController">
     <children>
-        <TextField fx:id="consigneTextField" />
-        <TextField fx:id="materielTextField" />
-        <Spinner fx:id="scoreSpinner" />
+        <TextField fx:id="consigneTextField" promptText="Consigne" />
+        <TextField fx:id="materielTextField" promptText="Materiel" />
+        <Spinner fx:id="scoreSpinner" prefHeight="25.0" prefWidth="150.0" />
     </children>
 </HBox>

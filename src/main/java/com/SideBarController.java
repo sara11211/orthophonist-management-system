@@ -84,6 +84,19 @@ public class SideBarController {
     }
 
     @FXML
+    public void handlePatient(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("CreerPatientPageSide.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void handleSignOut(ActionEvent event) {
         utilisateurCourant = null;
 
