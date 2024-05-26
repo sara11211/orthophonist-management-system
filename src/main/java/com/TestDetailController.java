@@ -26,7 +26,7 @@ public class TestDetailController {
         testNameLabel.setText(test.getNom());
         testDescriptionLabel.setText(test.getDescription());
     }
-    public void setTestQuestionnaire(TestQuestionnaire testQuestionnaire) {
+    public void setTest(TestQuestionnaire testQuestionnaire) {
         testNameLabel.setText(testQuestionnaire.getNom());
         testDescriptionLabel.setText(testQuestionnaire.getDescription());
         for (Question question : testQuestionnaire.getQuestions()) {

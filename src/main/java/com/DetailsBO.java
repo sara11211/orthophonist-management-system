@@ -134,7 +134,7 @@ public class DetailsBO implements Initializable {
 
                 TestDetailController controller = loader.getController();
                 if (selectedTest instanceof TestQuestionnaire) {
-                    controller.setTestQuestionnaire((TestQuestionnaire) selectedTest);
+                    controller.setTest((TestQuestionnaire) selectedTest);
                 } else {
                     controller.setTestExercice((TestExercice) selectedTest);
                 }

@@ -7,4 +7,5 @@
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TestDetailController">
     <Label fx:id="testNameLabel" layoutX="14.0" layoutY="14.0" text="Test Name" />
     <Label fx:id="testDescriptionLabel" layoutX="14.0" layoutY="34.0" text="Description" />
+    <ListView fx:id="questionsListView" layoutX="14.0" layoutY="54.0" prefHeight="150.0" prefWidth="200.0" />
 </AnchorPane>

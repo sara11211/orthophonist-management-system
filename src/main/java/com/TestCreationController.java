@@ -144,7 +144,6 @@ public class TestCreationController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("question_item_test.fxml"));
                 Parent questionNode = loader.load();
                 QuestionTestItemController controller = loader.getController();
-                controllerQuestionMap.put(controller, question);
                 controller.setQuestion(question);
                 questionsContainer.getChildren().add(questionNode);
             } catch (IOException e) {
