@@ -37,7 +37,7 @@ public class AjoutBOController {
     private TableView<Test> testsTable;
 
     @FXML
-    private TableColumn<Test, String> testNameColumn;
+    private TableColumn<Test, LocalDate> testNameColumn;
 
     @FXML
     private TableColumn<Test, String> testDescriptionColumn;
@@ -75,7 +75,7 @@ public class AjoutBOController {
     @FXML
     public void initialize() {
         testNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        testDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("capacite"));
+        testDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         anamnesesTable.setItems(anamneses);
@@ -108,10 +108,10 @@ public class AjoutBOController {
 
     private void addButtonsToTable() {
         // View Button
-        TableColumn<Test, Void> viewCol = new TableColumn<>("View");
+        TableColumn<Test, Void> viewCol = new TableColumn<>("-");
 
         viewCol.setCellFactory(param -> new TableCell<>() {
-            private final Button btn = new Button("View");
+            private final Button btn = new Button("Voir test");
 
             {
                 btn.setOnAction(event -> {
@@ -168,11 +168,18 @@ public class AjoutBOController {
     private void handleViewTest(Test selectedTest) {
         if (selectedTest != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_details.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("test_details.fxml"));
                 Parent root = loader.load();
 
-                TestDetailController controller = loader.getController();
-                controller.setTest((TestQuestionnaire) selectedTest);
+                if (selectedTest instanceof TestQuestionnaire) {
+                    TestDetailController controller = loader.getController();
+                    controller.setTest((TestQuestionnaire) selectedTest);
+                } else if (selectedTest instanceof TestExercice) {
+                    loader = new FXMLLoader(getClass().getResource("test_exercice_detail.fxml"));
+                    root = loader.load();
+                    TestDetailController controller = loader.getController();
+                    controller.setTestExercice((TestExercice) selectedTest);
+                }
 
                 Stage stage = new Stage();
                 stage.setTitle("Test Details");
@@ -183,7 +190,6 @@ public class AjoutBOController {
             }
         }
     }
-
     private void handleAddTest(Test test) {
         if (bo.getEpreuvesCliniques() != null) {
             bo.getEpreuvesCliniques().getTests().add(test);

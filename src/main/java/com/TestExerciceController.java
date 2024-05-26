@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 
 import static com.HelloApplication.oms;
@@ -69,6 +70,7 @@ public class TestExerciceController {
         } else {
             testExercice.setNom(name);
             testExercice.setDescription(description);
+            testExercice.setDateTest(LocalDate.now());
             testExercice.getExercices().clear();
         }
 

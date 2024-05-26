@@ -102,7 +102,9 @@
          <children>
             <TableView fx:id="testsTable" prefHeight="351.0" prefWidth="167.0">
               <columns>
-                <TableColumn fx:id="countdownTestColumn" prefWidth="101.0" text="Date" />
+
+                <TableColumn fx:id="dateTest" prefWidth="101.0" text="Date" />
+                  <TableColumn fx:id="nomTest" prefWidth="106.0" text="Nom" />
               </columns>
             </TableView>
          </children>

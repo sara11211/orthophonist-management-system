@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -71,6 +72,7 @@ public class TestCreationController {
         } else {
             testQuestionnaire.setNom(name);
             testQuestionnaire.setDescription(description);
+
             testQuestionnaire.getQuestions().clear();
         }
 
@@ -107,7 +109,7 @@ public class TestCreationController {
                 }
             }
         }
-
+        testQuestionnaire.setDateTest(LocalDate.now());
         if (utilisateurCourant == null) {
             errorLabel.setText("No current user found!");
             return;

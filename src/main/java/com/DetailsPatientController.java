@@ -136,7 +136,7 @@ public class DetailsPatientController {
                 @Override
                 public TableCell<BO, Void> call(TableColumn<BO, Void> param) {
                     return new TableCell<>() {
-                        private final Button voirBOSButton = new Button("Voir BOs");
+                        private final Button voirBOSButton = new Button("Voir");
 
                         {
                             voirBOSButton.setOnAction(event -> {

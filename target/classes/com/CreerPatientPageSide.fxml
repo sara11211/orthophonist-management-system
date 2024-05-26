@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CreerPatientController">
+<BorderPane fx:id="borderPane" prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CreerPatientSidebarController">
     <center>
         <GridPane prefHeight="533.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
             <padding>
@@ -61,7 +61,9 @@
 
             <!-- Submit Button -->
             <Button onAction="#handleSubmit" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #03312e;" text="Soumettre" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
-            <font>
+                <Label fx:id="message" alignment="CENTER" layoutX="91.0" layoutY="310.0" prefHeight="17.0" prefWidth="216.0" textAlignment="CENTER" textFill="#3cff46" GridPane.columnIndex="2"  GridPane.rowIndex="9" />
+
+                <font>
                <Font name="System Bold" size="12.0" />
             </font>
             <cursor>
@@ -92,6 +94,7 @@
                 <RowConstraints />
             <RowConstraints />
             <RowConstraints />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
             </rowConstraints>
         </GridPane>
     </center>

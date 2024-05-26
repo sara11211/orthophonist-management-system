@@ -1,6 +1,8 @@
 package com;
 
 import com.models.*;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,11 +13,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import java.time.LocalDate;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import javafx.util.Callback;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +47,11 @@ public class DetailsBO implements Initializable {
     private TableColumn<Trouble, String> categorieTroubleColumn;
     @FXML
     private TextArea projetTherap;
+    @FXML
+    private TableColumn<Test, LocalDate> dateTest;
 
+    @FXML
+    private TableColumn<Test, String> nomTest;
     private Patient patient;
     private BO bo;
     private ObservableList<Test> tests = FXCollections.observableArrayList();
@@ -59,13 +70,15 @@ public class DetailsBO implements Initializable {
 
     private void updateUI() {
         loadTests();
-        addButtonsToTestTable();
         loadTroubles();
         loadProjetTherap();
     }
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+
+        // Define the columns
+        nomTest.setCellValueFactory(new PropertyValueFactory<>("nom"));
         nomTroubleColumn.setCellValueFactory(new PropertyValueFactory<>("nomTrouble"));
         categorieTroubleColumn.setCellValueFactory(new PropertyValueFactory<>("typeTrouble"));
         loadTests();
@@ -100,10 +113,11 @@ public class DetailsBO implements Initializable {
     }
 
     private void addButtonsToTestTable() {
-        TableColumn<Test, Void> viewCol = new TableColumn<>("View");
+        TableColumn<Test, Void> viewCol = new TableColumn<>("-");
+
 
         viewCol.setCellFactory(param -> new TableCell<>() {
-            private final Button btn = new Button("View");
+            private final Button btn = new Button("Voir");
 
             {
                 btn.setOnAction(event -> {
@@ -111,6 +125,7 @@ public class DetailsBO implements Initializable {
                     handleViewTest(data);
                 });
             }
+
 
             @Override
             protected void updateItem(Void item, boolean empty) {
@@ -121,21 +136,41 @@ public class DetailsBO implements Initializable {
                     setGraphic(btn);
                 }
             }
+
         });
+
+        dateTest.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Test, LocalDate>, ObservableValue<LocalDate>>() {
+            @Override
+            public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<Test, LocalDate> param) {
+                Test test = param.getValue();
+                if (test != null) {
+                    System.out.println("DATE : "+test.getDateTest());
+                    return new SimpleObjectProperty<>(test.getDateTest());
+                } else {
+                    return new SimpleObjectProperty<>(null);
+                }
+            }
+        });
+
+
 
         testsTable.getColumns().add(viewCol);
     }
 
+
     private void handleViewTest(Test selectedTest) {
         if (selectedTest != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/test_details.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("test_details.fxml"));
                 Parent root = loader.load();
 
-                TestDetailController controller = loader.getController();
                 if (selectedTest instanceof TestQuestionnaire) {
+                    TestDetailController controller = loader.getController();
                     controller.setTest((TestQuestionnaire) selectedTest);
-                } else {
+                } else if (selectedTest instanceof TestExercice) {
+                    loader = new FXMLLoader(getClass().getResource("test_exercice_detail.fxml"));
+                    root = loader.load();
+                    TestDetailController controller = loader.getController();
                     controller.setTestExercice((TestExercice) selectedTest);
                 }
 
