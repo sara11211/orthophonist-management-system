@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="715185da-a5e3-422d-86d7-1aecbb38895c" name="Changes" comment="" />
+    <list default="true" id="715185da-a5e3-422d-86d7-1aecbb38895c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/FirstPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/FirstPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/first_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/first_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/datafile/oms.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/datafile/oms.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/FirstPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/FirstPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/datafile/oms.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/datafile/oms.dat" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +91,7 @@
       <workItem from="1716553423018" duration="10748000" />
       <workItem from="1716577508732" duration="11000" />
       <workItem from="1716739566514" duration="3893000" />
-      <workItem from="1716750076578" duration="5888000" />
+      <workItem from="1716750076578" duration="7604000" />
     </task>
     <servers />
   </component>

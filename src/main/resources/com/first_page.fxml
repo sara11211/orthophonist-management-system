@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.FirstPageController" stylesheets="@styles.css">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.FirstPageController">
    <left>
       <fx:include source="bar.fxml" />
    </left>
@@ -30,7 +33,15 @@
                </font>
             </Label>
             <BorderPane prefHeight="200.0" prefWidth="200.0" />
-              <PieChart fx:id="pieChart" layoutX="367.0" layoutY="150.0" prefHeight="315.0" prefWidth="400.0" />
+              <PieChart fx:id="pieChart" layoutX="420.0" layoutY="168.0" prefHeight="315.0" prefWidth="400.0" />
+            <LineChart fx:id="lineChart" layoutY="339.0" prefHeight="263.0" prefWidth="418.0">
+               <xAxis>
+                  <CategoryAxis label="Trouble" fx:id="xAxis" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="yAxis" label="Nombre de patients" />
+               </yAxis>
+            </LineChart>
          </children>
       </AnchorPane>
    </right>
