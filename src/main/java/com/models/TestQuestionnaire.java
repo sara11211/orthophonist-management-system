@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 public class TestQuestionnaire extends Test implements Serializable {
     private HashSet<Question> questions;
+    private static final long serialVersionUID = 1L;
 
     public TestQuestionnaire(String nom, String description, HashSet<Question> questions) {
         super(nom, description);

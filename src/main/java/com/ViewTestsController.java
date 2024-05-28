@@ -5,7 +5,6 @@ import com.models.TestExercice;
 import com.models.TestQuestionnaire;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.HashSet;
 
 import static com.HelloApplication.utilisateurCourant;
 import static com.HelloApplication.oms;
@@ -130,6 +128,34 @@ public class ViewTestsController {
         });
 
         testsTable.getColumns().add(modifyCol);
+
+        // Average Score Button
+        TableColumn<Test, Void> avgScoreCol = new TableColumn<>("Avg Score");
+
+        avgScoreCol.setCellFactory(param -> new TableCell<>() {
+            private final Button btn = new Button("Avg Score");
+
+            {
+                btn.setOnAction(event -> {
+                    Test data = getTableView().getItems().get(getIndex());
+                    if (data instanceof TestExercice) {
+                        handleCalculateAverageScore((TestExercice) data);
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btn);
+                }
+            }
+        });
+
+        testsTable.getColumns().add(avgScoreCol);
     }
 
     private void handleViewTest(Test selectedTest) {
@@ -195,5 +221,14 @@ public class ViewTestsController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void handleCalculateAverageScore(TestExercice testExercice) {
+        double averageScore = testExercice.calculateAverageScore();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Average Score");
+        alert.setHeaderText(null);
+        alert.setContentText("The average score of the test is: " + averageScore);
+        alert.showAndWait();
     }
 }
