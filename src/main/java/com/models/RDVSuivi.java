@@ -9,6 +9,7 @@ public class RDVSuivi extends RDV implements Serializable {
 
     private Long numDossier;
     private boolean isPresentiel; // vrai : pour RDV en présentiel
+    private FicheSuivi ficheSuivi;
 
 
     public RDVSuivi(LocalDate date, LocalTime heureDebut, Duration duree, String infoSup, boolean isInfoSup, Long numDossier, boolean isPresentiel) {
@@ -25,6 +26,10 @@ public class RDVSuivi extends RDV implements Serializable {
         this.isPresentiel = isPresentiel;
     }
 
+    public void setFicheSuivi(FicheSuivi ficheSuivi) {
+        this.ficheSuivi = ficheSuivi;
+    }
+
     public Long getNumDossier() {
         return numDossier;
     }
@@ -32,7 +37,12 @@ public class RDVSuivi extends RDV implements Serializable {
     public boolean getIsPresentiel() {
         return isPresentiel;
     }
-/*
+
+    public FicheSuivi getFicheSuivi() {
+        return ficheSuivi;
+    }
+
+    /*
     public boolean scheduleRDV() {
         super.scheduleRDV();
         return true;

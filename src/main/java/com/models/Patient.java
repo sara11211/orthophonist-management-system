@@ -19,7 +19,7 @@ public class Patient implements Serializable  {
 
     private BOPremier boPremier;
 
-    private HashSet<FicheSuivi> ficheSuivis;
+    private FicheSuivi ficheSuivi;
 
 
     public Patient(String nom, String prenom) {
@@ -27,7 +27,7 @@ public class Patient implements Serializable  {
         this.prenom = prenom;
         this.rdvs = new ArrayList<>();
         this.bos = new ArrayList<>();
-        this.ficheSuivis = new HashSet<>();
+        //this.ficheSuivi = fiche
     }
 
     public Patient(String nom, String prenom, LocalDate dateNaissance, String lieuNaissance, String adresse){
@@ -38,7 +38,6 @@ public class Patient implements Serializable  {
         this.adresse = adresse;
         this.bos = new ArrayList<>();
         this.rdvs = new ArrayList<>();
-        this.ficheSuivis = new HashSet<>();
         this.boPremier = new BOPremier();
     }
 
@@ -74,8 +73,8 @@ public class Patient implements Serializable  {
         this.boPremier = boPremier;
     }
 
-    public void setFicheSuivis(HashSet<FicheSuivi> ficheSuivis) {
-        this.ficheSuivis = ficheSuivis;
+    public void setFicheSuivi(FicheSuivi ficheSuivi) {
+        this.ficheSuivi = ficheSuivi;
     }
 
 
@@ -111,8 +110,8 @@ public class Patient implements Serializable  {
         return boPremier;
     }
 
-    public HashSet<FicheSuivi> getFicheSuivis() {
-        return ficheSuivis;
+    public FicheSuivi getFicheSuivi() {
+        return ficheSuivi;
     }
 
     public String toString() {

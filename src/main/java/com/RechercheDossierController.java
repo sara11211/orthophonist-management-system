@@ -41,7 +41,7 @@ public class RechercheDossierController {
             DetailsPatientController controller = loader.getController();
             System.out.println("INSIDE RECHERHCE CONTROLLER : "+patient.getPrenom());
             controller.setPatient(patient);
-            controller.displayPatient();
+            controller.setCalledForPatient(true);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

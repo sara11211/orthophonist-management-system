@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AddObjectifController">
+    <TableView fx:id="tableView" prefWidth="400" prefHeight="300">
+        <columns>
+            <!-- Column for nomObjectif -->
+            <TableColumn fx:id="nomObjectifColumn" text="Nom Objectif">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nomObjectif"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <!-- Column for typeObjectif -->
+            <TableColumn fx:id="typeObjectifColumn" text="Type Objectif">
+                <cellValueFactory>
+                    <PropertyValueFactory property="typeObjectif"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <!-- Column for addAction -->
+            <TableColumn fx:id="addActionColumn" text="Action">
+                <!-- Using a Spinner in the cell -->
+
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>

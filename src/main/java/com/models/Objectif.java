@@ -1,6 +1,7 @@
 package com.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Objectif implements Serializable {
 
@@ -9,10 +10,10 @@ public class Objectif implements Serializable {
         CourtTerme, MoyenTerme, LongTerme
     }
     private String nomObjectif;
-    private TypeObjectif typeObjectif;
+    private String typeObjectif;
     private boolean isDone;
 
-    public Objectif(String nomObjectif, TypeObjectif typeObjectif, boolean isDone) {
+    public Objectif(String nomObjectif, String typeObjectif, boolean isDone) {
         this.nomObjectif = nomObjectif;
         this.typeObjectif = typeObjectif;
         this.isDone = isDone;
@@ -22,7 +23,7 @@ public class Objectif implements Serializable {
         this.nomObjectif = nomObjectif;
     }
 
-    public void setTypeObjectif(TypeObjectif typeObjectif) {
+    public void setTypeObjectif(String typeObjectif) {
         this.typeObjectif = typeObjectif;
     }
 
@@ -39,8 +40,22 @@ public class Objectif implements Serializable {
     }
 
 
-    public TypeObjectif getTypeObjectif() {
+    public String getTypeObjectif() {
         return typeObjectif;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Objectif objectif = (Objectif) o;
+        return Objects.equals(nomObjectif, objectif.nomObjectif) &&
+                Objects.equals(typeObjectif, objectif.typeObjectif);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nomObjectif, typeObjectif);
     }
 
 

@@ -3,89 +3,23 @@
 <?language fx="http://javafx.com/fxml/1"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="568.0" prefWidth="768.0" style="-fx-background-color: #f0f3f5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DetailsPatientController">
-    <bottom>
-        <GridPane hgap="10" minWidth="-Infinity" prefHeight="520.0" prefWidth="722.0" vgap="10" BorderPane.alignment="CENTER">
-            <Label prefHeight="11.0" prefWidth="59.0" text="Prénom :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Label fx:id="firstNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <Label text="Nom :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Label fx:id="lastNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Date d'anniversaire : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Label fx:id="birthdayLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Lieu de naissance :" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <Label fx:id="placeOfBirthLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Adresse :" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <Label fx:id="addressLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-            <TableView fx:id="rdvTable" prefHeight="96.0" prefWidth="495.0" GridPane.rowIndex="5">
-                <columns>
-                    <TableColumn fx:id="dateColumn" text="Date" />
-                    <TableColumn fx:id="hourColumn" prefWidth="90.0" text="Heure" />
-                    <TableColumn fx:id="typeColumn" prefWidth="90.0" text="Type RDV" />
-                    <TableColumn fx:id="additionalInfoColumn" prefWidth="67.0" text="Info sup" />
-                    <TableColumn fx:id="observationColumn" prefWidth="169.0" text="Observations" />
-                </columns>
-                <GridPane.margin>
-                    <Insets />
-                </GridPane.margin>
-            </TableView>
-            <TableView fx:id="bosTable" prefHeight="229.0" prefWidth="479.0" GridPane.rowIndex="8">
-                <columns>
-                    <TableColumn fx:id="dateBOColumn" text="Date" />
-                    <TableColumn fx:id="viewBOColumn" prefWidth="90.0" text="-" />
-                </columns>
-                <GridPane.margin>
-                    <Insets />
-                </GridPane.margin>
-            </TableView>
-         <Button fx:id="RDVButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddRDV" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Rendez-vous" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <GridPane.margin>
-               <Insets bottom="70.0" />
-            </GridPane.margin>
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font>
-         </Button>
-         <Button fx:id="BOButton" mnemonicParsing="false" onAction="#handleAddBO" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Bilan Orthophonique" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8">
-            <GridPane.margin>
-               <Insets bottom="210.0" />
-            </GridPane.margin>
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font></Button>
-            <columnConstraints>
-                <ColumnConstraints maxWidth="600.0" minWidth="168.0" prefWidth="487.0" />
-                <ColumnConstraints maxWidth="432.0" minWidth="0.0" prefWidth="243.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="30.0" minHeight="22.0" prefHeight="28.0" />
-                <RowConstraints maxHeight="37.0" minHeight="22.0" prefHeight="30.0" />
-                <RowConstraints maxHeight="45.0" minHeight="16.0" prefHeight="32.0" />
-                <RowConstraints maxHeight="101.0" minHeight="18.0" prefHeight="31.0" />
-                <RowConstraints maxHeight="199.0" minHeight="20.0" prefHeight="31.0" />
-                <RowConstraints maxHeight="358.0" minHeight="96.0" prefHeight="120.0" />
-            <RowConstraints maxHeight="358.0" minHeight="0.0" prefHeight="37.0" />
-            <RowConstraints />
-            <RowConstraints />
-            </rowConstraints>
-            <BorderPane.margin>
-                <Insets bottom="10.0" left="40.0" right="20.0" />
-            </BorderPane.margin>
-        </GridPane>
-    </bottom>
+<BorderPane fx:id="borderPane" prefHeight="678.0" prefWidth="801.0" style="-fx-background-color: #f0f3f5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DetailsPatientController">
    <top>
 
            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Dossier du Patient" BorderPane.alignment="CENTER">
@@ -99,4 +33,98 @@
    <cursor>
       <Cursor fx:constant="HAND" />
    </cursor>
+   <left>
+        <GridPane hgap="10" minWidth="-Infinity" prefHeight="764.0" prefWidth="722.0" vgap="10" BorderPane.alignment="CENTER">
+            <Label fx:id="firstNameLabel" prefHeight="11.0" prefWidth="59.0" text="Prénom :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label fx:id="lastNameLabel" text="Nom :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label fx:id="birthdayLabel" text="Date d'anniversaire : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label fx:id="placeOfBirthLabel" text="Lieu de naissance :" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Label fx:id="addressLabel" text="Adresse :" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <LineChart fx:id="lineChart" layoutY="339.0" prefHeight="205.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <xAxis>
+                    <CategoryAxis label="Objectif" fx:id="xAxis" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis" label="Score" />
+                </yAxis>
+            </LineChart>
+            <VBox />
+            <TableView fx:id="rdvTable" prefHeight="115.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                <columns>
+                    <TableColumn fx:id="dateColumn" text="Date" />
+                    <TableColumn fx:id="hourColumn" prefWidth="79.0" text="Heure" />
+                    <TableColumn fx:id="typeColumn" prefWidth="97.0" text="Type RDV" />
+                    <TableColumn fx:id="additionalInfoColumn" prefWidth="65.0" text="Info sup" />
+                    <TableColumn fx:id="observationColumn" prefWidth="175.0" text="Observations" />
+                </columns>
+                <GridPane.margin>
+                    <Insets />
+                </GridPane.margin>
+            </TableView>
+            <TableView fx:id="bosTable" prefHeight="142.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                <columns>
+                    <TableColumn fx:id="dateBOColumn" prefWidth="137.0" text="Date" />
+                    <TableColumn fx:id="viewBOColumn" prefWidth="340.0" text="-" />
+                </columns>
+                <GridPane.margin>
+                    <Insets />
+                </GridPane.margin>
+            </TableView>
+         <Button fx:id="RDVButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddRDV" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Rendez-vous" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="13">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <GridPane.margin>
+               <Insets left="150.0" />
+            </GridPane.margin>
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="BOButton" mnemonicParsing="false" onAction="#handleAddBO" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Bilan Orthophonique" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="19">
+            <GridPane.margin>
+               <Insets left="150.0" top="25.0" />
+            </GridPane.margin>
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
+             <Button onAction="#handleSubmitObjectif" text="Ajouter objectif" GridPane.rowIndex="9" />
+             <ToggleButton fx:id="courtTerme" text="à court terme" GridPane.rowIndex="6" />
+             <ToggleButton fx:id="moyenTerme" text="à moyen terme" GridPane.rowIndex="7" />
+             <ToggleButton fx:id="longTerme" text="à long terme" GridPane.rowIndex="8" />
+             <TextField fx:id="nomObjectif" promptText="Nom Objectif ?" GridPane.rowIndex="5" />
+         <Label text="Rendez-vous:" GridPane.rowIndex="10" />
+         <Label text="Bilans orthophoniques :" GridPane.rowIndex="18" />
+            <columnConstraints>
+                <ColumnConstraints maxWidth="600.0" minWidth="168.0" prefWidth="234.0" />
+            <ColumnConstraints maxWidth="600.0" minWidth="500.0" prefWidth="282.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="30.0" minHeight="22.0" prefHeight="28.0" />
+                <RowConstraints maxHeight="37.0" minHeight="22.0" prefHeight="30.0" />
+                <RowConstraints maxHeight="45.0" minHeight="16.0" prefHeight="32.0" />
+                <RowConstraints maxHeight="101.0" minHeight="18.0" prefHeight="20.0" />
+                <RowConstraints maxHeight="199.0" minHeight="18.0" prefHeight="18.0" />
+            <RowConstraints maxHeight="199.0" minHeight="20.0" prefHeight="31.0" />
+            <RowConstraints maxHeight="199.0" minHeight="20.0" prefHeight="31.0" />
+            <RowConstraints maxHeight="199.0" minHeight="20.0" prefHeight="31.0" />
+            <RowConstraints maxHeight="199.0" minHeight="20.0" prefHeight="31.0" />
+            <RowConstraints maxHeight="199.0" minHeight="20.0" prefHeight="31.0" />
+            <RowConstraints maxHeight="358.0" minHeight="96.0" prefHeight="96.0" />
+            <RowConstraints maxHeight="358.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="358.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="358.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="358.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="358.0" minHeight="0.0" prefHeight="81.0" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="113.0" minHeight="0.0" prefHeight="15.0" />
+            <RowConstraints maxHeight="454.0" minHeight="107.0" prefHeight="107.0" />
+            <RowConstraints maxHeight="235.0" minHeight="16.0" prefHeight="23.0" />
+            <RowConstraints maxHeight="235.0" minHeight="16.0" prefHeight="30.0" />
+            </rowConstraints>
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="40.0" right="20.0" />
+            </BorderPane.margin>
+        </GridPane>
+   </left>
 </BorderPane>

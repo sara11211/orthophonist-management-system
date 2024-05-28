@@ -4,10 +4,14 @@ package com;
 import com.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,6 +21,9 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.util.ResourceBundle;
 import static com.HelloApplication.utilisateurCourant;
 
@@ -70,7 +77,8 @@ public class RDVSuiviController implements Initializable {
     @FXML
     private ToggleGroup toggleGroup;
 
-
+    private RDVSuivi rdvSuivi;
+    private Patient patient;
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
         toggleGroup = new ToggleGroup(); toggleGroup = new ToggleGroup();
@@ -79,7 +87,10 @@ public class RDVSuiviController implements Initializable {
 
         timeHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
         timeMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
+
     }
+
+
 
 
     @FXML
@@ -95,11 +106,11 @@ public class RDVSuiviController implements Initializable {
         String infoSup = additionalInfoArea.getText();
         boolean isInfoSup = !infoSup.isEmpty(); boolean isPresentiel;
         isPresentiel = enPresentielle.isSelected();
-        RDVSuivi rdvSuivi = new RDVSuivi(selected_day, heureDebut, duree, infoSup, isInfoSup, numeroDossier, isPresentiel);
+        rdvSuivi = new RDVSuivi(selected_day, heureDebut, duree, infoSup, isInfoSup, numeroDossier, isPresentiel);
         // TO ADD : Exception for when heureDebut + duree > 24h
         SessionLibre sessionLibre = new SessionLibre(selected_day.atTime(heureDebut), selected_day.atTime(heureDebut.plus(duree)));
         if (utilisateurCourant.getPlanning().planifier(sessionLibre,rdvSuivi)) {
-            Patient patient = utilisateurCourant.getPatientDossierHashMap().get(numeroDossier);
+            patient = utilisateurCourant.getPatientDossierHashMap().get(numeroDossier);
             patient.getRdvs().add(rdvSuivi);
             for (RDV rdvPlanned :  utilisateurCourant.getPlanning().getRDVSPlannified(selected_day)) {
                 System.out.println("----- Rendez-vous plannifié -----");
@@ -129,6 +140,35 @@ public class RDVSuiviController implements Initializable {
                 System.out.println("---------------------------------");
             }
 
+        }
+
+        try {
+            // Load the FXML file for the popup
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddObjectifs.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Objectifs");
+            AddObjectifController controller = fxmlLoader.getController();
+            controller.setRdvSuivi(rdvSuivi);
+            controller.setPatient(patient);
+            //controller.setRDV(rdv);
+
+
+            // Set the scene with the loaded FXML
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Make the popup modal
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            popupStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to create new Window: " + e.getMessage());
         }
     }
 

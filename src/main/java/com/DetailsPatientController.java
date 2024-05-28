@@ -13,6 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -23,7 +27,10 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static com.HelloApplication.utilisateurCourant;
 
 public class DetailsPatientController {
 
@@ -71,14 +78,53 @@ public class DetailsPatientController {
 
 
     @FXML
+    private TextField nomObjectif;
 
+
+    @FXML
+    private ToggleButton courtTerme;
+
+    @FXML
+    private ToggleButton moyenTerme;
+
+    @FXML
+    private ToggleButton longTerme;
+
+
+    @FXML
     private static Patient patient;
+
+    private boolean calledForPatient;
+
+    private ToggleGroup optionsGroup;
+
+    @FXML
+    private LineChart<String, Number> lineChart;
+
+    @FXML
+    private CategoryAxis xAxis;
+
+    @FXML
+    private NumberAxis yAxis;
+
+    private Map<String, Integer> objectifsScore = new HashMap<>();
 
     private static boolean RDVAdded = false; // Flag to indicate if RDV was added
 
     // Method to check if RDV was added
     public static boolean isRDVAdded() {
         return RDVAdded;
+    }
+
+    public void setCalledForPatient(boolean calledForPatient) {
+        this.calledForPatient = calledForPatient;
+        if (calledForPatient) {
+            optionsGroup = new ToggleGroup();
+            System.out.println("CALLED FOR PATIENT !!!");
+            courtTerme.setToggleGroup(optionsGroup);
+            moyenTerme.setToggleGroup(optionsGroup);
+            longTerme.setToggleGroup(optionsGroup);
+        }
     }
 
     @FXML
@@ -90,8 +136,13 @@ public class DetailsPatientController {
         }
     }
     public void setPatient(Patient patient) { this.patient = patient;
-    System.out.println("INSIDE SETPATIENT : "+patient.getPrenom());}
+    displayPatient();}
 
+    @FXML
+    public void initialize() {
+        // Initialize the ToggleGroup and set it to the RadioButtons
+
+    }
     public void displayPatient() {
         if (patient != null) {
             firstNameLabel.setText(patient.getPrenom());
@@ -104,7 +155,9 @@ public class DetailsPatientController {
             ObservableList<BO> BOList = FXCollections.observableArrayList(patient.getBos());
             rdvTable.setItems(rdvList);
             bosTable.setItems(BOList);
+            fetchData();
 
+            populateChart();
 
             // Ensure the RDV class has a getDate() method returning a LocalDate
             dateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDV, LocalDate>, ObservableValue<LocalDate>>() {
@@ -540,7 +593,72 @@ public class DetailsPatientController {
             e.printStackTrace();
             System.out.println("Failed to create new Window: " + e.getMessage());
         }
-        // Implement method to add a new observation
+    }
+
+    @FXML
+    void handleSubmitObjectif(ActionEvent event) {
+        System.out.println("ADD OBJECTIF !");
+        String selectedOption = "";
+        System.out.println("handleSubmitObjectif method called.");
+        System.out.println("optionsGroup is null: " + (optionsGroup == null));
+
+        ToggleButton selectedRadioButton = (ToggleButton) optionsGroup.getSelectedToggle();
+
+        if (selectedRadioButton != null) {
+            selectedOption = selectedRadioButton.getText();
+            if(nomObjectif.getText() != null) {
+                Objectif objectif = new Objectif(nomObjectif.getText(), selectedOption, false);
+                Map<Objectif, Integer> objectifScore = new HashMap<>();
+                objectifScore.put(objectif, 0);
+                if (patient.getFicheSuivi() == null) {
+                    HashMap<Objectif, Integer> objscore = new HashMap<>();
+                    objscore.put(objectif, 0);
+                    FicheSuivi ficheSuivi = new FicheSuivi(objscore);
+                    patient.setFicheSuivi(ficheSuivi);
+                    System.out.println("UPDATED FICHE SUIVI");
+                    for (Objectif obj : patient.getFicheSuivi().getObjectifScores().keySet()) {
+                        System.out.println(obj.getNomObjectif());
+
+                    }
+                }
+                else {
+                    System.out.println("UP");
+                    patient.getFicheSuivi().getObjectifScores().put(objectif, 0);
+                }
+            }
+        }
+
+
+    }
+
+    private void fetchData() {
+        // Replace this code with actual data fetching logic
+        // Example data fetching logic:for
+        for (Objectif objectif : patient.getFicheSuivi().getObjectifScores().keySet()) {
+            objectifsScore.put(objectif.getNomObjectif(), patient.getFicheSuivi().getObjectifScores().get(objectif));
+        }
+    }
+
+    private void populateChart() {
+        // Sort the data by value in ascending order
+        Map<String, Integer> sortedData = objectifsScore.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
+
+        // Create a series and add the sorted data
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        for (Map.Entry<String, Integer> entry : sortedData.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        // Add the series to the chart
+        lineChart.getData().add(series);
     }
 
 }

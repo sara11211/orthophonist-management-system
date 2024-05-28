@@ -1,32 +1,24 @@
 package com.models;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class FicheSuivi implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    Patient patient;
-    HashSet<Objectif> objectifs;
+    // objectif et son score
+    HashMap<Objectif, Integer> objectifScores;
 
-    public FicheSuivi(Patient patient, HashSet<Objectif> objectifs) {
-        this.patient = patient;
-        this.objectifs = objectifs;
+    public FicheSuivi(HashMap<Objectif, Integer> objectifScores) {
+        this.objectifScores = objectifScores;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+
+    public void setObjectifScores(HashMap<Objectif, Integer> objectifScores) {
+        this.objectifScores = objectifScores;
     }
 
-    public void setObjectifs(HashSet<Objectif> objectifs) {
-        this.objectifs = objectifs;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public HashSet<Objectif> getObjectifs() {
-        return objectifs;
+    public HashMap<Objectif, Integer> getObjectifScores() {
+        return objectifScores;
     }
 }
