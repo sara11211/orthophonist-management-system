@@ -634,8 +634,10 @@ public class DetailsPatientController {
     private void fetchData() {
         // Replace this code with actual data fetching logic
         // Example data fetching logic:for
-        for (Objectif objectif : patient.getFicheSuivi().getObjectifScores().keySet()) {
-            objectifsScore.put(objectif.getNomObjectif(), patient.getFicheSuivi().getObjectifScores().get(objectif));
+        if (patient.getFicheSuivi() != null && patient.getFicheSuivi().getObjectifScores() != null) {
+            for (Objectif objectif : patient.getFicheSuivi().getObjectifScores().keySet()) {
+                objectifsScore.put(objectif.getNomObjectif(), patient.getFicheSuivi().getObjectifScores().get(objectif));
+            }
         }
     }
 
