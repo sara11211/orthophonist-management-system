@@ -2,21 +2,21 @@ package com;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
-
-import javafx.scene.control.*;
+import javafx.scene.control.ToggleGroup;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 
 import com.models.Question;
 
@@ -34,6 +34,7 @@ public class QuestionTestItemController implements Initializable {
     private Spinner<Integer> scoreSpinner;
     private ToggleGroup toggleGroup;
     private List<RadioButton> radioButtons;
+    private List<CheckBox> checkBoxes;
 
     private TestCreationController parentController;
 
@@ -58,6 +59,7 @@ public class QuestionTestItemController implements Initializable {
 
         toggleGroup = new ToggleGroup();
         radioButtons = new ArrayList<>();
+        checkBoxes = new ArrayList<>();
     }
 
     public void setParentController(TestCreationController parentController) {
@@ -72,31 +74,42 @@ public class QuestionTestItemController implements Initializable {
     @FXML
     private void handleQuestionTypeChange() {
         String selectedType = questionTypeComboBox.getValue();
-        if (selectedType != null && (selectedType.contains("Multiple Choice") || selectedType.equals("Free Text"))) {
-            propositionsContainer.getChildren().clear();
+        propositionsContainer.getChildren().clear();
+        if (selectedType != null) {
             if (selectedType.equals("Free Text")) {
                 TextField answerField = new TextField();
                 answerField.setPromptText("Answer");
                 propositionsContainer.getChildren().add(answerField);
+                addPropositionButton.setVisible(false);
             } else {
                 addPropositionButton.setVisible(true);
             }
         } else {
             addPropositionButton.setVisible(false);
-            propositionsContainer.getChildren().clear();
         }
     }
 
     @FXML
     private void handleAddProposition() {
-        RadioButton propositionRadioButton = new RadioButton();
-        propositionRadioButton.setToggleGroup(toggleGroup);
-        propositionsContainer.getChildren().add(propositionRadioButton);
-        radioButtons.add(propositionRadioButton);
+        String selectedType = questionTypeComboBox.getValue();
+        if (selectedType.equals("Multiple Choice (Multiple Answers)")) {
+            CheckBox propositionCheckBox = new CheckBox();
+            propositionsContainer.getChildren().add(propositionCheckBox);
+            checkBoxes.add(propositionCheckBox);
 
-        TextField propositionField = new TextField();
-        propositionField.setPromptText("Proposition");
-        propositionsContainer.getChildren().add(propositionField);
+            TextField propositionField = new TextField();
+            propositionField.setPromptText("Proposition");
+            propositionsContainer.getChildren().add(propositionField);
+        } else if (selectedType.equals("Multiple Choice (Single Answer)")) {
+            RadioButton propositionRadioButton = new RadioButton();
+            propositionRadioButton.setToggleGroup(toggleGroup);
+            propositionsContainer.getChildren().add(propositionRadioButton);
+            radioButtons.add(propositionRadioButton);
+
+            TextField propositionField = new TextField();
+            propositionField.setPromptText("Proposition");
+            propositionsContainer.getChildren().add(propositionField);
+        }
     }
 
     public VBox getPropositionsContainer() {
@@ -105,5 +118,9 @@ public class QuestionTestItemController implements Initializable {
 
     public List<RadioButton> getRadioButtons() {
         return radioButtons;
+    }
+
+    public List<CheckBox> getCheckBoxes() {
+        return checkBoxes;
     }
 }
