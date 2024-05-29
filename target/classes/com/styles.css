@@ -2,14 +2,14 @@
     -fx-pie-label-visible: true;
 }
 
-.default-color0.chart-pie-data {
+.default-color0.chart-pie {
     -fx-pie-color: #000000; /* Tomato color */
 }
 
-.default-color1.chart-pie-data {
+.default-color1.chart-pie {
     -fx-pie-color: #4682b4; /* Steel blue color */
 }
 
-.default-color2.chart-pie-data {
+.default-color2.chart-pie {
     -fx-pie-color: #32cd3208; /* Lime green color */
 }

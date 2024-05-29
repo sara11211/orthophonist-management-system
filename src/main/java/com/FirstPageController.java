@@ -3,9 +3,6 @@ package com;
 import static com.HelloApplication.utilisateurCourant;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.ResourceBundle;
 
 import com.models.BO;
 import com.models.Diagnostic;
@@ -47,6 +44,8 @@ public class FirstPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HashMap<String, Integer> troubleCount = new HashMap<>();
         HashMap<String, Integer> troubleNomCount = new HashMap<>();
+        String css = getClass().getResource("linechart.css").toExternalForm();
+        lineChart.getStylesheets().add(css);
 
         // Traverse through orthophonistes and collect information
         for (Patient patient : utilisateurCourant.getPatientDossierHashMap().values()) {
@@ -66,12 +65,10 @@ public class FirstPageController implements Initializable {
             }
         }
 
-
-
-        // Create PieChart.Data objects
         for (String troubleType : troubleCount.keySet()) {
             pieChart.getData().add(new PieChart.Data(troubleType, troubleCount.get(troubleType)));
         }
+        pieChart.setLabelsVisible(false);
 
         fetchData();
 
@@ -79,8 +76,6 @@ public class FirstPageController implements Initializable {
     }
 
     private void fetchData() {
-        // Replace this code with actual data fetching logic
-        // Example data fetching logic:
         for (Patient patient : utilisateurCourant.getPatientDossierHashMap().values()) {
             for (BO bo : patient.getBos()) {
                 Diagnostic diagnostic = bo.getDiagnostic();
@@ -100,7 +95,6 @@ public class FirstPageController implements Initializable {
     }
 
     private void populateChart() {
-        // Sort the data by value in ascending order
         Map<String, Integer> sortedData = troubleNomCount.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
@@ -111,13 +105,12 @@ public class FirstPageController implements Initializable {
                         LinkedHashMap::new
                 ));
 
-        // Create a series and add the sorted data
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Map.Entry<String, Integer> entry : sortedData.entrySet()) {
             series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
 
-        // Add the series to the chart
         lineChart.getData().add(series);
+        lineChart.setLegendVisible(false);
     }
 }

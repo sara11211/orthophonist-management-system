@@ -49,7 +49,7 @@ public class HelloApplication extends Application {
         oms = new OMS();
         createFile();
     }
-
+    scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
     stage.setTitle("My Orthophonist Manager");
     stage.getIcons().add(new Image(String.valueOf(HelloApplication.class.getResource("images/icon.png"))));
     stage.setScene(scene);
