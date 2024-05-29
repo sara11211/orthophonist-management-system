@@ -64,7 +64,7 @@ public class ConsultationController implements Initializable {
     private Label erreurText;
 
     private Patient patient;
-    private LocalDate selected_day;  // Assume selected_day is passed from another controller
+    private LocalDate selected_day;
 
     private boolean visible = true;
 
@@ -108,7 +108,6 @@ public class ConsultationController implements Initializable {
 
     private void updateUI() {
         if (!visible) {
-            System.out.println("Inside the condition where visible is false.");
             firstNameLabel.setVisible(false);
             lastNameLabel.setVisible(false);
             ageLabel.setVisible(false);
@@ -116,7 +115,6 @@ public class ConsultationController implements Initializable {
             lastNameField.setDisable(true);
             ageField.setDisable(true);
             if (patient != null) {
-                System.out.println("PATIENT CORRECTLY FETCHED ? : "+patient.getNom()+ " "+patient.getPrenom()+" "+patient.getDateNaissance().toString());
                 firstNameField.setText(patient.getPrenom());
                 lastNameField.setText(patient.getNom());
                 int age = calculateAge(patient.getDateNaissance());
@@ -130,12 +128,9 @@ public class ConsultationController implements Initializable {
     }
     @FXML
     private void handleSubmit(ActionEvent event) {
-        System.out.println("Soumettre button clicked");
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
-        System.out.print("FIELD CORRECT ? "+firstName+ " "+lastName);
         if(creerDossierPatient(lastName, firstName)) System.out.println("Dossier created.");
-        else System.out.println("Failure creating Dossier.");
         Duration duree = Duration.ofHours(dureeHourSpinner.getValue()).plusMinutes(dureeMinuteSpinner.getValue());
         int age = Integer.parseInt(ageField.getText());
         if (age < 18) {
@@ -157,7 +152,6 @@ public class ConsultationController implements Initializable {
         boolean isInfoSup = !infoSup.isEmpty();
         Consultation consultation = new Consultation(selected_day, heureDebut, duree, infoSup, isInfoSup, firstName, lastName, age);
         setNewConsultation(consultation);
-        // TO ADD : Exception for when heureDebut + duree > 24h
         SessionLibre sessionLibre = new SessionLibre(selected_day.atTime(heureDebut), selected_day.atTime(heureDebut.plus(duree)));
         if (utilisateurCourant.getPlanning().planifier(sessionLibre,consultation)) {
             for (RDV rdvPlanned :  utilisateurCourant.getPlanning().getRDVSPlannified(selected_day)) {
@@ -209,9 +203,9 @@ public class ConsultationController implements Initializable {
     }
 
     public static int calculateAge(LocalDate dateOfBirth) {
-        LocalDate currentDate = LocalDate.now(); // Get the current date
-        if (dateOfBirth != null && !dateOfBirth.isAfter(currentDate)) { // Ensure the date of birth is not null and is not in the future
-            return Period.between(dateOfBirth, currentDate).getYears(); // Calculate the age
+        LocalDate currentDate = LocalDate.now();
+        if (dateOfBirth != null && !dateOfBirth.isAfter(currentDate)) {
+            return Period.between(dateOfBirth, currentDate).getYears();
         } else {
             throw new IllegalArgumentException("Date of birth is invalid");
         }

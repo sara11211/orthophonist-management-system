@@ -144,16 +144,12 @@ public class DetailsBO implements Initializable {
             public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<Test, LocalDate> param) {
                 Test test = param.getValue();
                 if (test != null) {
-                    System.out.println("DATE : "+test.getDateTest());
                     return new SimpleObjectProperty<>(test.getDateTest());
                 } else {
                     return new SimpleObjectProperty<>(null);
                 }
             }
         });
-
-
-
         testsTable.getColumns().add(viewCol);
     }
 

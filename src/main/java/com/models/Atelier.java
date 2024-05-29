@@ -33,18 +33,6 @@ public class Atelier extends RDV implements Serializable {
         return thematique;
     }
 
-    /*
-        public boolean scheduleRDV() {
-            // Implement logic to schedule an atelier meeting
-            System.out.println("Rendez-vous Atelier avec thème: " + thematique);
-            System.out.println("Patients:");
-            for (Long folderNumber : listeNumDossier) {
-                System.out.println("- Patient N°" + folderNumber);
-            }
-            super.scheduleRDV();
-            return true;
-        }
-    */
     @Override
     public String toString() {
         return "Atelier : " + super.toString() ;

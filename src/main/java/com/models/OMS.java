@@ -37,9 +37,6 @@ public class OMS implements Serializable {
         }
     }
 
-    // public boolean isExist(String email) {
-    //     return orthophonistes.containsKey(new Orthophoniste(email)); // Use email for comparison
-    // }
 
     // vérifier si les informations de l'orthophoniste sont correctes
     public Orthophoniste findUser(String email, String password) {

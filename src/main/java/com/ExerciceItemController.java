@@ -16,7 +16,6 @@ public class ExerciceItemController {
 
     @FXML
     public void initialize() {
-        // Initialize the spinner with values from 1 to 10
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
         scoreSpinner.setValueFactory(valueFactory);
     }

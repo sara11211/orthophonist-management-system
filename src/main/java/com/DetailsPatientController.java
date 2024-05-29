@@ -109,9 +109,8 @@ public class DetailsPatientController {
 
     private Map<String, Integer> objectifsScore = new HashMap<>();
 
-    private static boolean RDVAdded = false; // Flag to indicate if RDV was added
+    private static boolean RDVAdded = false;
 
-    // Method to check if RDV was added
     public static boolean isRDVAdded() {
         return RDVAdded;
     }
@@ -120,7 +119,6 @@ public class DetailsPatientController {
         this.calledForPatient = calledForPatient;
         if (calledForPatient) {
             optionsGroup = new ToggleGroup();
-            System.out.println("CALLED FOR PATIENT !!!");
             courtTerme.setToggleGroup(optionsGroup);
             moyenTerme.setToggleGroup(optionsGroup);
             longTerme.setToggleGroup(optionsGroup);
@@ -140,7 +138,6 @@ public class DetailsPatientController {
 
     @FXML
     public void initialize() {
-        // Initialize the ToggleGroup and set it to the RadioButtons
 
     }
     public void displayPatient() {
@@ -159,7 +156,6 @@ public class DetailsPatientController {
 
             populateChart();
 
-            // Ensure the RDV class has a getDate() method returning a LocalDate
             dateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDV, LocalDate>, ObservableValue<LocalDate>>() {
                 @Override
                 public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<RDV, LocalDate> param) {
@@ -302,29 +298,15 @@ public class DetailsPatientController {
     @FXML
     void handleAddBO(ActionEvent event) {
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutBO.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Ajouter un BO");
             AjoutBOController.setPatient(patient);
-
-
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to create new Window: " + e.getMessage());
@@ -334,27 +316,14 @@ public class DetailsPatientController {
     @FXML
     void handleAddRDV(ActionEvent event) {
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AjoutRDV.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de la consultation");
-
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to create new Window: " + e.getMessage());
@@ -366,32 +335,19 @@ public class DetailsPatientController {
     @FXML
     public void handleConsultationClick() {
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ConsultationForm.fxml"));
             Parent root = fxmlLoader.load();
-
             ConsultationController consultationController = fxmlLoader.getController();
-            System.out.println("TEST PATIENT : "+patient.getNom());
             consultationController.setPatient(patient);
 
-            consultationController.setSelectedDay(dateRDVField.getValue());  // Pass selected_day to the ConsultationController
-
-            //consultationController.setCalendarController(this);
-            // Create a new stage for the popup
+            consultationController.setSelectedDay(dateRDVField.getValue());
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de la consultation");
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
             if (consultationController.getSubmitSuccess()) {
-                System.out.println("INSIIIIIDEDDDDDDDDDDDDDD");
                 RDV newRDV = consultationController.getNewConsultation();
                 patient.getRdvs().add(newRDV);
 
@@ -406,27 +362,15 @@ public class DetailsPatientController {
     @FXML
     public void handleSuiviClick() {
         try {
-            System.out.println("Seance de suivi Clicked");
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RDVSuiviForm.fxml"));
             Parent root = fxmlLoader.load();
-
             RDVSuiviController rdvSuiviController = fxmlLoader.getController();
             rdvSuiviController.setSelectedDay(dateRDVField.getValue());
-            //rdvSuiviController.setCalendarController(this);
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de la séance de suivi");
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
 
         } catch (IOException e) {
@@ -436,29 +380,16 @@ public class DetailsPatientController {
     }
     @FXML
     public void handleAtelierClick() {
-        // Code to navigate to Atelier page
         try {
-            System.out.println("Atelier Clicked");
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AtelierForm.fxml"));
             Parent root = fxmlLoader.load();
-
             AtelierController atelierController = fxmlLoader.getController();
             atelierController.setSelectedDay(dateRDVField.getValue());
-            //atelierController.setCalendarController(this);
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de l'atelier");
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
 
         } catch (IOException e) {
@@ -468,27 +399,16 @@ public class DetailsPatientController {
     }
 
     private void showObservations(RDV rdv) {
-        System.out.println("SHOW OBSERVATION !");
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Observations.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Observations");
             ObservationsController controller = fxmlLoader.getController();
             controller.setObservations(getObservations(rdv));
-
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
 
         } catch (IOException e) {
@@ -501,26 +421,15 @@ public class DetailsPatientController {
 
     private void showBO(BO bo) {
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DisplayBO.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Bilan orthophoniques");
             DetailsBO controller = fxmlLoader.getController();
             if (bo != null) controller.setBo(bo);
-            else System.out.println("BOOO NULLLL IN SHOWBO");
-
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
 
         } catch (IOException e) {
@@ -530,25 +439,15 @@ public class DetailsPatientController {
     }
     private void showAdditionalInfoPopup(RDV rdv) {
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InfoSups.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Observations");
             InfoSupsController controller = fxmlLoader.getController();
             controller.setInfoSupField(rdv);
-
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
 
         } catch (IOException e) {
@@ -566,27 +465,16 @@ public class DetailsPatientController {
         return res;
     }
     private void addObservation(RDV rdv) {
-        System.out.println("ADD OBSERVATION !");
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddObservation.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Observations");
             AddObservationController controller = fxmlLoader.getController();
             controller.setRDV(rdv);
-
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
 
         } catch (IOException e) {
@@ -597,11 +485,7 @@ public class DetailsPatientController {
 
     @FXML
     void handleSubmitObjectif(ActionEvent event) {
-        System.out.println("ADD OBJECTIF !");
         String selectedOption = "";
-        System.out.println("handleSubmitObjectif method called.");
-        System.out.println("optionsGroup is null: " + (optionsGroup == null));
-
         ToggleButton selectedRadioButton = (ToggleButton) optionsGroup.getSelectedToggle();
 
         if (selectedRadioButton != null) {
@@ -615,14 +499,12 @@ public class DetailsPatientController {
                     objscore.put(objectif, 0);
                     FicheSuivi ficheSuivi = new FicheSuivi(objscore);
                     patient.setFicheSuivi(ficheSuivi);
-                    System.out.println("UPDATED FICHE SUIVI");
                     for (Objectif obj : patient.getFicheSuivi().getObjectifScores().keySet()) {
                         System.out.println(obj.getNomObjectif());
 
                     }
                 }
                 else {
-                    System.out.println("UP");
                     patient.getFicheSuivi().getObjectifScores().put(objectif, 0);
                 }
             }
@@ -632,8 +514,6 @@ public class DetailsPatientController {
     }
 
     private void fetchData() {
-        // Replace this code with actual data fetching logic
-        // Example data fetching logic:for
         if (patient.getFicheSuivi() != null && patient.getFicheSuivi().getObjectifScores() != null) {
             for (Objectif objectif : patient.getFicheSuivi().getObjectifScores().keySet()) {
                 objectifsScore.put(objectif.getNomObjectif(), patient.getFicheSuivi().getObjectifScores().get(objectif));
@@ -642,7 +522,6 @@ public class DetailsPatientController {
     }
 
     private void populateChart() {
-        // Sort the data by value in ascending order
         Map<String, Integer> sortedData = objectifsScore.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
@@ -652,14 +531,10 @@ public class DetailsPatientController {
                         (e1, e2) -> e1,
                         LinkedHashMap::new
                 ));
-
-        // Create a series and add the sorted data
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Map.Entry<String, Integer> entry : sortedData.entrySet()) {
             series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
-
-        // Add the series to the chart
         lineChart.getData().add(series);
     }
 

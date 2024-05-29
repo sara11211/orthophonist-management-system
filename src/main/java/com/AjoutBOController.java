@@ -90,7 +90,6 @@ public class AjoutBOController {
         if (utilisateurCourant != null && utilisateurCourant.getAnamneses() != null) {
             anamneses = FXCollections.observableArrayList(utilisateurCourant.getAnamneses());
         } else {
-            System.out.println("NO ANAMNESES FOR USER");
             anamneses = FXCollections.observableArrayList();
         }
         anamnesesTable.setItems(anamneses);
@@ -246,7 +245,6 @@ public class AjoutBOController {
     private void handleAddAnamnese(Anamnese anamnese) {
         if (patient.getBoPremier() !=null) {
             bo.setAnamnese(null);
-            System.out.println("Il ne s'agit pas du premier BO du patient !");
             return;
         }
         bo.setAnamnese(anamnese);
@@ -303,12 +301,6 @@ public class AjoutBOController {
         }
 
         System.out.println("Added BO successfully!!");
-        System.out.println("------- BO ---------");
-        System.out.println("Projet therap : "+bo.getProjetTherap());
-        //System.out.println("Anamnese nom : "+bo.getAnamnese().getNom());
-        for (Test test : bo.getEpreuvesCliniques().getTests()) {
-            System.out.println("TEST nom : " + test.getNom());
-        }
 
 
     }

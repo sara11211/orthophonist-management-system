@@ -84,10 +84,8 @@ public class RDVSuiviController implements Initializable {
         toggleGroup = new ToggleGroup(); toggleGroup = new ToggleGroup();
         enPresentielle.setToggleGroup(toggleGroup);
         enLigne.setToggleGroup(toggleGroup);
-
         timeHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
         timeMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
-
     }
 
 
@@ -95,7 +93,6 @@ public class RDVSuiviController implements Initializable {
 
     @FXML
     private void handleSubmit(ActionEvent event) {
-        System.out.println("Soumettre button clicked");
         Long numeroDossier = Long.parseLong(numDossierField.getText());
         LocalTime heureDebut = LocalTime.of(timeHourSpinner.getValue(), timeMinuteSpinner.getValue());
         Duration duree = Duration.ofHours(dureeHourSpinner.getValue()).plusMinutes(dureeMinuteSpinner.getValue());
@@ -107,7 +104,6 @@ public class RDVSuiviController implements Initializable {
         boolean isInfoSup = !infoSup.isEmpty(); boolean isPresentiel;
         isPresentiel = enPresentielle.isSelected();
         rdvSuivi = new RDVSuivi(selected_day, heureDebut, duree, infoSup, isInfoSup, numeroDossier, isPresentiel);
-        // TO ADD : Exception for when heureDebut + duree > 24h
         SessionLibre sessionLibre = new SessionLibre(selected_day.atTime(heureDebut), selected_day.atTime(heureDebut.plus(duree)));
         if (utilisateurCourant.getPlanning() == null) utilisateurCourant.setPlanning(new Planning(utilisateurCourant.getNom(), LocalDate.now(), LocalDate.now().plusMonths(12) ));
         if (utilisateurCourant.getPlanning().planifier(sessionLibre,rdvSuivi)) {
@@ -144,27 +140,16 @@ public class RDVSuiviController implements Initializable {
         }
 
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddObjectifs.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Objectifs");
             AddObjectifController controller = fxmlLoader.getController();
             controller.setRdvSuivi(rdvSuivi);
             controller.setPatient(patient);
-            //controller.setRDV(rdv);
-
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
 
         } catch (IOException e) {

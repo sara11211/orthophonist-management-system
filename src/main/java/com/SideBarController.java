@@ -45,14 +45,10 @@ public class SideBarController {
 
     @FXML
     public void handlePatientFiles() {
-        System.out.println("Navigating to Patient Files");
-        // Implement navigation logic
     }
 
     @FXML
     public void handleAppointments(ActionEvent event) {
-        System.out.println("Navigating to Appointments");
-        // Implement navigation logic
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Calendar.fxml"));
             Scene scene = new Scene(root);
@@ -66,8 +62,6 @@ public class SideBarController {
 
     @FXML
     public void handleStatistics() {
-        System.out.println("Navigating to Statistics");
-        // Implement navigation logic
     }
 
     @FXML
@@ -99,7 +93,6 @@ public class SideBarController {
     @FXML
     void handleSignOut(ActionEvent event) {
         utilisateurCourant = null;
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
         Scene scene = null;
         try {
@@ -119,9 +112,7 @@ public class SideBarController {
     void goToUpdateUserInfoPage(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("update_user_info.fxml"));
         Parent root = fxmlLoader.load();
-
         Scene scene = new Scene(root);
-
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
@@ -133,10 +124,8 @@ public class SideBarController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("custom_popup.fxml"));
             Parent root = loader.load();
-
             CustomPopupController controller = loader.getController();
             controller.setContactInfo("Pour obtenir de l'aide ou laisser un commentaire, veuillez contacter :");
-
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Aide");
@@ -152,11 +141,8 @@ void handleLogoClick(MouseEvent event) {
     try {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("first_page.fxml"));
         Parent root = fxmlLoader.load();
-
-        // Get the controller instance and set the userName
         FirstPageController controller = fxmlLoader.getController();
         controller.setUserName(utilisateurCourant.getPrenom() + " " + utilisateurCourant.getNom());
-
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);

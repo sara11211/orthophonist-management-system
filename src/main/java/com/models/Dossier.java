@@ -47,7 +47,6 @@ public class Dossier implements Serializable {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ID_FILE_PATH))) {
             return ois.readLong();
         } catch (IOException e) {
-            // If the file does not exist or cannot be read, start with 1
             return 1;
         }
     }

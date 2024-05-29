@@ -51,9 +51,7 @@ public class ViewTestsController {
     }
 
     private void addButtonsToTable() {
-        // View Button
         TableColumn<Test, Void> viewCol = new TableColumn<>("View");
-
         viewCol.setCellFactory(param -> new TableCell<>() {
             private final Button btn = new Button("View");
 
@@ -76,10 +74,7 @@ public class ViewTestsController {
         });
 
         testsTable.getColumns().add(viewCol);
-
-        // Delete Button
         TableColumn<Test, Void> deleteCol = new TableColumn<>("Delete");
-
         deleteCol.setCellFactory(param -> new TableCell<>() {
             private final Button btn = new Button("Delete");
 
@@ -128,8 +123,6 @@ public class ViewTestsController {
         });
 
         testsTable.getColumns().add(modifyCol);
-
-        // Average Score Button
         TableColumn<Test, Void> avgScoreCol = new TableColumn<>("Avg Score");
 
         avgScoreCol.setCellFactory(param -> new TableCell<>() {

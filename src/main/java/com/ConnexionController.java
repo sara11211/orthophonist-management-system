@@ -53,7 +53,6 @@ public class ConnexionController {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("first_page.fxml"));
                 Parent root = fxmlLoader.load();
 
-                // Get the controller instance and set the userName
                 FirstPageController controller = fxmlLoader.getController();
                 controller.setUserName(utilisateurCourant.getPrenom() + " " + utilisateurCourant.getNom());
 

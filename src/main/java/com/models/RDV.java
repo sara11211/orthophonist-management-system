@@ -10,10 +10,6 @@ import java.time.Duration;
 public class RDV implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /*public enum TypeRDV {
-        Consultation, RDVSuivi, Atelier
-    }
-    private TypeRDV typeRDV;*/
     private LocalDate date;
     private LocalTime heureDebut;
     private Duration duree;

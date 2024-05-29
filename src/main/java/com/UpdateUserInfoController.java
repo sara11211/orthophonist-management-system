@@ -87,19 +87,12 @@ public class UpdateUserInfoController {
         if (!oldEmail.equals(userEmail)) {
             oms.getOrthophonistes().remove(new Orthophoniste(oldEmail, utilisateurCourant.getMotDePasse()));
         }
-
-        // Add updated user to OMS
         oms.getOrthophonistes().put(updatedUser, userMotDePasse);
-
-        // Update utilisateurCourant
         utilisateurCourant = updatedUser;
-
-        // Load the first page
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("first_page.fxml"));
         Parent root = fxmlLoader.load();
         FirstPageController controller = fxmlLoader.getController();
         controller.setUserName(utilisateurCourant.getPrenom() + " " + utilisateurCourant.getNom());
-
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.setScene(scene);

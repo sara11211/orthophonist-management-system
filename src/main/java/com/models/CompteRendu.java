@@ -23,16 +23,5 @@ public class CompteRendu {
         ajouterScore(question,score);
     }
     
-    // public void evaluer(QCU question, Proposition propositionChoisie) {
-    //     int score = propositionChoisie.getScore();
-    //     ajouterScore(question, score);
-    // }
 
-    // public void evaluer(QCM question, Proposition[] propositionsChoisies) {
-    //     int score = 0;
-    //     for (Proposition proposition : propositionsChoisies) {
-    //         score += proposition.getScore();
-    //     }
-    //     ajouterScore(question, score);
-    // }
 }

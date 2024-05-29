@@ -11,7 +11,6 @@ public class CustomPopupController {
 
     @FXML
     private void handleOk() {
-        // Handle the OK button action, for example, by closing the popup
         Stage stage = (Stage) contactInfoLabel.getScene().getWindow();
         stage.close();
     }

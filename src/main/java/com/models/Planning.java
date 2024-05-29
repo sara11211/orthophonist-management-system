@@ -123,7 +123,6 @@ public class Planning implements Serializable {
             {
                 SessionOccupee SessionOccupee = new SessionOccupee(sessionLibre.getHeureDebut(),sessionLibre.getHeureFin(),(Consultation) rdv);
                 this.sessionLibres.remove(sessionLibre);
-                //this.tacheUnscheduleds.remove(tache);
                 this.rdvsPlannified.add(rdv);
                 this.sessionOccupees.add(SessionOccupee);
                 return true;
@@ -137,7 +136,6 @@ public class Planning implements Serializable {
 
                 SessionOccupee SessionOccupee = new SessionOccupee(sessionLibre.getHeureDebut(),nvHourDebut,(Consultation) rdv);
                 this.sessionLibres.remove(sessionLibre);
-                //this.tacheUnscheduleds.remove(tache);
                 this.rdvsPlannified.add(rdv);
                 this.sessionOccupees.add(SessionOccupee);
                 return true;
@@ -149,7 +147,6 @@ public class Planning implements Serializable {
             {
                 SessionOccupee SessionOccupee = new SessionOccupee(sessionLibre.getHeureDebut(),sessionLibre.getHeureFin(),(Atelier) rdv);
                 this.sessionLibres.remove(sessionLibre);
-                //this.tacheUnscheduleds.remove(tache);
                 this.rdvsPlannified.add(rdv);
                 this.sessionOccupees.add(SessionOccupee);
                 return true;
@@ -163,7 +160,6 @@ public class Planning implements Serializable {
 
                 SessionOccupee SessionOccupee = new SessionOccupee(sessionLibre.getHeureDebut(),nvHourDebut,(Atelier) rdv);
                 this.sessionLibres.remove(sessionLibre);
-                //this.tacheUnscheduleds.remove(tache);
                 this.rdvsPlannified.add(rdv);
                 this.sessionOccupees.add(SessionOccupee);
                 return true;
@@ -173,7 +169,6 @@ public class Planning implements Serializable {
             if (sessionLibre.getDuree().toHours() == rdv.getDuree().toHours()) {
                 SessionOccupee SessionOccupee = new SessionOccupee(sessionLibre.getHeureDebut(), sessionLibre.getHeureFin(), (RDVSuivi) rdv);
                 this.sessionLibres.remove(sessionLibre);
-                //this.tacheUnscheduleds.remove(tache);
                 this.rdvsPlannified.add(rdv);
                 this.sessionOccupees.add(SessionOccupee);
                 return true;
@@ -187,7 +182,6 @@ public class Planning implements Serializable {
 
                 SessionOccupee SessionOccupee = new SessionOccupee(sessionLibre.getHeureDebut(), nvHourDebut, (RDVSuivi) rdv);
                 this.sessionLibres.remove(sessionLibre);
-                //this.tacheUnscheduleds.remove(tache);
                 this.rdvsPlannified.add(rdv);
                 this.sessionOccupees.add(SessionOccupee);
                 return true;

@@ -118,5 +118,4 @@ public class Patient implements Serializable  {
         return "Nom : " + this.nom + ", Prenom : " + this.prenom + ", Date de naissance : " + this.dateNaissance + ", Lieu de naissance : " + this.lieuNaissance + ", Adresse : " + this.adresse;
     }
 
-    // implementation des methodes repondre aux questions
 }

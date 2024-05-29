@@ -7,7 +7,6 @@ public class ObservationsController {
     @FXML
     private TextArea observationsText;
 
-    // Method to set the observations text
     public void setObservations(String observations) {
         observationsText.setText(observations);
     }

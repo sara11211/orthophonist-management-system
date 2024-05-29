@@ -60,7 +60,6 @@ public class TestExerciceController {
     private void handleSaveTest(ActionEvent event) {
         String name = testNameField.getText();
         String description = testDescriptionField.getText();
-
         if (name.isEmpty() || description.isEmpty()) {
             return;
         }
@@ -77,7 +76,6 @@ public class TestExerciceController {
         for (Node exerciceNode : exercicesContainer.getChildren()) {
             ExerciceItemController controller = (ExerciceItemController) exerciceNode.getUserData();
             if (controller == null) {
-                System.out.println("Controller is null for one of the exercise nodes");
                 continue;
             }
             String consigne = controller.getConsigne();
@@ -115,7 +113,6 @@ public class TestExerciceController {
         this.testExercice = testExercice;
         testNameField.setText(testExercice.getNom());
         testDescriptionField.setText(testExercice.getDescription());
-
         exercicesContainer.getChildren().clear();
         for (Exercice exercice : testExercice.getExercices()) {
             try {

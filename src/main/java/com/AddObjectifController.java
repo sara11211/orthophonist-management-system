@@ -57,7 +57,6 @@ public class AddObjectifController {
         typeObjectifColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getTypeObjectif()));
 
         if (objectifScores != null) {
-            System.out.println("INSIDE SETTING UP TABLEVIEWWW");
             tableView.setItems(getObjectifData());
 
             addActionColumn.setCellFactory(param -> new TableCell<>() {
@@ -89,17 +88,12 @@ public class AddObjectifController {
 
     @FXML
     public void initialize() {
-        // Set up the columns
-
-
-
 
 
     }
 
     private ObservableList<Objectif> getObjectifData() {
         ObservableList<Objectif> data = FXCollections.observableArrayList();
-        System.out.println("inside get object data");
         for (Objectif objectif : objectifScores.keySet()) {
             System.out.println(objectif.getNomObjectif());
             data.add(objectif);

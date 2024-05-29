@@ -64,17 +64,15 @@ public class CalendarController implements Initializable {
 
     /****************** Methods *********************************************/
 
-    //checked and updated
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
-        year.setText(String.valueOf(dateFocus.getYear()));  // Initialize the year variable
-        month.setText(String.valueOf(dateFocus.getMonth())); // Initialize the month variable
+        year.setText(String.valueOf(dateFocus.getYear()));
+        month.setText(String.valueOf(dateFocus.getMonth()));
         drawCalendar();
         selected_day = LocalDate.now();
 
-        // set taches and viewlist
         if (utilisateurCourant.getPlanning() == null) {
             Planning planning = new Planning(utilisateurCourant.getNom(),selected_day, selected_day.plusMonths(1));
             utilisateurCourant.setPlanning(planning);
@@ -85,7 +83,8 @@ public class CalendarController implements Initializable {
 
         }
         listRDVs.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // Double-click to show details
+            if (event.getClickCount() == 2) {
+
                 RDV selectedRDV = listRDVs.getSelectionModel().getSelectedItem();
                 if (selectedRDV != null) {
                     showRDVDetails(selectedRDV);
@@ -110,7 +109,6 @@ public class CalendarController implements Initializable {
 
 
     private void drawCalendar() {
-        // System.out.println(dateFocus.getMonthValue() + " " + dateFocus.getYear());
 
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
@@ -121,11 +119,9 @@ public class CalendarController implements Initializable {
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
 
-        //List of activities for a given month
-        //Map<Integer, List<CalendarActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
-        //Check for leap year
+        // verifier leap year
         if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
             monthMaxDate = 28;
         }
@@ -134,7 +130,6 @@ public class CalendarController implements Initializable {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 StackPane stackPane = new StackPane();
-
                 Rectangle rectangle = new Rectangle();
                 rectangle.setFill(Color.WHITE);
                 rectangle.setStroke(Color.web("FFFFFF"));
@@ -184,12 +179,8 @@ public class CalendarController implements Initializable {
             Rectangle rec1 = (Rectangle) clickedDayRectangle.getChildren().get(0);
             rec1.setFill(Color.web("dfdfdf"));
             selectedDayRectangle = clickedDayRectangle;
-
-            // Update selected_day with the clicked day
             int currentDate = Integer.parseInt(((Text) clickedDayRectangle.getChildren().get(1)).getText());
             selected_day = LocalDate.of(dateFocus.getYear(), dateFocus.getMonthValue(), currentDate);
-
-
         }
         if (rdvs != null) {
             rdvs.clear();
@@ -225,26 +216,16 @@ public class CalendarController implements Initializable {
 
     private void handleConsultationClick() {
         try {
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ConsultationForm.fxml"));
             Parent root = fxmlLoader.load();
-
             ConsultationController consultationController = fxmlLoader.getController();
-            consultationController.setSelectedDay(selected_day);  // Pass selected_day to the ConsultationController
-            // Create a new stage for the popup
+            consultationController.setSelectedDay(selected_day);
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de la consultation");
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to create new Window: " + e.getMessage());
@@ -254,29 +235,17 @@ public class CalendarController implements Initializable {
 
     private void handleSuiviClick() {
         try {
-            System.out.println("Seance de suivi Clicked");
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RDVSuiviForm.fxml"));
             Parent root = fxmlLoader.load();
-
             RDVSuiviController rdvSuiviController = fxmlLoader.getController();
             rdvSuiviController.setSelectedDay(selected_day);
             rdvSuiviController.setCalendarController(this);
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de la séance de suivi");
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to create new Window: " + e.getMessage());
@@ -284,31 +253,18 @@ public class CalendarController implements Initializable {
     }
 
     private void handleAtelierClick() {
-        // Code to navigate to Atelier page
         try {
-            System.out.println("Atelier Clicked");
-            // Load the FXML file for the popup
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AtelierForm.fxml"));
             Parent root = fxmlLoader.load();
-
             AtelierController atelierController = fxmlLoader.getController();
             atelierController.setSelectedDay(selected_day);
             atelierController.setCalendarController(this);
-
-            // Create a new stage for the popup
             Stage popupStage = new Stage();
             popupStage.setTitle("Détails de l'atelier");
-
-            // Set the scene with the loaded FXML
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
-
-            // Make the popup modal
             popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Show the popup
             popupStage.showAndWait();
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to create new Window: " + e.getMessage());
@@ -320,14 +276,12 @@ public class CalendarController implements Initializable {
         if (date.equals(currentDate)) {
             int startHour = startTime.getHour();
             int endHour = endTime.getHour();
-            double hourHeight = calendar.getHeight() / 24.0;  // Assuming each hour has equal height
-
+            double hourHeight = calendar.getHeight() / 24.0;
             for (int hour = startHour; hour <= endHour; hour++) {
                 Rectangle strip = new Rectangle();
-                strip.setWidth(calendar.getWidth() / 7);  // Width of each day cell
+                strip.setWidth(calendar.getWidth() / 7);
                 strip.setHeight(hourHeight);
                 strip.setFill(color);
-
                 StackPane dayStackPane = getStackPaneForDay(currentDate, hour);
                 if (dayStackPane != null) {
                     dayStackPane.getChildren().add(strip);
@@ -360,7 +314,6 @@ public class CalendarController implements Initializable {
     @FXML
     void handleSignOut(ActionEvent event) {
         utilisateurCourant = null;
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
         Scene scene = null;
         try {
@@ -380,7 +333,6 @@ public class CalendarController implements Initializable {
         Stage detailStage = new Stage();
         detailStage.initModality(Modality.APPLICATION_MODAL);
         detailStage.setTitle("Détails du Rendez-vous");
-
         Label detailsLabel = new Label(rdv.getDetailedInfo());
         Scene scene = new Scene(detailsLabel, 400, 200);
         detailStage.setScene(scene);

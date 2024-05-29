@@ -40,20 +40,7 @@ public class Consultation extends RDV implements Serializable {
     public int getAgePatient() {
         return agePatient;
     }
-    /*
-        public boolean scheduleRDV() {
-                System.out.println("Consultation orthophoniste : ");
-                System.out.println("Patient concerné: " + nomPatient+ " "+prenomPatient+" Agé(e) de : "+agePatient);
-                System.out.println("Date: " + super.getDate());
-                System.out.println("Heure debut: " + super.getHeureDebut());
-                System.out.println("Duree: " + super.getDuree());
-                System.out.println("Informations en plus: " + super.getInfoSup());
-                System.out.println("Consultation programmée avec succès.");
-                super.scheduleRDV();
-                return true;
 
-        }
-    */
     @Override
     public String toString() {
         return

@@ -48,7 +48,6 @@ public class CreerPatientSidebarController {
 
     }
 
-    // CREATION D'UN DOSSIER PATIENT
     @FXML
     private void handleSubmit(ActionEvent event) {
         String firstName = firstNameField.getText();
@@ -78,9 +77,5 @@ public class CreerPatientSidebarController {
         }
 
 
-        // Optionally, perform additional actions after closing the stage
-        // For example, show a confirmation message
-
-        // oms.sauvegarde;
     }
 }

@@ -116,7 +116,6 @@ public class AnamneseController {
         }
         oms.sauvegarder();
 
-        System.out.println("Anamnese saved with " + anamnese.getQuestions().size() + " questions.");
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
