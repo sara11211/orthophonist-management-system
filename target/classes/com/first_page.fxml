@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -17,24 +21,28 @@
    <right>
       <AnchorPane prefHeight="630.0" prefWidth="839.0" style="-fx-background-color: #f0f3f5;" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="39.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour, ">
+            <AnchorPane layoutX="492.0" layoutY="91.0" prefHeight="267.0" prefWidth="303.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <children>
+                    <PieChart fx:id="pieChart" layoutX="10.0" layoutY="11.0" prefHeight="245.0" prefWidth="283.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="41.0" layoutY="379.0" prefHeight="211.0" prefWidth="419.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+            <Text layoutX="46.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour, ">
                <font>
-                  <Font name="Nirmala UI Bold" size="27.0" />
+                  <Font name="Nirmala UI Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="41.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ravis de vous revoir,  voici ce que vous pouvez faire aujourd'hui">
+            <Text layoutX="44.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ravis de vous revoir, Explorez votre tableau de bord pour suivre vos progrès et vos résultats." wrappingWidth="412.4349365234375">
                <font>
-                  <Font size="10.0" />
+                  <Font name="Nirmala UI" size="13.0" />
                </font>
             </Text>
-            <Label fx:id="userName" layoutX="162.0" layoutY="36.0" text="">
+            <Label fx:id="userName" layoutX="175.0" layoutY="34.0" prefHeight="39.0" prefWidth="622.0" text="">
                <font>
-                  <Font name="Nirmala UI" size="27.0" />
+                  <Font name="Nirmala UI Bold" size="30.0" />
                </font>
             </Label>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" />
-              <PieChart fx:id="pieChart" layoutX="420.0" layoutY="168.0" prefHeight="315.0" prefWidth="400.0" />
-            <LineChart fx:id="lineChart" layoutY="339.0" prefHeight="263.0" prefWidth="418.0">
+            <LineChart fx:id="lineChart" layoutX="25.0" layoutY="390.0" prefHeight="214.0" prefWidth="418.0">
                <xAxis>
                   <CategoryAxis label="Trouble" fx:id="xAxis" />
                </xAxis>
@@ -42,6 +50,59 @@
                   <NumberAxis fx:id="yAxis" label="Nombre de patients" />
                </yAxis>
             </LineChart>
+            <AnchorPane layoutX="41.0" layoutY="144.0" prefHeight="205.0" prefWidth="417.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <children>
+                  <ImageView fitHeight="110.0" fitWidth="111.0" layoutX="39.0" layoutY="49.0">
+                     <image>
+                        <Image url="@images/add-task.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="anamneseButton" layoutX="194.0" layoutY="104.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="134.0" style="-fx-background-color: #3EC3A4; -fx-background-radius: 20;" text="Vos anamnèses" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="testButton" layoutX="246.0" layoutY="142.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="132.0" style="-fx-background-color: #3EC3A4; -fx-background-radius: 20;" text="Vos tests" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Text layoutX="194.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accès rapide">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="194.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trouvez tous vos documents !" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="494.0" layoutY="380.0" prefHeight="209.0" prefWidth="302.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <children>
+                  <ImageView fitHeight="161.0" fitWidth="141.0" layoutX="14.0" layoutY="25.0">
+                     <image>
+                        <Image url="@images/checkup.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="185.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patients">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="patientCountLabel" contentDisplay="CENTER" layoutX="211.0" layoutY="92.0" prefHeight="27.0" prefWidth="50.0" text="" textFill="#8379c1">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="175.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </right>

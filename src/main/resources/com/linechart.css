@@ -1,10 +1,10 @@
 /* linechart.css */
 .default-color0.chart-series-line { 
-    -fx-stroke: #cc33ff; /* Red color */ 
+    -fx-stroke: #3EC3A4; /* Red color */ 
 }
 
 .chart-line-symbol {
-    -fx-background-color: #3366FF, white; /* Example color (Blue) */
+    -fx-background-color: #B6C4CF, white; /* Example color (Blue) */
     -fx-background-radius: 5px;
     -fx-padding: 3px;
 }

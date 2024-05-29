@@ -3,13 +3,13 @@
 }
 
 .default-color0.chart-pie {
-    -fx-pie-color: #000000; /* Tomato color */
+    -fx-pie-color: #8379C1; /* Tomato color */
 }
 
 .default-color1.chart-pie {
-    -fx-pie-color: #4682b4; /* Steel blue color */
+    -fx-pie-color: #D8ECFE; /* Steel blue color */
 }
 
 .default-color2.chart-pie {
-    -fx-pie-color: #32cd3208; /* Lime green color */
+    -fx-pie-color: #B6C4CF; /* Lime green color */
 }

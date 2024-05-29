@@ -2,6 +2,7 @@ package com;
 
 import static com.HelloApplication.utilisateurCourant;
 
+import java.io.IOException;
 import java.net.URL;
 
 import com.models.BO;
@@ -10,10 +11,16 @@ import com.models.Patient;
 import com.models.Trouble;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.scene.chart.LineChart;
+import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -34,6 +41,15 @@ public class FirstPageController implements Initializable {
 
     @FXML
     private PieChart pieChart;
+        @FXML
+    private Button anamneseButton;
+
+    @FXML
+    private Button testButton;
+
+    @FXML
+    private Label patientCountLabel;
+
     private Map<String, Integer> troubleNomCount = new HashMap<>();
 
     public void setUserName(String name) {
@@ -44,8 +60,12 @@ public class FirstPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HashMap<String, Integer> troubleCount = new HashMap<>();
         HashMap<String, Integer> troubleNomCount = new HashMap<>();
+        
         String css = getClass().getResource("linechart.css").toExternalForm();
         lineChart.getStylesheets().add(css);
+
+        anamneseButton.setOnAction(event -> switchScene("anamneses_display.fxml"));
+        testButton.setOnAction(event -> switchScene("view_tests.fxml"));
 
         // Traverse through orthophonistes and collect information
         for (Patient patient : utilisateurCourant.getPatientDossierHashMap().values()) {
@@ -73,7 +93,31 @@ public class FirstPageController implements Initializable {
         fetchData();
 
         populateChart();
+        updatePatientCountLabel();
     }
+
+
+    private void updatePatientCountLabel() {
+        int patientCount = utilisateurCourant.getPatientDossierHashMap().size();
+        patientCountLabel.setText(String.valueOf(patientCount));
+    }
+
+private void switchScene(String fxmlFile) {
+    try {
+        URL fxmlLocation = getClass().getResource(fxmlFile);
+        if (fxmlLocation == null) {
+            throw new IOException("FXML file not found: " + fxmlFile);
+        }
+        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        // Load the correct type based on your FXML root
+        BorderPane pane = loader.load();
+        Stage stage = (Stage) anamneseButton.getScene().getWindow();  
+        stage.setScene(new Scene(pane));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
     private void fetchData() {
         for (Patient patient : utilisateurCourant.getPatientDossierHashMap().values()) {
