@@ -40,7 +40,7 @@
             <Label fx:id="birthdayLabel" text="Date d'anniversaire : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
             <Label fx:id="placeOfBirthLabel" text="Lieu de naissance :" GridPane.columnIndex="0" GridPane.rowIndex="3" />
             <Label fx:id="addressLabel" text="Adresse :" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <LineChart fx:id="lineChart" layoutY="339.0" prefHeight="205.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <LineChart fx:id="lineChart" layoutY="339.0" prefHeight="205.0" prefWidth="500.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                 <xAxis>
                     <CategoryAxis label="Objectif" fx:id="xAxis" />
                 </xAxis>
@@ -49,7 +49,7 @@
                 </yAxis>
             </LineChart>
             <VBox />
-            <TableView fx:id="rdvTable" prefHeight="115.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <TableView fx:id="rdvTable" prefHeight="115.0" prefWidth="500.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
                 <columns>
                     <TableColumn fx:id="dateColumn" text="Date" />
                     <TableColumn fx:id="hourColumn" prefWidth="79.0" text="Heure" />
@@ -61,7 +61,7 @@
                     <Insets />
                 </GridPane.margin>
             </TableView>
-            <TableView fx:id="bosTable" prefHeight="142.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="18">
+            <TableView fx:id="bosTable" prefHeight="142.0" prefWidth="500.0" GridPane.columnIndex="2" GridPane.rowIndex="18">
                 <columns>
                     <TableColumn fx:id="dateBOColumn" prefWidth="137.0" text="Date" />
                     <TableColumn fx:id="viewBOColumn" prefWidth="340.0" text="-" />
@@ -70,7 +70,7 @@
                     <Insets />
                 </GridPane.margin>
             </TableView>
-         <Button fx:id="RDVButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddRDV" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Rendez-vous" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="13">
+         <Button fx:id="RDVButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddRDV" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Rendez-vous" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="13">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -81,7 +81,7 @@
                <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="BOButton" mnemonicParsing="false" onAction="#handleAddBO" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Bilan Orthophonique" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="19">
+         <Button fx:id="BOButton" mnemonicParsing="false" onAction="#handleAddBO" prefHeight="25.0" prefWidth="207.0" style="-fx-background-color: #00b9ae;" text="Ajouter Bilan Orthophonique" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="19">
             <GridPane.margin>
                <Insets left="150.0" top="25.0" />
             </GridPane.margin>
@@ -96,8 +96,9 @@
          <Label text="Rendez-vous:" GridPane.rowIndex="10" />
          <Label text="Bilans orthophoniques :" GridPane.rowIndex="18" />
             <columnConstraints>
-                <ColumnConstraints maxWidth="600.0" minWidth="168.0" prefWidth="234.0" />
-            <ColumnConstraints maxWidth="600.0" minWidth="500.0" prefWidth="282.0" />
+                <ColumnConstraints maxWidth="600.0" minWidth="114.0" prefWidth="130.0" />
+            <ColumnConstraints maxWidth="600.0" minWidth="42.0" prefWidth="117.0" />
+            <ColumnConstraints maxWidth="600.0" minWidth="456.0" prefWidth="456.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="30.0" minHeight="22.0" prefHeight="28.0" />

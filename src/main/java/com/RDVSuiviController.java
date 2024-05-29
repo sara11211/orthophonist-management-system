@@ -109,6 +109,7 @@ public class RDVSuiviController implements Initializable {
         rdvSuivi = new RDVSuivi(selected_day, heureDebut, duree, infoSup, isInfoSup, numeroDossier, isPresentiel);
         // TO ADD : Exception for when heureDebut + duree > 24h
         SessionLibre sessionLibre = new SessionLibre(selected_day.atTime(heureDebut), selected_day.atTime(heureDebut.plus(duree)));
+        if (utilisateurCourant.getPlanning() == null) utilisateurCourant.setPlanning(new Planning(utilisateurCourant.getNom(), LocalDate.now(), LocalDate.now().plusMonths(12) ));
         if (utilisateurCourant.getPlanning().planifier(sessionLibre,rdvSuivi)) {
             patient = utilisateurCourant.getPatientDossierHashMap().get(numeroDossier);
             patient.getRdvs().add(rdvSuivi);
