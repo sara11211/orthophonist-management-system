@@ -27,17 +27,17 @@
                </children>
             </AnchorPane>
             <AnchorPane layoutX="41.0" layoutY="379.0" prefHeight="211.0" prefWidth="419.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
-            <Text layoutX="46.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour, ">
+            <Text fill="#696262" layoutX="46.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour, ">
                <font>
                   <Font name="Nirmala UI Bold" size="30.0" />
                </font>
             </Text>
-            <Text layoutX="44.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ravis de vous revoir, Explorez votre tableau de bord pour suivre vos progrès et vos résultats." wrappingWidth="412.4349365234375">
+            <Text fill="#696262" layoutX="46.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ravis de vous revoir, Explorez votre tableau de bord pour suivre votre progrès et vos résultats." wrappingWidth="397.10162353515625">
                <font>
-                  <Font name="Nirmala UI" size="13.0" />
+                  <Font name="Nirmala UI" size="11.0" />
                </font>
             </Text>
-            <Label fx:id="userName" layoutX="175.0" layoutY="34.0" prefHeight="39.0" prefWidth="622.0" text="">
+            <Label fx:id="userName" layoutX="175.0" layoutY="34.0" prefHeight="39.0" prefWidth="622.0" text="" textFill="#696262">
                <font>
                   <Font name="Nirmala UI Bold" size="30.0" />
                </font>
@@ -71,12 +71,12 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Text layoutX="194.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accès rapide">
+                  <Text fill="#696262" layoutX="194.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accès rapide">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>
                   </Text>
-                  <Text layoutX="194.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trouvez tous vos documents !" />
+                  <Text fill="#696262" layoutX="194.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trouvez tous vos documents !" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="494.0" layoutY="380.0" prefHeight="209.0" prefWidth="302.0" style="-fx-background-color: white; -fx-background-radius: 10;">
@@ -86,17 +86,17 @@
                         <Image url="@images/checkup.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="185.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patients">
+                  <Text fill="#696262" layoutX="185.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patients">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Text>
-                  <Label fx:id="patientCountLabel" contentDisplay="CENTER" layoutX="211.0" layoutY="92.0" prefHeight="27.0" prefWidth="50.0" text="" textFill="#8379c1">
+                  <Label fx:id="patientCountLabel" contentDisplay="CENTER" layoutX="208.0" layoutY="88.0" prefHeight="27.0" prefWidth="50.0" text="" textFill="#8379c1">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Text layoutX="175.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez">
+                  <Text fill="#696262" layoutX="175.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
