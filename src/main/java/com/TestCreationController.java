@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -52,90 +54,68 @@ public class TestCreationController {
             QuestionTestItemController controller = loader.getController();
             controller.setParentController(this);
             questionsContainer.getChildren().add(questionNode);
+            questionNode.getProperties().put("controller", controller);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void handleSaveTest(ActionEvent event) {
-        String name = testNameField.getText();
-        String description = testDescriptionField.getText();
+private void handleSaveTest(ActionEvent event) {
+    String name = testNameField.getText();
+    String description = testDescriptionField.getText();
 
-        if (name.isEmpty() || description.isEmpty()) {
-            errorLabel.setText("Test name and description cannot be empty!");
-            return;
-        }
+    if (name.isEmpty() || description.isEmpty()) {
+        errorLabel.setText("Test name and description cannot be empty!");
+        return;
+    }
 
-        if (testQuestionnaire == null) {
-            testQuestionnaire = new TestQuestionnaire(name, description, new HashSet<>());
-        } else {
-            testQuestionnaire.setNom(name);
-            testQuestionnaire.setDescription(description);
+    if (testQuestionnaire == null) {
+        testQuestionnaire = new TestQuestionnaire(name, description, new HashSet<>());
+    } else {
+        testQuestionnaire.setNom(name);
+        testQuestionnaire.setDescription(description);
+        testQuestionnaire.getQuestions().clear();
+    }
 
-            testQuestionnaire.getQuestions().clear();
-        }
-
-        for (Node questionNode : questionsContainer.getChildren()) {
-            if (questionNode instanceof HBox) {
-                HBox hbox = (HBox) questionNode;
-                TextField questionField = (TextField) hbox.lookup("#questionTextField");
-                ComboBox<String> questionTypeComboBox = (ComboBox<String>) hbox.lookup("#questionTypeComboBox");
-                VBox propositionsContainer = (VBox) hbox.lookup("#propositionsContainer");
-                String questionText = questionField.getText();
-                String questionType = questionTypeComboBox.getValue();
-
-                if (!questionText.isEmpty() && questionType != null) {
-                    HashSet<Proposition> propositions = new HashSet<>();
-                    if (questionType.equals("Multiple Choice (Multiple Answers)") || questionType.equals("Multiple Choice (Single Answer)")) {
-                        for (Node propositionNode : propositionsContainer.getChildren()) {
-                            if (propositionNode instanceof TextField) {
-                                TextField propositionField = (TextField) propositionNode;
-                                String propositionText = propositionField.getText();
-                                if (!propositionText.isEmpty()) {
-                                    propositions.add(new Proposition(propositionText));
-                                }
-                            }
-                        }
-
-                        if (questionType.equals("Multiple Choice (Multiple Answers)")) {
-                            testQuestionnaire.getQuestions().add(new QCM(questionText, propositions.toArray(new Proposition[0])));
-                        } else {
-                            testQuestionnaire.getQuestions().add(new QCU(questionText, propositions.toArray(new Proposition[0])));
-                        }
-                    } else if (questionType.equals("Free Text")) {
-                        testQuestionnaire.getQuestions().add(new QuestionLibre(questionText, 0)); // Add Free Text question
-                    }
-                }
+    for (Node questionNode : questionsContainer.getChildren()) {
+        if (questionNode instanceof HBox) {
+            // Corrected type casting
+            QuestionTestItemController controller = (QuestionTestItemController) ((HBox) questionNode).getProperties().get("controller");
+            Question question = controller.getQuestion();
+            if (question != null) {
+                testQuestionnaire.getQuestions().add(question);
             }
         }
-        testQuestionnaire.setDateTest(LocalDate.now());
-        if (utilisateurCourant == null) {
-            errorLabel.setText("No current user found!");
-            return;
-        }
-
-        if (!utilisateurCourant.getTests().contains(testQuestionnaire)) {
-            utilisateurCourant.getTests().add(testQuestionnaire);
-        } else {
-            // Replace the existing test
-            utilisateurCourant.getTests().remove(testQuestionnaire);
-            utilisateurCourant.getTests().add(testQuestionnaire);
-        }
-        oms.sauvegarder();
-
-        System.out.println("Test saved with " + testQuestionnaire.getQuestions().size() + " questions.");
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
+
+    testQuestionnaire.setDateTest(LocalDate.now());
+    if (utilisateurCourant == null) {
+        errorLabel.setText("No current user found!");
+        return;
+    }
+
+    if (!utilisateurCourant.getTests().contains(testQuestionnaire)) {
+        utilisateurCourant.getTests().add(testQuestionnaire);
+    } else {
+        utilisateurCourant.getTests().remove(testQuestionnaire);
+        utilisateurCourant.getTests().add(testQuestionnaire);
+    }
+    oms.sauvegarder();
+
+    System.out.println("Test saved with " + testQuestionnaire.getQuestions().size() + " questions.");
+
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
     public void setTest(TestQuestionnaire testQuestionnaire) {
         this.testQuestionnaire = testQuestionnaire;
@@ -153,4 +133,6 @@ public class TestCreationController {
             }
         }
     }
+
+
 }

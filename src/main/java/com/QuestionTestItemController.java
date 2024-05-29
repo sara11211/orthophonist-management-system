@@ -12,13 +12,19 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.Node;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.models.Proposition;
+import com.models.QCM;
+import com.models.QCU;
 import com.models.Question;
+import com.models.QuestionLibre;
 
 public class QuestionTestItemController implements Initializable {
 
@@ -110,6 +116,38 @@ public class QuestionTestItemController implements Initializable {
             propositionField.setPromptText("Proposition");
             propositionsContainer.getChildren().add(propositionField);
         }
+    }
+
+    public Question getQuestion() {
+        String questionText = questionTextField.getText();
+        String questionType = questionTypeComboBox.getValue();
+        int score = scoreSpinner.getValue();
+        
+        if (questionText.isEmpty() || questionType == null) {
+            return null;
+        }
+
+        if (questionType.equals("Free Text")) {
+            return new QuestionLibre(questionText, score);
+        } else {
+            HashSet<Proposition> propositions = new HashSet<>();
+            for (Node node : propositionsContainer.getChildren()) {
+                if (node instanceof TextField) {
+                    TextField propositionField = (TextField) node;
+                    String propositionText = propositionField.getText();
+                    if (!propositionText.isEmpty()) {
+                        propositions.add(new Proposition(propositionText));
+                    }
+                }
+            }
+
+            if (questionType.equals("Multiple Choice (Multiple Answers)")) {
+                return new QCM(questionText, score, propositions.toArray(new Proposition[0]));
+            } else if (questionType.equals("Multiple Choice (Single Answer)")) {
+                return new QCU(questionText, score, propositions.toArray(new Proposition[0]));
+            }
+        }
+        return null;
     }
 
     public VBox getPropositionsContainer() {

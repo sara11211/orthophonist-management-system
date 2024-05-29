@@ -141,6 +141,9 @@ public class ViewTestsController {
                     if (data instanceof TestExercice) {
                         handleCalculateAverageScore((TestExercice) data);
                     }
+                    if (data instanceof TestQuestionnaire) {
+                        handleCalculateAverageScoreQuestionnaire((TestQuestionnaire) data);
+                    }
                 });
             }
 
@@ -156,6 +159,7 @@ public class ViewTestsController {
         });
 
         testsTable.getColumns().add(avgScoreCol);
+
     }
 
     private void handleViewTest(Test selectedTest) {
@@ -231,4 +235,14 @@ public class ViewTestsController {
         alert.setContentText("The average score of the test is: " + averageScore);
         alert.showAndWait();
     }
+
+    private void handleCalculateAverageScoreQuestionnaire(TestQuestionnaire testQuestionnaire) {
+        double averageScore = testQuestionnaire.calculateAverageScore();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Average Score");
+        alert.setHeaderText(null);
+        alert.setContentText("The average score of the test is: " + averageScore);
+        alert.showAndWait();
+    }
+    
 }

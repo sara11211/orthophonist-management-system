@@ -19,4 +19,15 @@ public class TestQuestionnaire extends Test implements Serializable {
     public void setQuestions(HashSet<Question> questions) {
         this.questions = questions;
     }
+
+    public double calculateAverageScore() {
+        if (questions == null || questions.isEmpty()) {
+            return 0;
+        }
+        int totalScore = 0;
+        for (Question question : questions) {
+            totalScore += question.getScore();
+        }
+        return (double) totalScore / questions.size();
+    }
 }
