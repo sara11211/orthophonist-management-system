@@ -182,7 +182,7 @@ public class RDVSuiviController implements Initializable {
     }
 
     public void dureeInvalide() {
-        erreurText.setText("Durée de consultation invalide !");
+        erreurText.setText("Durée invalide !");
     }
 
 }
