@@ -54,7 +54,7 @@ Some of the app features :
 * User Settings
 
 **Note:** For a better visualization of the dashboard use the account :
-* Email : imane@gmail.co
+* Email : imane@gmail.com
 * password : imane12345
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
